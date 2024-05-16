@@ -1,0 +1,2359 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2024 3:12:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U9U46A4"
+  DTS:CreatorName="DESKTOP-U9U46A4\Lenovo"
+  DTS:DTSID="{13E3E357-9EF6-44F7-93B9-24C0C38563EF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="From Source to F_Employees"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{C96856F0-1333-4E92-8ADE-5D8C4809B602}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Fact Employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1f7d0d0b-dfc0-4c2d-8702-f76f3e452ae5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Fact Employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Fact Employees\Date converstion to INT"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Date converstion to INT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
+                      name="Copy of Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\Date Dim"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Date Dim"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input].Columns[Date_id]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([REPLACE]([LEFT]((DT_WSTR,50)(DT_DBTIMESTAMP)#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]},10),"-",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(REPLACE(LEFT((DT_WSTR,50)(DT_DBTIMESTAMP)Date_id,10),"-",""))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\DST DWH Employees"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST DWH Employees"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Employees\DST DWH Employees.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_id"
+                      externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]" />
+                    <inputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[Number_of_employees]"
+                      cachedDataType="i4"
+                      cachedName="Number_of_employees"
+                      externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Number_of_employees]" />
+                    <inputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Date_Key"
+                      externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
+                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[S_Employees_Key]"
+                      dataType="i4"
+                      name="S_Employees_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      dataType="i4"
+                      name="department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
+                      dataType="i4"
+                      name="Date_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
+                      dataType="i4"
+                      name="Number_of_employees" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\Get Department key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get Department key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[department]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[department]) [refTable]
+where [refTable].[department_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Department_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="department_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="department_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="department_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Employees\Get Department key.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input].Columns[department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">department_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Match Output].Columns[S_Department_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Match Output].Columns[S_Department_key]"
+                      name="S_Department_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">S_Department_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\Get Hotel key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get Hotel key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[hotel]) [refTable]
+where [refTable].[hotel_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Hotel_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_contact_number" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_website" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_floor_count" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_star_rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Employees\Get Hotel key.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Match Output].Columns[S_Hotel_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Match Output].Columns[S_Hotel_key]"
+                      name="S_Hotel_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">S_Hotel_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\SRC STG Employees"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC STG Employees"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Employees\SRC STG Employees.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      name="hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[Date_id]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]"
+                      name="Date_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[department_id]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]"
+                      name="department_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Number_of_employees]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[Number_of_employees]"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Number_of_employees]"
+                      name="Number_of_employees"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[Date_id]"
+                      dataType="dbTimeStamp"
+                      name="Date_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[department_id]"
+                      dataType="i4"
+                      name="department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].ExternalColumns[Number_of_employees]"
+                      dataType="i4"
+                      name="Number_of_employees" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      name="hotel_id" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[department_id]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[department_id]"
+                      name="department_id" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[Date_id]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[Date_id]"
+                      name="Date_id" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[Number_of_employees]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[Number_of_employees]"
+                      name="Number_of_employees" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Fact Employees.Paths[Data Conversion Output]"
+              endId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Fact Employees.Paths[Derived Column Output]"
+              endId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Fact Employees.Paths[Lookup Match Output]"
+              endId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Fact Employees.Paths[Lookup Match Output1]"
+              endId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+              endId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{506c9049-13bf-43c5-aaaf-b3914a7bdb4c}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Employees\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load STG Employees\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load STG Employees\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output].Columns[O_Date_Id]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output].Columns[O_Date_Id]"
+                      name="O_Date_Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load STG Employees\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Employees\DST STG Employees"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST STG Employees"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Employees\DST STG Employees.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_id"
+                      externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[Number_of_Employees]"
+                      cachedDataType="ui8"
+                      cachedName="Number_of_Employees"
+                      externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[O_Date_Id]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_Date_Id"
+                      externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      dataType="i4"
+                      name="department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
+                      dataType="dbTimeStamp"
+                      name="Date_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
+                      dataType="i4"
+                      name="Number_of_employees" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\DST STG Employees.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\DST STG Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\DST STG Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\DST STG Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Employees\GroupBy on DepartmentName"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="GroupBy on DepartmentName"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[O_Date_Id]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_Date_Id"
+                      lineageId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output].Columns[O_Date_Id]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      lineageId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_id"
+                      lineageId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output].Columns[department_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[emp_id]"
+                      cachedDataType="i4"
+                      cachedName="emp_id"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
+                      name="O_Date_Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load STG Employees\Derived Column.Outputs[Derived Column Output].Columns[O_Date_Id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]"
+                      name="hotel_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output].Columns[hotel_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]"
+                      name="department_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output].Columns[department_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
+                      dataType="ui8"
+                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
+                      name="Number_of_Employees">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Employees\Lookup On Department"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup On Department"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[department]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[department]) [refTable]
+where [refTable].[department_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="department_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="department_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="department_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[department_department_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Employees\Lookup On Department.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input].Columns[department_department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_department_id"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[department_department_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">department_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output].Columns[department_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output].Columns[department_id]"
+                      name="department_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">department_id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Employees\Lookup On Hotel"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup On Hotel"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[hotel]) [refTable]
+where [refTable].[hotel_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="hotel_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_contact_number" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_email_address" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_website" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_floor_count" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_room_capacity" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_chain_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="addresses_address_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="star_ratings_star_rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="check_in_time" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="check_out_time" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Employees\Lookup On Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input].Columns[hotel_hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_hotel_id"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output].Columns[hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output].Columns[hotel_id]"
+                      name="hotel_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hotel_id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Employees\SRC Employee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Employee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Employees\SRC Employee.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[hotel_hotel_id]"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]"
+                      name="hotel_hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      name="emp_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_first_name]"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_first_name]"
+                      name="emp_first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_last_name]"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_last_name]"
+                      name="emp_last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_designation]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_designation]"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_designation]"
+                      name="emp_designation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_contact_number]"
+                      length="12"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_contact_number]"
+                      name="emp_contact_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_email_address]"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_email_address]"
+                      name="emp_email_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[department_department_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[department_department_id]"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[department_department_id]"
+                      name="department_department_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      name="addresses_address_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[hotel_hotel_id]"
+                      dataType="i4"
+                      name="hotel_hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      dataType="i4"
+                      name="emp_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="emp_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="emp_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="emp_designation" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="emp_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[emp_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="emp_email_address" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[department_department_id]"
+                      dataType="i4"
+                      name="department_department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      dataType="i4"
+                      name="addresses_address_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      name="emp_id" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_first_name]"
+                      name="emp_first_name" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_last_name]"
+                      name="emp_last_name" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_designation]"
+                      name="emp_designation" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_contact_number]"
+                      name="emp_contact_number" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[emp_email_address]"
+                      name="emp_email_address" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[department_department_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[department_department_id]"
+                      name="department_department_id" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      name="addresses_address_id" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[hotel_hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[hotel_hotel_id]"
+                      name="hotel_hotel_id" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Employees.Paths[Aggregate Output 1]"
+              endId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Load STG Employees.Paths[Derived Column Output]"
+              endId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load STG Employees.Paths[Lookup Match Output]"
+              endId="Package\Load STG Employees\Lookup On Department.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load STG Employees.Paths[Lookup Match Output1]"
+              endId="Package\Load STG Employees\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load STG Employees.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Employees\Lookup On Hotel.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{dd6f7599-84d1-46ee-8b6b-ea035186a66f}"
+      DTS:From="Package\Load STG Employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Fact Employees" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.666666666667,42.6666666666667"
+          Id="Package\Load Fact Employees"
+          TopLeft="173.295449480753,142.727271818944" />
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Load STG Employees"
+          TopLeft="169.090904214166,73.0622008135174" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="262.859843514126,115.728867480184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.9984043387602"
+              Start="0,0"
+              End="0,19.4984043387602">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.4984043387602" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Fact Employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Load Fact Employees\Get Hotel key"
+          TopLeft="256.666659017404,81.3333309094112" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Load Fact Employees\Get Department key"
+          TopLeft="237.999992907048,163.999998172124" />
+        <NodeLayout
+          Size="182.666666666667,42.6666666666667"
+          Id="Package\Load Fact Employees\SRC STG Employees"
+          TopLeft="236.666659613451,9.99999970197682" />
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Load Fact Employees\Date Dim"
+          TopLeft="261.999992191791,243.333326081435" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Load Fact Employees\Date converstion to INT"
+          TopLeft="225.999993264675,311.999990701676" />
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+          TopLeft="328.333325982094,52.6666663686435">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.6666645407677"
+              Start="0,0"
+              End="0,21.1666645407677">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1666645407677" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Lookup Match Output1]"
+          TopLeft="324.666659216086,206.666664838791">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.6666612426441"
+              Start="0,0"
+              End="0,29.1666612426441">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1666612426441" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.77864312132203,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Lookup Match Output]"
+          TopLeft="326.999992628893,123.999997576078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.0000005960461"
+              Start="0,0"
+              End="0,32.5000005960461">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5000005960461" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.4453127980231,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Derived Column Output]"
+          TopLeft="322.999992728233,285.999992748101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.9999979535746"
+              Start="0,0"
+              End="0,18.4999979535746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4999979535746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load Fact Employees\DST DWH Employees"
+          TopLeft="230.666659792265,386.222212963634" />
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Data Conversion Output]"
+          TopLeft="322.666659861803,354.666657368343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.5555555952918"
+              Start="0,0"
+              End="0,24.0555555952918">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.0555555952918" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\Get Hotel key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\Get Department key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[department]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\SRC STG Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42.6666666666667"
+          Id="Package\Load STG Employees\GroupBy on DepartmentName"
+          TopLeft="118.749994691462,318.017540426439" />
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Load STG Employees\Lookup On Department"
+          TopLeft="146.874993434176,164.708132162829" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Load STG Employees\SRC Employee"
+          TopLeft="172.78408318504,6.2200956254845" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load STG Employees\Lookup On Hotel"
+          TopLeft="163.636356321249,87.0813387567827" />
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[Lookup Match Output]"
+          TopLeft="242.922341544379,129.748005423449">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.9601267393798"
+              Start="0,0"
+              End="0,27.4601267393798">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4601267393798" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.9253758696899,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[OLE DB Source Output]"
+          TopLeft="246.210219753144,48.8867622921512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1945764646315"
+              Start="0,0"
+              End="0,30.6945764646315">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6945764646315" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Employees\Derived Column"
+          TopLeft="159.999992847443,248.631576678594" />
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[Lookup Match Output1]"
+          TopLeft="240.104159807476,207.374798829496">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.2567778490986"
+              Start="0,0"
+              End="0,33.7567778490986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.7567778490986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.0737014245493,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="&lt;-----Not sure of Dateid from source !&#xD;&#xA;"
+          ParentId="Package\Load STG Employees"
+          FontInfo="{assembly:Null}"
+          Size="232,60"
+          Id="9d825cf4-eccd-442b-81c2-b43231c93dc0"
+          TopLeft="344.374984605238,239.982455005964" />
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[Derived Column Output]"
+          TopLeft="234.374993769452,291.298243345261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.7192970811774"
+              Start="0,0"
+              End="0,19.2192970811774">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2192970811774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Load STG Employees\DST STG Employees"
+          TopLeft="143.124993601814,386.017540426438" />
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[Aggregate Output 1]"
+          TopLeft="232.270827479971,360.684207093105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.333333333333"
+              Start="0,0"
+              End="0,17.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\Lookup On Department">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[department]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\SRC Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\Lookup On Hotel">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\DST STG Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\DST DWH Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

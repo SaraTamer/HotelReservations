@@ -1,0 +1,1643 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2024 1:33:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U9U46A4"
+  DTS:CreatorName="DESKTOP-U9U46A4\Lenovo"
+  DTS:DTSID="{352DF925-93D6-42D8-9AA3-DBDC4C327A8A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="From Source to D_Addresses"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{3DC6C981-5CB3-4948-9E53-FEADC1323100}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DWH Adresses"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FB125F81-61BC-4400-A4B9-6598611FE87B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DWH Adresses"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DWH Adresses\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input].Columns[address_line2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="address_line2"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line2]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input].Columns[O_address_line2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="O_address_line2"
+                      lineageId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output].Columns[O_address_line2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Adresses\Conditional Split.Outputs[Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Changed"
+                  synchronousInputId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line2]} != #{Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output].Columns[O_address_line2]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">address_line2 != O_address_line2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Adresses\DST DWH_Addresses"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST DWH_Addresses"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[addresses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Adresses\DST DWH_Addresses.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[address_id]"
+                      cachedDataType="i4"
+                      cachedName="address_id"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_id]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_id]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[address_line1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="address_line1"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line1]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line1]" />
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].Columns[address_line2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="address_line2"
+                      externalMetadataColumnId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line2]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line2]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[S_Addresses_key]"
+                      dataType="i4"
+                      name="S_Addresses_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_id]"
+                      dataType="i4"
+                      name="address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Adresses\DST DWH_Addresses.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\DST DWH_Addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\DST DWH_Addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\DST DWH_Addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Adresses\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[addresses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[addresses]) [refTable]
+where [refTable].[address_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Addresses_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="address_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="country" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address_line1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address_line2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Adresses\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input].Columns[address_id]"
+                      cachedDataType="i4"
+                      cachedName="address_id"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">address_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output].Columns[O_address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output].Columns[O_address_line2]"
+                      name="O_address_line2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">address_line2</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Adresses\SRC STG_Addresses"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC STG_Addresses"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[addresses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Adresses\SRC STG_Addresses.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_id]"
+                      name="address_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line1]"
+                      length="100"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line1]"
+                      name="address_line1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line2]"
+                      length="100"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].Columns[address_line2]"
+                      name="address_line2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      dataType="i4"
+                      name="address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      name="address_id" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_line1]"
+                      name="address_line1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[address_line2]"
+                      name="address_line2" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Adresses\Update Address"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update Address"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update a  set a.address_line2 = b.address_line2 from DWH.addresses  a         
+inner join STG.addresses  b on a.address_id= b.address_id</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Adresses\Update Address.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Adresses\Update Address.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load DWH Adresses\Update Address.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load DWH Adresses\Update Address.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Adresses\Update Address.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DWH Adresses.Paths[Changed]"
+              endId="Package\Load DWH Adresses\Update Address.Inputs[OLE DB Command Input]"
+              name="Changed"
+              startId="Package\Load DWH Adresses\Conditional Split.Outputs[Changed]" />
+            <path
+              refId="Package\Load DWH Adresses.Paths[Lookup Match Output]"
+              endId="Package\Load DWH Adresses\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load DWH Adresses\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load DWH Adresses.Paths[Lookup No Match Output]"
+              endId="Package\Load DWH Adresses\DST DWH_Addresses.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load DWH Adresses\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load DWH Adresses.Paths[OLE DB Source Output]"
+              endId="Package\Load DWH Adresses\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load DWH Adresses\SRC STG_Addresses.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Adresses"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EEE1A577-D225-4915-B4ED-A8689DA40D05}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Adresses"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Adresses\DST STG_addresses"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST STG_addresses"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[addresses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Adresses\DST STG_addresses.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[address_id]"
+                      cachedDataType="i4"
+                      cachedName="address_id"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_id]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[address_line2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="address_line2"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line2]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line2]" />
+                    <inputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].Columns[address_line1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="address_line1"
+                      externalMetadataColumnId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line1]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line1]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_id]"
+                      dataType="i4"
+                      name="address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input].ExternalColumns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Adresses\DST STG_addresses.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Adresses\DST STG_addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\DST STG_addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Adresses\DST STG_addresses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Adresses\SRC Addresses"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Addresses"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[addresses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Adresses\SRC Addresses.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_id]"
+                      name="address_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line1]"
+                      length="100"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line1]"
+                      name="address_line1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line2]"
+                      length="100"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[address_line2]"
+                      name="address_line2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[zipcode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[zipcode]"
+                      length="8"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].Columns[zipcode]"
+                      name="zipcode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      dataType="i4"
+                      name="address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="address_line2" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output].ExternalColumns[zipcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="zipcode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      name="address_id" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_line1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_line1]"
+                      name="address_line1" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_line2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[address_line2]"
+                      name="address_line2" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[zipcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[zipcode]"
+                      name="zipcode" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Adresses.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Adresses\DST STG_addresses.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Adresses\SRC Addresses.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{24FE0D23-383F-4C05-9F36-67751EC0AB14}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.addresses;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{552089A2-80B2-4CAA-9FB1-56F1C16BF902}"
+      DTS:From="Package\Load STG Adresses"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load DWH Adresses" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5359D2DC-8971-41E3-A736-A190EF8420BB}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Adresses" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Load DWH Adresses"
+          TopLeft="123.749994467944,203.210524084578" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\Load STG Adresses"
+          TopLeft="125.624994384125,118.36841975297" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Truncate STG Table"
+          TopLeft="125.624994384125,46.526315278624" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="213.354161092701,161.035086419636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1754376649415"
+              Start="0,0"
+              End="0,34.6754376649415">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6754376649415" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="214.958327717458,89.1929819452907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.1754378076794"
+              Start="0,0"
+              End="0,21.6754378076794">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6754378076794" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load DWH Adresses">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load DWH Adresses\DST DWH_Addresses"
+          TopLeft="202.142851118531,220.952375715687" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Load DWH Adresses\Conditional Split"
+          TopLeft="419.285701790027,215.71428000927" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load DWH Adresses\Lookup"
+          TopLeft="305.303563791992,130.939849248494" />
+        <NodeLayout
+          Size="182.666666666667,42.6666666666667"
+          Id="Package\Load DWH Adresses\SRC STG_Addresses"
+          TopLeft="271.42856333937,56.6666663260687" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load DWH Adresses\Update Address"
+          TopLeft="428.571415799005,306.428562679461" />
+        <EdgeLayout
+          Id="Package\Load DWH Adresses.Paths[OLE DB Source Output]"
+          TopLeft="362.699396899014,99.3333329927354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.6065162557586"
+              Start="0,0"
+              End="0,24.1065162557586">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1065162557586" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Adresses.Paths[Lookup No Match Output]"
+          TopLeft="344.859119347548,173.606515915161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-50.0496015623506,47.3458598005267"
+              Start="0,0"
+              End="-50.0496015623506,39.8458598005267">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.3292730378297" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.3292730378297"
+                    Point2="0,19.3292730378297"
+                    Point3="-4,19.3292730378297" />
+                  <mssgle:LineSegment
+                    End="-46.0496015623506,19.3292730378297" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-46.0496015623506,19.3292730378297"
+                    Point2="-50.0496015623506,19.3292730378297"
+                    Point3="-50.0496015623506,23.3292730378297" />
+                  <mssgle:LineSegment
+                    End="-50.0496015623506,39.8458598005267" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-80.8311874999253,24.3292730378297,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Adresses.Paths[Lookup Match Output]"
+          TopLeft="380.414674903104,173.606515915161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.53769355359,42.1077640941097"
+              Start="0,0"
+              End="117.53769355359,34.6077640941097">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.190784423742" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.190784423742"
+                    Point2="0,17.190784423742"
+                    Point3="4,17.190784423742" />
+                  <mssgle:LineSegment
+                    End="113.53769355359,17.190784423742" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.53769355359,17.190784423742"
+                    Point2="117.53769355359,17.190784423742"
+                    Point3="117.53769355359,21.190784423742" />
+                  <mssgle:LineSegment
+                    End="117.53769355359,34.6077640941097" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.577460058045,22.190784423742,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Adresses.Paths[Changed]"
+          TopLeft="497.952368456694,258.380946675937">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.61904734231149,48.0476160035244"
+              Start="0,0"
+              End="8.61904734231149,40.5476160035244">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0238080017622" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0238080017622"
+                    Point2="0,24.0238080017622"
+                    Point3="4,24.0238080017622" />
+                  <mssgle:LineSegment
+                    End="4.61904734231149,24.0238080017622" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.61904734231149,24.0238080017622"
+                    Point2="8.61904734231149,24.0238080017622"
+                    Point3="8.61904734231149,28.0238080017622" />
+                  <mssgle:LineSegment
+                    End="8.61904734231149,40.5476160035244" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.5659841413443,29.0238080017622,39.751015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Adresses\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[addresses]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Adresses\DST DWH_Addresses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Adresses\SRC STG_Addresses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Adresses">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Adresses\SRC Addresses"
+          TopLeft="192.49999139458,23.9473681581153" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Load STG Adresses\DST STG_addresses"
+          TopLeft="186.249991673977,136.842103760659" />
+        <EdgeLayout
+          Id="Package\Load STG Adresses.Paths[OLE DB Source Output]"
+          TopLeft="273.708324867612,66.614034824782">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.2280689358771"
+              Start="0,0"
+              End="0,62.7280689358771">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.7280689358771" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Adresses\DST STG_addresses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Adresses\SRC Addresses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1997 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2024 1:33:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U9U46A4"
+  DTS:CreatorName="DESKTOP-U9U46A4\Lenovo"
+  DTS:DTSID="{6761318E-96ED-4BA2-B0E2-6E1340775246}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{23646D4A-D19C-4077-99FA-3DF34C8391E4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DWH Hotel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5D9F30C0-8F42-402E-9D90-230DBCA901CE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DWH Hotel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DWH Hotel\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input].Columns[hotel_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="hotel_contact_number"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input].Columns[hotel_star_rating]"
+                      cachedDataType="i4"
+                      cachedName="hotel_star_rating"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_star_rating]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input].Columns[O_hotel_star_rating]"
+                      cachedDataType="i4"
+                      cachedName="O_hotel_star_rating"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_star_rating]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input].Columns[O_hotel_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="O_hotel_contact_number"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_contact_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Hotel\Conditional Split.Outputs[Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Changed"
+                  synchronousInputId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_star_rating]} != #{Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_star_rating]}) || (#{Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]} != #{Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_contact_number]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(hotel_star_rating != O_hotel_star_rating) || (hotel_contact_number != O_hotel_contact_number)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Hotel\DST DWH_Hotel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST DWH_Hotel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Hotel\DST DWH_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="hotel_name"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_name]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="hotel_contact_number"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_contact_number]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_website]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="hotel_website"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_website]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="hotel_description"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_description]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_floor_count]"
+                      cachedDataType="i4"
+                      cachedName="hotel_floor_count"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_floor_count]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]" />
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_star_rating]"
+                      cachedDataType="i4"
+                      cachedName="hotel_star_rating"
+                      externalMetadataColumnId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_star_rating]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_star_rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[S_Hotel_key]"
+                      dataType="i4"
+                      name="S_Hotel_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="hotel_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_website" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_floor_count]"
+                      dataType="i4"
+                      name="hotel_floor_count" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_star_rating]"
+                      dataType="i4"
+                      name="hotel_star_rating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Hotel\DST DWH_Hotel.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\DST DWH_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\DST DWH_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\DST DWH_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Hotel\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[hotel]) [refTable]
+where [refTable].[hotel_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Hotel_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_contact_number" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_website" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="hotel_floor_count" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_star_rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Hotel\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_star_rating]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_star_rating]"
+                      name="O_hotel_star_rating"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hotel_star_rating</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="12"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output].Columns[O_hotel_contact_number]"
+                      name="O_hotel_contact_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hotel_contact_number</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Hotel\SRC STG_Hotel"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC STG_Hotel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Hotel\SRC STG_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      name="hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
+                      length="45"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
+                      name="hotel_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
+                      length="12"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
+                      name="hotel_contact_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
+                      length="45"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
+                      name="hotel_website"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
+                      length="100"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
+                      name="hotel_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
+                      name="hotel_floor_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_star_rating]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_star_rating]"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].Columns[hotel_star_rating]"
+                      name="hotel_star_rating"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="hotel_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_website" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
+                      dataType="i4"
+                      name="hotel_floor_count" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_star_rating]"
+                      dataType="i4"
+                      name="hotel_star_rating" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      name="hotel_id" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
+                      name="hotel_name" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
+                      name="hotel_contact_number" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
+                      name="hotel_website" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
+                      name="hotel_description" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
+                      name="hotel_floor_count" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_star_rating]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_star_rating]"
+                      name="hotel_star_rating" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Hotel\Update Rate&amp;contact number"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update Rate&amp;contact number"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update a  set a.hotel_star_rating = b.hotel_star_rating , a.hotel_contact_number = b.hotel_contact_number  from DWH.hotel  a         
+inner join STG.hotel  b on a.hotel_id= b.hotel_id</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load DWH Hotel\Update Rate&amp;contact number.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load DWH Hotel\Update Rate&amp;contact number.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Hotel\Update Rate&amp;contact number.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DWH Hotel.Paths[Changed]"
+              endId="Package\Load DWH Hotel\Update Rate&amp;contact number.Inputs[OLE DB Command Input]"
+              name="Changed"
+              startId="Package\Load DWH Hotel\Conditional Split.Outputs[Changed]" />
+            <path
+              refId="Package\Load DWH Hotel.Paths[Lookup Match Output]"
+              endId="Package\Load DWH Hotel\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load DWH Hotel\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load DWH Hotel.Paths[Lookup No Match Output]"
+              endId="Package\Load DWH Hotel\DST DWH_Hotel.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load DWH Hotel\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load DWH Hotel.Paths[OLE DB Source Output]"
+              endId="Package\Load DWH Hotel\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load DWH Hotel\SRC STG_Hotel.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Hotel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5EB95150-A10C-48BD-80B8-1B470422EE57}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Hotel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Hotel\DST STG_Hotel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST STG_Hotel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Hotel\DST STG_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="hotel_name"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_name]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="hotel_contact_number"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_contact_number]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_website]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="hotel_website"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_website]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="hotel_description"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_description]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[hotel_floor_count]"
+                      cachedDataType="i4"
+                      cachedName="hotel_floor_count"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_floor_count]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]" />
+                    <inputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].Columns[star_ratings_star_rating]"
+                      cachedDataType="i4"
+                      cachedName="star_ratings_star_rating"
+                      externalMetadataColumnId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_star_rating]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="hotel_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_website" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_floor_count]"
+                      dataType="i4"
+                      name="hotel_floor_count" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[hotel_star_rating]"
+                      dataType="i4"
+                      name="hotel_star_rating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Hotel\DST STG_Hotel.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\DST STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\DST STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\DST STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Hotel\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[star_ratings]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[star_ratings]) [refTable]
+where [refTable].[star_rating] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="star_rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="star_rating_image" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Hotel\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input].Columns[star_ratings_star_rating]"
+                      cachedDataType="i4"
+                      cachedName="star_ratings_star_rating"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">star_rating</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Hotel\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Hotel\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Hotel\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Hotel\SRC Hotel"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Hotel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Hotel\SRC Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      name="hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
+                      name="hotel_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
+                      length="12"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
+                      name="hotel_contact_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_email_address]"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_email_address]"
+                      name="hotel_email_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
+                      name="hotel_website"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
+                      length="100"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
+                      name="hotel_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
+                      name="hotel_floor_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_room_capacity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_room_capacity]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_room_capacity]"
+                      name="hotel_room_capacity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_chain_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_chain_id]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_chain_id]"
+                      name="hotel_chain_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      name="addresses_address_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[star_ratings_star_rating]"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]"
+                      name="star_ratings_star_rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_in_time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_in_time]"
+                      length="16"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_in_time]"
+                      name="check_in_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_out_time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_out_time]"
+                      length="16"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_out_time]"
+                      name="check_out_time"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      dataType="i4"
+                      name="hotel_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="hotel_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_email_address" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="hotel_website" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
+                      dataType="i4"
+                      name="hotel_floor_count" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_room_capacity]"
+                      dataType="i4"
+                      name="hotel_room_capacity" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_chain_id]"
+                      dataType="i4"
+                      name="hotel_chain_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      dataType="i4"
+                      name="addresses_address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[star_ratings_star_rating]"
+                      dataType="i4"
+                      name="star_ratings_star_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_in_time]"
+                      dataType="wstr"
+                      length="16"
+                      name="check_in_time" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_out_time]"
+                      dataType="wstr"
+                      length="16"
+                      name="check_out_time" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      name="hotel_id" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
+                      name="hotel_name" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
+                      name="hotel_contact_number" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_email_address]"
+                      name="hotel_email_address" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
+                      name="hotel_website" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
+                      name="hotel_description" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
+                      name="hotel_floor_count" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_room_capacity]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_room_capacity]"
+                      name="hotel_room_capacity" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_chain_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_chain_id]"
+                      name="hotel_chain_id" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      name="addresses_address_id" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[star_ratings_star_rating]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[star_ratings_star_rating]"
+                      name="star_ratings_star_rating" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_in_time]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_in_time]"
+                      name="check_in_time" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_out_time]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_out_time]"
+                      name="check_out_time" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Hotel.Paths[Lookup Match Output]"
+              endId="Package\Load STG Hotel\DST STG_Hotel.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load STG Hotel\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load STG Hotel.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Hotel\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Hotel\SRC Hotel.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7936eb84-b2a7-4651-931e-551922f21e77}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.hotel;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{67390ABF-D4F6-4D5F-AB2C-FC1EDC6F5559}"
+      DTS:From="Package\Load STG Hotel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load DWH Hotel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B8CDE458-F96C-41AC-9267-FC4F30D1DFA2}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Hotel" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load DWH Hotel"
+          TopLeft="126.249994356185,168.31578762561" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Hotel"
+          TopLeft="128.124994272366,85.5263148504117" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="119.999994635582,17.1403518162549" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="206.187494314275,128.192981517078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1228061085318"
+              Start="0,0"
+              End="0,32.6228061085318">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6228061085318" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="208.729161120641,60.4736851495883">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.0526297008234"
+              Start="0,0"
+              End="0,17.5526297008234">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5526297008234" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load DWH Hotel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load DWH Hotel\Lookup"
+          TopLeft="298.160706862009,133.082706327489" />
+        <NodeLayout
+          Size="220,42.6666666666667"
+          Id="Package\Load DWH Hotel\Update Rate&amp;contact number"
+          TopLeft="419.999987483025,303.571419907468" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Load DWH Hotel\SRC STG_Hotel"
+          TopLeft="278.160707532562,55.71428584201" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Load DWH Hotel\Conditional Split"
+          TopLeft="394.285702535085,219.285708474262" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load DWH Hotel\DST DWH_Hotel"
+          TopLeft="191.428565723556,218.571423334735" />
+        <EdgeLayout
+          Id="Package\Load DWH Hotel.Paths[OLE DB Source Output]"
+          TopLeft="356.160707197285,98.3809525086766">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7017538188127"
+              Start="0,0"
+              End="0,27.2017538188127">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2017538188127" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Hotel.Paths[Lookup No Match Output]"
+          TopLeft="337.716262417564,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66.2876966940088,42.822050340579"
+              Start="0,0"
+              End="-66.2876966940088,35.322050340579">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4823966986767" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4823966986767"
+                    Point2="0,17.4823966986767"
+                    Point3="-4,17.4823966986767" />
+                  <mssgle:LineSegment
+                    End="-62.2876966940088,17.4823966986767" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.2876966940088,17.4823966986767"
+                    Point2="-66.2876966940088,17.4823966986767"
+                    Point3="-66.2876966940088,21.4823966986767" />
+                  <mssgle:LineSegment
+                    End="-66.2876966940088,35.322050340579" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-88.9502350657544,22.4823966986767,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Hotel.Paths[Lookup Match Output]"
+          TopLeft="355.494040195342,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.458329006409,43.5363354801056"
+              Start="0,0"
+              End="117.458329006409,36.0363354801056">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7681677400528" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7681677400528"
+                    Point2="0,21.7681677400528"
+                    Point3="4,21.7681677400528" />
+                  <mssgle:LineSegment
+                    End="113.458329006409,21.7681677400528" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.458329006409,21.7681677400528"
+                    Point2="117.458329006409,21.7681677400528"
+                    Point3="117.458329006409,25.7681677400528" />
+                  <mssgle:LineSegment
+                    End="117.458329006409,36.0363354801056" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.5377777844545,26.7681677400528,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Hotel.Paths[Changed]"
+          TopLeft="472.952369201751,261.952375140928">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.0476182812737,41.6190447665398"
+              Start="0,0"
+              End="57.0476182812737,34.1190447665398">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8095223832699" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.8095223832699"
+                    Point2="0,20.8095223832699"
+                    Point3="4,20.8095223832699" />
+                  <mssgle:LineSegment
+                    End="53.0476182812737,20.8095223832699" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.0476182812737,20.8095223832699"
+                    Point2="57.0476182812737,20.8095223832699"
+                    Point3="57.0476182812737,24.8095223832699" />
+                  <mssgle:LineSegment
+                    End="57.0476182812737,34.1190447665398" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.64830132813687,25.8095223832699,39.751015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Hotel\SRC STG_Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Hotel\DST DWH_Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Hotel\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[hotel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Hotel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\Load STG Hotel\SRC Hotel"
+          TopLeft="192.49999139458,23.9473681581153" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load STG Hotel\Lookup"
+          TopLeft="197.499991171062,116.31578819656" />
+        <EdgeLayout
+          Id="Package\Load STG Hotel.Paths[OLE DB Source Output]"
+          TopLeft="255.999991282821,66.6140348247819">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.7017533717778"
+              Start="0,0"
+              End="0,42.2017533717778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.2017533717778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Hotel\DST STG_Hotel"
+          TopLeft="175.624992148951,201.842103046972" />
+        <EdgeLayout
+          Id="Package\Load STG Hotel.Paths[Lookup Match Output]"
+          TopLeft="254.229158326673,158.982454863226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8596481837452"
+              Start="0,0"
+              End="0,35.3596481837452">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3596481837452" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.8751365918726,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Hotel\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[star_ratings]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Hotel\DST STG_Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Hotel\SRC Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-U9U46A4.Hotel_Reservation"
+  DTS:DTSID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-U9U46A4;Initial Catalog=Hotel_Reservation;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HotelReservations-{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}DESKTOP-U9U46A4.Hotel_Reservation;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

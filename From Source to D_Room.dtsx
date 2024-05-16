@@ -1,0 +1,2663 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2024 1:33:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U9U46A4"
+  DTS:CreatorName="DESKTOP-U9U46A4\Lenovo"
+  DTS:DTSID="{53E79FF9-AE59-4410-9EB0-D9498623DA43}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="From Source to D_Room"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{F97FAD7A-D12F-4C92-85BF-B56194AB33DE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DWH Rooms"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F3574529-4BC7-42F1-BC23-FD05EC5C3972}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DWH Rooms"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DWH Rooms\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="room_type_description"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="smoke_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="pet_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="O_pet_friendly"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="O_smoke_friendly"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="O_room_type_description"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="O_room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\Conditional Split.Outputs[Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Changed"
+                  synchronousInputId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(room_cost != O_room_cost) || (room_type_description != O_room_type_description) || (smoke_friendly != O_smoke_friendly) || (pet_friendly != O_pet_friendly)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\DST DWH_Rooms"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST DWH_Rooms"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[rooms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Rooms\DST DWH_Rooms.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_id]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[room_number]"
+                      cachedDataType="i4"
+                      cachedName="room_number"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_number]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_number]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[room_type_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="room_type_name"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_name]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_name]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_cost]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="room_type_description"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_description]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_description]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="smoke_friendly"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[smoke_friendly]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[smoke_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="pet_friendly"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[pet_friendly]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[O_is_active]"
+                      cachedDataType="i4"
+                      cachedName="O_is_active"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[O_valid_To]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_valid_To"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_To]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]" />
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[O_Valid_From]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_Valid_From"
+                      externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_From]"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[S_Room_key]"
+                      dataType="i4"
+                      name="S_Room_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_number]"
+                      dataType="i4"
+                      name="room_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="room_type_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
+                      dataType="numeric"
+                      name="room_cost"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="room_type_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[smoke_friendly]"
+                      dataType="i4"
+                      name="smoke_friendly" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[pet_friendly]"
+                      dataType="i4"
+                      name="pet_friendly" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      dataType="i4"
+                      name="is_active" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_From]"
+                      dataType="dbTimeStamp"
+                      name="Valid_From" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_To]"
+                      dataType="dbTimeStamp"
+                      name="Valid_To" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\DST DWH_Rooms.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\DST DWH_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\DST DWH_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\DST DWH_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[rooms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[rooms]) [refTable]
+where [refTable].[room_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Room_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="room_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="room_number" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="room_type_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="room_cost" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="room_type_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="smoke_friendly" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="pet_friendly" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="is_active" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Valid_From" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Valid_To" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Rooms\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">room_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      name="O_pet_friendly"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">pet_friendly</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      name="O_smoke_friendly"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">smoke_friendly</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      name="O_room_type_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_type_description</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      name="O_room_cost"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_cost</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE DWH.rooms
+SET is_active = 0 , Valid_To = GETDATE()
+WHERE room_id  = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Rooms\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      externalMetadataColumnId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\SRC STG_Rooms"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC STG_Rooms"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[rooms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Rooms\SRC STG_Rooms.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]"
+                      name="room_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_number]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_number]"
+                      name="room_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_type_name]"
+                      length="45"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_name]"
+                      name="room_type_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_cost]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]"
+                      name="room_cost"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_type_description]"
+                      length="100"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]"
+                      name="room_type_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[smoke_friendly]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]"
+                      name="smoke_friendly"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[pet_friendly]"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]"
+                      name="pet_friendly"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_number]"
+                      dataType="i4"
+                      name="room_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="room_type_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_cost]"
+                      dataType="numeric"
+                      name="room_cost"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="room_type_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[smoke_friendly]"
+                      dataType="i4"
+                      name="smoke_friendly" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].ExternalColumns[pet_friendly]"
+                      dataType="i4"
+                      name="pet_friendly" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      name="room_id" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_number]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_number]"
+                      name="room_number" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_type_name]"
+                      name="room_type_name" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_cost]"
+                      dataType="numeric"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_cost]"
+                      name="room_cost"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[room_type_description]"
+                      name="room_type_description" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[smoke_friendly]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[smoke_friendly]"
+                      name="smoke_friendly" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[pet_friendly]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[pet_friendly]"
+                      name="pet_friendly" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\Type2 Columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Type2 Columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
+                      name="O_Valid_From"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
+                      name="O_is_active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
+                      name="O_valid_To"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)"9999-12-31"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)"9999-12-31"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[room_number]"
+                      cachedDataType="i4"
+                      cachedName="room_number"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[room_type_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="room_type_name"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_cost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="room_type_description"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_description]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="smoke_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[smoke_friendly]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="pet_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_Valid_From]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_Valid_From"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_is_active]"
+                      cachedDataType="i4"
+                      cachedName="O_is_active"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_valid_To]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_valid_To"
+                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[room_number]"
+                      cachedDataType="i4"
+                      cachedName="room_number"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[room_type_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="room_type_name"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_cost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="room_type_description"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_description]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="smoke_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[smoke_friendly]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="pet_friendly"
+                      lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_Valid_From]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_Valid_From"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_is_active]"
+                      cachedDataType="i4"
+                      cachedName="O_is_active"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_valid_To]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_valid_To"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_id]"
+                      name="room_id" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_number]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_number]"
+                      name="room_number" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_name]"
+                      name="room_type_name" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_cost]"
+                      dataType="numeric"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_cost]"
+                      name="room_cost"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[room_type_description]"
+                      name="room_type_description" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[smoke_friendly]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[smoke_friendly]"
+                      name="smoke_friendly" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]"
+                      name="pet_friendly" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]"
+                      name="O_Valid_From" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]"
+                      name="O_is_active" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]"
+                      name="O_valid_To" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Rooms\Update Type2 Columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Update Type2 Columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
+                      name="O_Valid_From"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
+                      name="O_is_active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
+                      name="O_valid_To"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)"9999-12-31"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)"9999-12-31"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DWH Rooms.Paths[Changed]"
+              endId="Package\Load DWH Rooms\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changed"
+              startId="Package\Load DWH Rooms\Conditional Split.Outputs[Changed]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[Derived Column Output]"
+              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[Derived Column Output1]"
+              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[Lookup Match Output]"
+              endId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[Lookup No Match Output]"
+              endId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load DWH Rooms\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[OLE DB Command Output]"
+              endId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]"
+              name="OLE DB Command Output"
+              startId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[OLE DB Source Output]"
+              endId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load DWH Rooms.Paths[Union All Output 1]"
+              endId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Rooms"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{72B98643-AD82-4DE4-A96C-9E2F6FA2D236}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Rooms"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Rooms\DST STG_Rooms"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST STG_Rooms"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[rooms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Rooms\DST STG_Rooms.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[room_number]"
+                      cachedDataType="i4"
+                      cachedName="room_number"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_number]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_number]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_pet_friendly]"
+                      cachedDataType="i4"
+                      cachedName="O_pet_friendly"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[pet_friendly]"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="O_smoke_friendly"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[smoke_friendly]"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="O_room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_number]"
+                      dataType="i4"
+                      name="room_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="room_type_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
+                      dataType="numeric"
+                      name="room_cost"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="room_type_description" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[smoke_friendly]"
+                      dataType="i4"
+                      name="smoke_friendly" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[pet_friendly]"
+                      dataType="i4"
+                      name="pet_friendly" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Rooms\DST STG_Rooms.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\DST STG_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\DST STG_Rooms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Rooms\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[room_type]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[room_type]) [refTable]
+where [refTable].[room_type_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="room_type_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="room_type_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="room_cost" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="room_type_description" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="smoke_friendly" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="pet_friendly" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[rooms_type_rooms_type_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Rooms\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input].Columns[rooms_type_rooms_type_id]"
+                      cachedDataType="i4"
+                      cachedName="rooms_type_rooms_type_id"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[rooms_type_rooms_type_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">room_type_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      name="O_room_cost"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_cost</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      name="O_smoke_friendly"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">smoke_friendly</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      name="O_pet_friendly"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">pet_friendly</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="45"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]"
+                      name="O_room_type_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_type_name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      name="O_room_type_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_type_description</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Rooms\SRC Rooms"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Rooms"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rooms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Rooms\SRC Rooms.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_id]"
+                      name="room_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_number]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[room_number]"
+                      name="room_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[rooms_type_rooms_type_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_type_rooms_type_id]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[rooms_type_rooms_type_id]"
+                      name="rooms_type_rooms_type_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[hotel_hotel_id]"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[hotel_hotel_id]"
+                      name="hotel_hotel_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[room_number]"
+                      dataType="i4"
+                      name="room_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_type_rooms_type_id]"
+                      dataType="i4"
+                      name="rooms_type_rooms_type_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].ExternalColumns[hotel_hotel_id]"
+                      dataType="i4"
+                      name="hotel_hotel_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      name="room_id" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[room_number]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[room_number]"
+                      name="room_number" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[rooms_type_rooms_type_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[rooms_type_rooms_type_id]"
+                      name="rooms_type_rooms_type_id" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[hotel_hotel_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[hotel_hotel_id]"
+                      name="hotel_hotel_id" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Rooms.Paths[Lookup Match Output]"
+              endId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load STG Rooms.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f09bc267-241b-4839-a105-604e2f045505}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.rooms;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{696E0FE9-D28F-468C-828A-EBED68096E6C}"
+      DTS:From="Package\Load STG Rooms"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load DWH Rooms" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F610FD24-4BA5-4E1B-A8CD-C6394D6E2574}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Rooms" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\Load DWH Rooms"
+          TopLeft="115.62499483116,173.789471776036" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load STG Rooms"
+          TopLeft="117.499994747341,95.789472632461" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="104.374995334074,28.0877201171077" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="199.895828122584,138.456139299128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.3333324769083"
+              Start="0,0"
+              End="0,27.8333324769083">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.8333324769083" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="197.937495040708,71.421053450441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.36841918202"
+              Start="0,0"
+              End="0,16.86841918202">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.86841918202" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load DWH Rooms">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\SRC STG_Rooms"
+          TopLeft="278.160707532562,55.71428584201" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Load DWH Rooms\Update Type2 Columns"
+          TopLeft="357.142846499171,351.238089107332" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\OLE DB Command"
+          TopLeft="366.428560508149,282.380944930372" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Lookup"
+          TopLeft="298.160706862009,133.082706327489" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Load DWH Rooms\DST DWH_Rooms"
+          TopLeft="148.571424143655,423.571417225259" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Load DWH Rooms\Conditional Split"
+          TopLeft="369.285703280143,216.190470230012" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Type2 Columns"
+          TopLeft="155.714281073639,214.809521744649" />
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[OLE DB Source Output]"
+          TopLeft="358.494040530619,98.3809525086767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7017538188123"
+              Start="0,0"
+              End="0,27.2017538188123">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2017538188123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[OLE DB Command Output]"
+          TopLeft="452.452370170327,325.047611597039">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.1904775102931"
+              Start="0,0"
+              End="0,18.6904775102931">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6904775102931" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Lookup No Match Output]"
+          TopLeft="355.494040195342,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.44642578837,39.0601487504931"
+              Start="0,0"
+              End="-122.44642578837,31.5601487504931">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5300743752465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5300743752465"
+                    Point2="0,19.5300743752465"
+                    Point3="-4,19.5300743752465" />
+                  <mssgle:LineSegment
+                    End="-118.44642578837,19.5300743752465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.44642578837,19.5300743752465"
+                    Point2="-122.44642578837,19.5300743752465"
+                    Point3="-122.44642578837,23.5300743752465" />
+                  <mssgle:LineSegment
+                    End="-122.44642578837,31.5601487504931" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-117.029599612935,24.5300743752465,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Lookup Match Output]"
+          TopLeft="373.27181797312,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.6805519736891,40.4410972358563"
+              Start="0,0"
+              End="74.6805519736891,32.9410972358563">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5103562109688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5103562109688"
+                    Point2="0,16.5103562109688"
+                    Point3="4,16.5103562109688" />
+                  <mssgle:LineSegment
+                    End="70.6805519736891,16.5103562109688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.6805519736891,16.5103562109688"
+                    Point2="74.6805519736891,16.5103562109688"
+                    Point3="74.6805519736891,20.5103562109688" />
+                  <mssgle:LineSegment
+                    End="74.6805519736891,32.9410972358563" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.8511107319055,21.5103562109688,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Changed]"
+          TopLeft="449.857131894146,258.857136896679">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.5238080336936"
+              Start="0,0"
+              End="0,16.0238080336936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0238080336936" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8755078125,2.18036104809678,39.751015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Union All"
+          TopLeft="177.142851863589,347.380944525912" />
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Derived Column Output]"
+          TopLeft="235.761899801947,257.476188411316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.9047561145962"
+              Start="0,0"
+              End="0,82.4047561145962">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.4047561145962" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Derived Column Output1]"
+          TopLeft="357.142846499171,370.642850149955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-57.3333279689156,0"
+              Start="0,0"
+              End="-49.8333279689156,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-49.8333279689156,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Union All Output 1]"
+          TopLeft="235.857138003622,390.047611192579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.5238060326805"
+              Start="0,0"
+              End="0,26.0238060326805">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0238060326805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Rooms\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[rooms]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Rooms\DST DWH_Rooms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Rooms\SRC STG_Rooms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Rooms">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load STG Rooms\Lookup"
+          TopLeft="195.624991254881,100.578946264084" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load STG Rooms\DST STG_Rooms"
+          TopLeft="175.624992148951,201.842103046972" />
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\Load STG Rooms\SRC Rooms"
+          TopLeft="184.374991757796,15.7368419324758" />
+        <EdgeLayout
+          Id="Package\Load STG Rooms.Paths[OLE DB Source Output]"
+          TopLeft="253.499991506338,58.4035085991424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1754376649418"
+              Start="0,0"
+              End="0,34.6754376649418">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6754376649418" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Rooms.Paths[Lookup Match Output]"
+          TopLeft="255.624991701916,143.245612930751">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.5964901162211"
+              Start="0,0"
+              End="0,51.0964901162211">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.0964901162211" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.7435575581105,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Rooms\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[room_type]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Rooms\DST STG_Rooms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Rooms\SRC Rooms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

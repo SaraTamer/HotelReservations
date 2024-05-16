@@ -1,0 +1,1545 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2024 1:33:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U9U46A4"
+  DTS:CreatorName="DESKTOP-U9U46A4\Lenovo"
+  DTS:DTSID="{771AA0EA-1D96-40EF-B4D7-D03BD726800C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="From Source to D_Guest"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{5213709E-20A3-4B21-B431-BFFB72FB5679}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DWH Guest"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A837F4C0-42CE-48EB-8356-183DA7359EDB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DWH Guest"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DWH Guest\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input].Columns[guest_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="guest_contact_number"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]" />
+                    <inputColumn
+                      refId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input].Columns[O_guest_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="O_guest_contact_number"
+                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Guest\Conditional Split.Outputs[Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Changed"
+                  synchronousInputId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]} != #{Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">guest_contact_number != O_guest_contact_number</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Guest\DST DWH_Guests"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST DWH_Guests"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[guests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Guest\DST DWH_Guests.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].Columns[guest_id]"
+                      cachedDataType="i4"
+                      cachedName="guest_id"
+                      externalMetadataColumnId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_id]"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]" />
+                    <inputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].Columns[guest_first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="guest_first_name"
+                      externalMetadataColumnId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_first_name]"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]" />
+                    <inputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].Columns[guest_last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="guest_last_name"
+                      externalMetadataColumnId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_last_name]"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]" />
+                    <inputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].Columns[guest_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="guest_contact_number"
+                      externalMetadataColumnId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_contact_number]"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[S_Guest_key]"
+                      dataType="i4"
+                      name="S_Guest_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_id]"
+                      dataType="i4"
+                      name="guest_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="guest_contact_number" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Guest\DST DWH_Guests.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\DST DWH_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\DST DWH_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\DST DWH_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Guest\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [STG].[guests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [STG].[guests]) [refTable]
+where [refTable].[guest_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="guest_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="guest_first_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="guest_last_name" dataType="DT_STR" length="45" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="guest_contact_number" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Guest\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input].Columns[guest_id]"
+                      cachedDataType="i4"
+                      cachedName="guest_id"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">guest_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="12"
+                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
+                      name="O_guest_contact_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">guest_contact_number</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Guest\SRC STG_Guests"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC STG_Guests"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[guests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Guest\SRC STG_Guests.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id]"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]"
+                      name="guest_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_first_name]"
+                      length="45"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]"
+                      name="guest_first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_last_name]"
+                      length="45"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]"
+                      name="guest_last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_contact_number]"
+                      length="12"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]"
+                      name="guest_contact_number"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id]"
+                      dataType="i4"
+                      name="guest_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="guest_contact_number" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_id]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_id]"
+                      name="guest_id" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_first_name]"
+                      name="guest_first_name" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_last_name]"
+                      name="guest_last_name" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[guest_contact_number]"
+                      name="guest_contact_number" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DWH Guest\Update Guest"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update Guest"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update a  set a.guest_contact_number = b.guest_contact_number from DWH.guests a         
+inner join STG.guests  b on a.guest_id= b.guest_id</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DWH Guest\Update Guest.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DWH Guest\Update Guest.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load DWH Guest\Update Guest.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load DWH Guest\Update Guest.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Guest\Update Guest.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DWH Guest.Paths[Changed]"
+              endId="Package\Load DWH Guest\Update Guest.Inputs[OLE DB Command Input]"
+              name="Changed"
+              startId="Package\Load DWH Guest\Conditional Split.Outputs[Changed]" />
+            <path
+              refId="Package\Load DWH Guest.Paths[Lookup Match Output]"
+              endId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load DWH Guest.Paths[Lookup No Match Output]"
+              endId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load DWH Guest\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load DWH Guest.Paths[OLE DB Source Output]"
+              endId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Guest"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7E9C19D3-4409-4494-BFB1-13B9A456FF87}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Guest"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Guest\DST STG_Guests"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST STG_Guests"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[guests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Guest\DST STG_Guests.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].Columns[guest_id]"
+                      cachedDataType="i4"
+                      cachedName="guest_id"
+                      externalMetadataColumnId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_id]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].Columns[guest_first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="guest_first_name"
+                      externalMetadataColumnId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_first_name]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]" />
+                    <inputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].Columns[guest_last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="guest_last_name"
+                      externalMetadataColumnId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_last_name]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]" />
+                    <inputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].Columns[guest_contact_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="guest_contact_number"
+                      externalMetadataColumnId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_contact_number]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_id]"
+                      dataType="i4"
+                      name="guest_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input].ExternalColumns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="guest_contact_number" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Guest\DST STG_Guests.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\DST STG_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\DST STG_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\DST STG_Guests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Guest\SRC Guests"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC Guests"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[guests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Guest\SRC Guests.Connections[OleDbConnection]"
+                  connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
+                      name="addresses_address_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id]"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_id]"
+                      name="guest_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_first_name]"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_first_name]"
+                      name="guest_first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_last_name]"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_last_name]"
+                      name="guest_last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_contact_number]"
+                      length="12"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]"
+                      name="guest_contact_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_email_address]"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_email_address]"
+                      name="guest_email_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_credit_card]"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_credit_card]"
+                      name="guest_credit_card"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_id_proof]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id_proof]"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].Columns[guest_id_proof]"
+                      name="guest_id_proof"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
+                      dataType="i4"
+                      name="addresses_address_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id]"
+                      dataType="i4"
+                      name="guest_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="guest_contact_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_email_address" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_credit_card" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output].ExternalColumns[guest_id_proof]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="guest_id_proof" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_id]"
+                      name="guest_id" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_first_name]"
+                      name="guest_first_name" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_last_name]"
+                      name="guest_last_name" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_contact_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_contact_number]"
+                      name="guest_contact_number" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_email_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_email_address]"
+                      name="guest_email_address" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_credit_card]"
+                      name="guest_credit_card" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_id_proof]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[guest_id_proof]"
+                      name="guest_id_proof" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
+                      name="addresses_address_id" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Guest.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Guest\DST STG_Guests.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Guest\SRC Guests.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8a53c06e-bbe4-44d2-b1b7-a93f7bd0603f}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.guests;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{79EA3A98-4DAF-40A2-9E94-9385F58E868E}"
+      DTS:From="Package\Load STG Guest"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load DWH Guest" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{27CA22D8-19F0-4FB1-8047-7356C89CFA4D}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Guest" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Load DWH Guest"
+          TopLeft="128.124994272366,186.105261114496" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load STG Guest"
+          TopLeft="133.749994020909,97.1578936700677" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="117.49999474734,19.8771938914682" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="211.604160813304,139.824560336734">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.2807007777613"
+              Start="0,0"
+              End="0,38.7807007777613">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.7807007777613" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="211.291661050791,63.2105272248015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.9473664452661"
+              Start="0,0"
+              End="0,26.4473664452661">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.4473664452661" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load DWH Guest">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Load DWH Guest\DST DWH_Guests"
+          TopLeft="150.178567567575,221.992475928751" />
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Load DWH Guest\SRC STG_Guests"
+          TopLeft="278.160707532562,55.71428584201" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Load DWH Guest\Update Guest"
+          TopLeft="406.249988097698,314.518788208321" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Load DWH Guest\Lookup"
+          TopLeft="298.160706862009,133.082706327489" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Load DWH Guest\Conditional Split"
+          TopLeft="394.285702535085,220.654129511869" />
+        <EdgeLayout
+          Id="Package\Load DWH Guest.Paths[Lookup Match Output]"
+          TopLeft="373.27181797312,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.6805512286315,44.9047565177129"
+              Start="0,0"
+              End="99.6805512286315,37.4047565177129">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3326758260388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3326758260388"
+                    Point2="0,18.3326758260388"
+                    Point3="4,18.3326758260388" />
+                  <mssgle:LineSegment
+                    End="95.6805512286315,18.3326758260388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.6805512286315,18.3326758260388"
+                    Point2="99.6805512286315,18.3326758260388"
+                    Point3="99.6805512286315,22.3326758260388" />
+                  <mssgle:LineSegment
+                    End="99.6805512286315,37.4047565177129" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="1.64888889556577,23.3326758260388,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Guest.Paths[Changed]"
+          TopLeft="475.934511983058,263.320796178535">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.1979920297854"
+              Start="0,0"
+              End="0,43.6979920297854">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6979920297854" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8755078125,16.0174530461427,39.751015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Guest.Paths[OLE DB Source Output]"
+          TopLeft="358.494040530619,98.3809525086767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7017538188123"
+              Start="0,0"
+              End="0,27.2017538188123">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2017538188123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DWH Guest.Paths[Lookup No Match Output]"
+          TopLeft="337.716262417565,175.749372994156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-102.871028183323,46.2431029345958"
+              Start="0,0"
+              End="-102.871028183323,38.7431029345958">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.8790649595368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.8790649595368"
+                    Point2="0,18.8790649595368"
+                    Point3="-4,18.8790649595368" />
+                  <mssgle:LineSegment
+                    End="-98.8710281833233,18.8790649595368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-98.8710281833233,18.8790649595368"
+                    Point2="-102.871028183323,18.8790649595368"
+                    Point3="-102.871028183323,22.8790649595368" />
+                  <mssgle:LineSegment
+                    End="-102.871028183323,38.7431029345958" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-107.241900810412,23.8790649595368,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Guest\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[STG].[guests]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Guest\SRC STG_Guests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DWH Guest\DST DWH_Guests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Guest">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\Load STG Guest\SRC Guests"
+          TopLeft="189.499991483987,92.9473661017551" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load STG Guest\DST STG_Guests"
+          TopLeft="173.624992208556,195.842103225786" />
+        <EdgeLayout
+          Id="Package\Load STG Guest.Paths[OLE DB Source Output]"
+          TopLeft="257.729158512938,135.614032768422">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.2280704573641"
+              Start="0,0"
+              End="0,52.7280704573641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.7280704573641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Guest\DST STG_Guests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Guest\SRC Guests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

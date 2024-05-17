@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{23646D4A-D19C-4077-99FA-3DF34C8391E4}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{A1DD3AE7-139D-4A7B-923D-293868B8A3E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1615,18 +1615,18 @@ where [refTable].[star_rating] = ?</property>
         <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Load DWH Hotel"
-          TopLeft="126.249994356185,168.31578762561" />
+          TopLeft="131.249994132668,203.894734603381" />
         <NodeLayout
           Size="156,42.6666666666667"
           Id="Package\Load STG Hotel"
-          TopLeft="128.124994272366,85.5263148504117" />
+          TopLeft="133.124994048849,121.105261828183" />
         <NodeLayout
           Size="182.666666666667,43.3333333333334"
           Id="Package\Truncate STG Table"
-          TopLeft="119.999994635582,17.1403518162549" />
+          TopLeft="124.999994412065,52.7192987940261" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="206.187494314275,128.192981517078">
+          TopLeft="211.187494090758,163.771928494849">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1648,7 +1648,7 @@ where [refTable].[star_rating] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="208.729161120641,60.4736851495883">
+          TopLeft="213.729160897124,96.0526321273595">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1861,7 +1861,7 @@ where [refTable].[star_rating] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

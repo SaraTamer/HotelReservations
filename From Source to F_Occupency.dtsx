@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Occupency"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{A9DA241A-3D5B-48AD-B787-13653252258E}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{49749632-C3BB-4B12-B717-8D5344E32DDB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -274,7 +274,7 @@
                       refId="Package\Load Fact Occupency\DST DWH Revenue.Inputs[OLE DB Destination Input].Columns[hotel_revenue]"
                       cachedDataType="numeric"
                       cachedName="hotel_revenue"
-                      cachedPrecision="5"
+                      cachedPrecision="10"
                       cachedScale="2"
                       externalMetadataColumnId="Package\Load Fact Occupency\DST DWH Revenue.Inputs[OLE DB Destination Input].ExternalColumns[hotel_revenue]"
                       lineageId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[hotel_revenue]" />
@@ -307,7 +307,7 @@
                       refId="Package\Load Fact Occupency\DST DWH Revenue.Inputs[OLE DB Destination Input].ExternalColumns[hotel_revenue]"
                       dataType="numeric"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </input>
@@ -749,7 +749,7 @@ where [refTable].[hotel_id] = ?</property>
                       externalMetadataColumnId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Output].ExternalColumns[hotel_revenue]"
                       lineageId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[hotel_revenue]"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
@@ -771,7 +771,7 @@ where [refTable].[hotel_id] = ?</property>
                       refId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Output].ExternalColumns[hotel_revenue]"
                       dataType="numeric"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </output>
@@ -800,7 +800,7 @@ where [refTable].[hotel_id] = ?</property>
                       dataType="numeric"
                       lineageId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Error Output].Columns[hotel_revenue]"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                     <outputColumn
                       refId="Package\Load Fact Occupency\SRC STG Revenue.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -1432,14 +1432,6 @@ where [refTable].[hotel_id] = ?</property>
           Id="Package\Load Fact Occupency\Get Hotel key"
           TopLeft="247.333325962226,81.3333309094112" />
         <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\Load Fact Occupency\DST DWH Revenue"
-          TopLeft="233.999993026257,397.777766572105" />
-        <NodeLayout
-          Size="192,42.6666666666667"
-          Id="Package\Load Fact Occupency\Date converstion to INT"
-          TopLeft="225.999993264675,311.999990701676" />
-        <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load Fact Occupency\Get Addresses key"
           TopLeft="227.999993205071,163.999998172124" />
@@ -1451,6 +1443,14 @@ where [refTable].[hotel_id] = ?</property>
           Size="124,42.6666666666667"
           Id="Package\Load Fact Occupency\Date Dim"
           TopLeft="253.99999243021,239.333326200644" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Load Fact Occupency\DST DWH Revenue"
+          TopLeft="233.999993026257,397.777766572105" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Load Fact Occupency\Date converstion to INT"
+          TopLeft="225.999993264675,311.999990701676" />
         <EdgeLayout
           Id="Package\Load Fact Occupency.Paths[OLE DB Source Output]"
           TopLeft="320.999992787838,52.6666663686435">
@@ -1474,25 +1474,27 @@ where [refTable].[hotel_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact Occupency.Paths[Data Conversion Output]"
-          TopLeft="321.666659812133,354.666657368342">
+          Id="Package\Load Fact Occupency.Paths[Lookup Match Output1]"
+          TopLeft="314.333326150974,206.666664838791">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.1111092037627"
+              EndConnector="0,32.6666613618534"
               Start="0,0"
-              End="0,35.6111092037627">
+              End="0,25.1666613618534">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.6111092037627" />
+                    End="0,25.1666613618534" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.77864318092669,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1542,32 +1544,56 @@ where [refTable].[hotel_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact Occupency.Paths[Lookup Match Output1]"
-          TopLeft="314.333326150974,206.666664838791">
+          Id="Package\Load Fact Occupency.Paths[Data Conversion Output]"
+          TopLeft="321.666659812133,354.666657368342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.6666613618534"
+              EndConnector="0,43.1111092037627"
               Start="0,0"
-              End="0,25.1666613618534">
+              End="0,35.6111092037627">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.1666613618534" />
+                    End="0,35.6111092037627" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.77864318092669,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Occupency\SRC STG Revenue">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Occupency\DST DWH Revenue">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load STG Occupency">
     <LayoutInfo>
@@ -1635,48 +1661,12 @@ where [refTable].[hotel_id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Occupency\SRC RoomsBooked">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Occupency\Lookup On Booking">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[bookings]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load STG Occupency\Lookup On Hotel">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1686,10 +1676,46 @@ where [refTable].[hotel_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Occupency\Lookup On Booking">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[bookings]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Occupency\SRC RoomsBooked">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

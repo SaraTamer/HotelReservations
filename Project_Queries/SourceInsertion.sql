@@ -192,3 +192,108 @@ VALUES (1, 1, 2),
  (2, 2, 2),
  (3, 3, 2);
 
+------------------------------------------------------------------------------
+----------ADDING NEW EXTRA RECORDS FOR TESTING-----------------------------------
+INSERT INTO addresses(address_id, address_line1, address_line2, city, state, country, zipcode)
+VALUES 
+	(20, 123, 'Elm Street', 'New York', 'NY', 'USA', '10001'),
+    (21, 456, 'Oak Avenue', 'Los Angeles', 'CA', 'USA', '90001'),
+    (22, 789, 'Maple Drive', 'Chicago', 'IL', 'USA', '60601'),
+    (23, 321, 'Pine Street', 'Miami', 'FL', 'USA', '33101'),
+    (24, 654, 'Cedar Road', 'Sydney', 'NSW', 'Australia', '2000'),
+    (25, 987, 'Birch Avenue', 'Melbourne', 'VIC', 'Australia', '3000'),
+    (26, 45, 'Willow Street', 'Boston', 'MA', 'USA', '02101'),
+    (27, 78, 'Sycamore Lane', 'San Francisco', 'CA', 'USA', '94101'),
+    (28, 98, 'Cypress Avenue', 'Toronto', 'ON', 'Canada', 'M5V 1B6'),
+    (29, 65, 'Hickory Drive', 'Vancouver', 'BC', 'Canada', 'V6B 1P1'),
+    (30, 32, 'Spruce Street', 'Montreal', 'QC', 'Canada', 'H2Z 1A2');
+
+INSERT INTO hotel(hotel_id, hotel_name, hotel_contact_number, hotel_email_address, hotel_website, hotel_description, hotel_floor_count, hotel_room_capacity, hotel_chain_id, addresses_address_id, star_ratings_star_rating, check_in_time, check_out_time)
+	VALUES 
+		(5,'Grand Plaza','604-502-9564','grandplaza@gmail.com','https://www.grandplaza.com/','In the heart of downtown, 5-star luxury.',12,120,2,28,5,'12:00:00','23:00:00'),
+        (6,'Ocean View Resort','547-964-9564','oceanviewresort@gmail.com','https://www.oceanviewresort.com/','Overlooking the Pacific Ocean, perfect for a beach holiday.',8,80,2,29,4,'12:00:00','23:00:00'),
+        (7,'Mountain Lodge','547-964-3452','mountainlodge@gmail.com','https://www.mountainlodge.com/','Nestled in the mountains, ideal for skiing and hiking.',6,60,2,30,4,'12:00:00','23:00:00'),
+        (8,'City Lights Hotel','547-876-5422','citylights@gmail.com','https://www.citylights.com/','Located in the bustling city center, offering urban luxury.',10,100,2,1,3,'12:00:00','23:00:00'),
+		(9,'Sawmill Inn','547-964-3452','sawmill.inn@gmail.com','https://www.chin23.com/','A 3-mile drive from Fairview Park.',4,50,1,9,5,'12:00:00','23:00:00'),
+        (10,'Northgate Inn','547-876-5422','northgate.inn@gmail.com','https://www.chin23.com/','A 4-mile drive from Conestoga Mall',3,40,1,10,5,'12:00:00','23:00:00');
+
+INSERT INTO guests(guest_id, guest_first_name, guest_last_name, guest_contact_number, guest_email_address, guest_credit_card, guest_id_proof, addresses_address_id)
+VALUES
+	(6, 'Michael', 'Johnson', '321-654-9870', 'michael.johnson@gmail.com', NULL, '/images/passport12345', 6),
+    (7, 'Sarah', 'Williams', '654-321-0987', 'sarah.williams@gmail.com', NULL, '/images/drivingLicense56789', 7),
+    (8, 'David', 'Brown', '789-654-3210', 'david.brown@gmail.com', NULL, '/images/passport98765', 8),
+    (9, 'Emily', 'Davis', '432-987-6543', 'emily.davis@gmail.com', NULL, '/images/drivingLicense12389', 9),
+    (10, 'James', 'Wilson', '123-987-4567', 'james.wilson@gmail.com', NULL, '/images/passport87654', 10),
+    (11, 'Oliver', 'Miller', '456-123-7890', 'oliver.miller@gmail.com', NULL, '/images/passport32145', 20),
+    (12, 'Sophia', 'Taylor', '789-456-1230', 'sophia.taylor@gmail.com', NULL, '/images/drivingLicense65432', 21),
+    (13, 'Ethan', 'Anderson', '654-789-3210', 'ethan.anderson@gmail.com', NULL, '/images/passport78945', 22),
+    (14, 'Ava', 'Thomas', '987-654-1230', 'ava.thomas@gmail.com', NULL, '/images/drivingLicense98765', 23),
+    (15, 'Noah', 'Moore', '321-456-7890', 'noah.moore@gmail.com', NULL, '/images/passport45678', 24);
+
+INSERT INTO employees(emp_id,emp_first_name,emp_last_name,emp_designation,emp_contact_number,emp_email_address,department_department_id, addresses_address_id, hotel_hotel_id)
+VALUES 
+	(6,'John','Doe','Receptionist','123-456-7890','john.doe@gmail.com',1,16,2),
+    (7,'Emily','Smith','Waitress','234-567-8901','emily.smith@gmail.com',1,17,2),
+    (8,'Michael','Johnson','Chef','345-678-9012','michael.johnson@gmail.com',2,18,2),
+    (9,'Jessica','Brown','Manager','456-789-0123','jessica.brown@gmail.com',3,19,2),
+    (10,'Daniel','Lee','Concierge','567-890-1234','daniel.lee@gmail.com',1,20,3),
+    (11,'Sophia','Clark','Housekeeper','678-901-2345','sophia.clark@gmail.com',1,21,3),
+    (12,'William','Lewis','Manager','789-012-3456','william.lewis@gmail.com',3,22,3),
+    (13,'Emma','Martinez','Chef','890-123-4567','emma.martinez@gmail.com',2,23,3),
+    (14,'Oliver','Harris','Receptionist','901-234-5678','oliver.harris@gmail.com',1,24,4),
+    (15,'Isabella','Young','Waitress','123-456-7890','isabella.young@gmail.com',1,25,4),
+    (16,'Benjamin','Scott','Manager','234-567-8901','benjamin.scott@gmail.com',3,26,4),
+    (17,'Mia','Turner','Housekeeper','345-678-9012','mia.turner@gmail.com',1,27,4),
+    (18,'Ethan','White','Concierge','456-789-0123','ethan.white@gmail.com',1,28,5),
+    (19,'Charlotte','King','Manager','567-890-1234','charlotte.king@gmail.com',3,29,5),
+    (20,'Alexander','Hill','Chef','678-901-2345','alexander.hill@gmail.com',2,30,5);
+
+INSERT INTO bookings (booking_id, booking_date, duration_of_stay, check_in_date, check_out_date, booking_payment_type, total_rooms_booked, hotel_hotel_id, guests_guest_id, employees_emp_id, total_amount)
+    VALUES
+        (16, '2018-08-15 00:00:00', '7', '2018-08-18 12:00:00', '2018-08-25 23:00:00', 'cash',1, 2, 2, 6, 800),
+        (17, '2018-08-16 00:00:00', '4', '2018-08-18 12:00:00', '2018-08-22 23:00:00', 'cash',2, 2, 3, 7, 460),
+        (18, '2018-08-17 00:00:00', '5', '2018-08-19 12:00:00', '2018-08-24 23:00:00', 'card',1, 2, 4, 8, 670),
+        (19, '2018-08-18 00:00:00', '3', '2018-08-20 12:00:00', '2018-08-23 23:00:00', 'card',2, 2, 5, 9, 520),
+        (20, '2018-08-19 00:00:00', '6', '2018-08-21 12:00:00', '2018-08-27 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (21, '2018-08-20 00:00:00', '4', '2018-08-22 12:00:00', '2018-08-26 23:00:00', 'card',2, 2, 3, 7, 600),
+        (22, '2018-08-21 00:00:00', '5', '2018-08-23 12:00:00', '2018-08-28 23:00:00', 'card',1, 2, 4, 8, 670),
+        (23, '2018-08-22 00:00:00', '3', '2018-08-24 12:00:00', '2018-08-27 23:00:00', 'card',2, 2, 5, 9, 520),
+        (24, '2018-08-23 00:00:00', '6', '2018-08-25 12:00:00', '2018-08-31 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (25, '2018-08-24 00:00:00', '4', '2018-08-26 12:00:00', '2018-08-30 23:00:00', 'card',2, 2, 3, 7, 600),
+        (26, '2018-08-25 00:00:00', '5', '2018-08-27 12:00:00', '2018-09-01 23:00:00', 'card',1, 2, 4, 8, 670),
+        (27, '2018-08-26 00:00:00', '3', '2018-08-28 12:00:00', '2018-08-31 23:00:00', 'card',2, 2, 5, 9, 520),
+        (28, '2018-08-27 00:00:00', '6', '2018-08-29 12:00:00', '2018-09-04 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (29, '2018-08-28 00:00:00', '4', '2018-08-30 12:00:00', '2018-09-03 23:00:00', 'card',2, 2, 3, 7, 600),
+        (30, '2018-08-29 00:00:00', '5', '2018-08-31 12:00:00', '2018-09-05 23:00:00', 'card',1, 2, 4, 8, 670),
+        (31, '2018-08-30 00:00:00', '3', '2018-09-01 12:00:00', '2018-09-04 23:00:00', 'card',2, 2, 5, 9, 520),
+        (32, '2018-08-31 00:00:00', '6', '2018-09-02 12:00:00', '2018-09-08 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (33, '2018-09-01 00:00:00', '4', '2018-09-03 12:00:00', '2018-09-07 23:00:00', 'card',2, 2, 3, 7, 600),
+        (34, '2018-09-02 00:00:00', '5', '2018-09-04 12:00:00', '2018-09-09 23:00:00', 'card',1, 2, 4, 8, 670),
+        (35, '2018-09-03 00:00:00', '3', '2018-09-05 12:00:00', '2018-09-08 23:00:00', 'card',2, 2, 5, 9, 520),
+        (36, '2018-09-04 00:00:00', '6', '2018-09-06 12:00:00', '2018-09-12 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (37, '2018-09-05 00:00:00', '4', '2018-09-07 12:00:00', '2018-09-11 23:00:00', 'card',2, 2, 3, 7, 600),
+        (38, '2018-09-06 00:00:00', '5', '2018-09-08 12:00:00', '2018-09-13 23:00:00', 'card',1, 2, 4, 8, 670),
+        (39, '2018-09-07 00:00:00', '3', '2018-09-09 12:00:00', '2018-09-12 23:00:00', 'card',2, 2, 5, 9, 520),
+        (40, '2018-09-08 00:00:00', '6', '2018-09-10 12:00:00', '2018-09-16 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (41, '2018-09-09 00:00:00', '4', '2018-09-11 12:00:00', '2018-09-15 23:00:00', 'card',2, 2, 3, 7, 600),
+        (42, '2018-09-10 00:00:00', '5', '2018-09-12 12:00:00', '2018-09-17 23:00:00', 'card',1, 2, 4, 8, 670),
+        (43, '2018-09-11 00:00:00', '3', '2018-09-13 12:00:00', '2018-09-16 23:00:00', 'card',2, 2, 5, 9, 520),
+        (44, '2018-09-12 00:00:00', '6', '2018-09-14 12:00:00', '2018-09-20 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (45, '2020-09-13 00:00:00', '4', '2020-09-15 12:00:00', '2020-09-19 23:00:00', 'card',2, 2, 3, 7, 600),
+        (46, '2020-09-14 00:00:00', '5', '2020-09-16 12:00:00', '2020-09-21 23:00:00', 'card',1, 2, 4, 8, 670),
+        (47, '2020-09-15 00:00:00', '3', '2020-09-17 12:00:00', '2020-09-20 23:00:00', 'card',2, 2, 5, 9, 520),
+        (48, '2020-09-16 00:00:00', '6', '2020-09-18 12:00:00', '2020-09-24 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (49, '2020-09-17 00:00:00', '4', '2020-09-19 12:00:00', '2020-09-23 23:00:00', 'card',2, 2, 3, 7, 600),
+        (50, '2020-09-18 00:00:00', '5', '2020-09-20 12:00:00', '2020-09-25 23:00:00', 'card',1, 2, 4, 8, 670),
+        (51, '2020-09-19 00:00:00', '3', '2020-09-21 12:00:00', '2020-09-24 23:00:00', 'card',2, 2, 5, 9, 520),
+        (52, '2020-09-20 00:00:00', '6', '2020-09-22 12:00:00', '2020-09-28 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (53, '2020-09-21 00:00:00', '4', '2020-09-23 12:00:00', '2020-09-27 23:00:00', 'card',2, 2, 3, 7, 600),
+        (54, '2020-09-22 00:00:00', '5', '2020-09-24 12:00:00', '2020-09-29 23:00:00', 'card',1, 2, 4, 8, 670),
+        (55, '2019-09-23 00:00:00', '3', '2019-09-25 12:00:00', '2019-09-28 23:00:00', 'card',2, 2, 5, 9, 520),
+        (56, '2019-09-24 00:00:00', '6', '2019-09-26 12:00:00', '2019-10-02 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (57, '2019-09-25 00:00:00', '4', '2019-09-27 12:00:00', '2019-10-01 23:00:00', 'card',2, 2, 3, 7, 600),
+        (58, '2019-09-26 00:00:00', '5', '2019-09-28 12:00:00', '2019-10-03 23:00:00', 'card',1, 2, 4, 8, 670),
+        (59, '2019-09-27 00:00:00', '3', '2019-09-29 12:00:00', '2019-10-02 23:00:00', 'card',2, 2, 5, 9, 520),
+        (60, '2019-09-28 00:00:00', '6', '2019-09-30 12:00:00', '2019-10-06 23:00:00', 'cash',1, 2, 2, 6, 930),
+        (61, '2019-09-29 00:00:00', '4', '2019-10-01 12:00:00', '2019-10-05 23:00:00', 'card',2, 2, 3, 7, 600),
+        (62, '2019-09-30 00:00:00', '5', '2019-10-02 12:00:00', '2019-10-07 23:00:00', 'card',1, 2, 4, 8, 670);

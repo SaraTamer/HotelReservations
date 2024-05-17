@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Duration"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{AE393AC7-B804-4574-A156-78C3EC60379B}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{CE2645E3-90EA-44D4-BBAE-80C62CDCEDFA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,106 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Load Fact Duration\Date converstion to INT"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Date converstion to INT"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input].Columns[Date_Key1]"
-                      cachedDataType="i4"
-                      cachedName="Date_Key1"
-                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key1]" />
-                    <inputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input].Columns[Date_Key2]"
-                      cachedDataType="i4"
-                      cachedName="Date_Key2"
-                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key2]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key1]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key1]"
-                      name="Copy of Date_Key1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key1]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key2]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key2]"
-                      name="Copy of Date_Key2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key2]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Load Fact Duration\Date Dim"
               componentClassID="Microsoft.DerivedColumn"
@@ -167,12 +67,12 @@
                   synchronousInputId="Package\Load Fact Duration\Date Dim.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key1]"
+                      refId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_From]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key1]"
-                      name="Date_Key1"
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_From]"
+                      name="Date_Key_From"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -189,12 +89,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key2]"
+                      refId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_To]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key2]"
-                      name="Date_Key2"
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_To]"
+                      name="Date_Key_To"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -311,18 +211,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Guest_ID]"
-                      cachedDataType="i4"
-                      cachedName="Guest_ID"
-                      externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Guest_ID]"
-                      lineageId="Package\Load Fact Duration\SRC STG Duration.Outputs[OLE DB Source Output].Columns[Guest_ID]" />
-                    <inputColumn
-                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Room_ID]"
-                      cachedDataType="i4"
-                      cachedName="Room_ID"
-                      externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Room_ID]"
-                      lineageId="Package\Load Fact Duration\SRC STG Duration.Outputs[OLE DB Source Output].Columns[Room_ID]" />
-                    <inputColumn
                       refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Duration_Days]"
                       cachedDataType="numeric"
                       cachedName="Duration_Days"
@@ -331,17 +219,29 @@
                       externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Duration_Days]"
                       lineageId="Package\Load Fact Duration\SRC STG Duration.Outputs[OLE DB Source Output].Columns[Duration_Days]" />
                     <inputColumn
-                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key1]"
+                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Date_Key_From]"
                       cachedDataType="i4"
-                      cachedName="Copy of Date_Key1"
+                      cachedName="Date_Key_From"
                       externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_From_Key]"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key1]" />
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_From]" />
                     <inputColumn
-                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key2]"
+                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[Date_Key_To]"
                       cachedDataType="i4"
-                      cachedName="Copy of Date_Key2"
+                      cachedName="Date_Key_To"
                       externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_To_Key]"
-                      lineageId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key2]" />
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_To]" />
+                    <inputColumn
+                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[S_Guest_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Guest_key"
+                      externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Guest_ID]"
+                      lineageId="Package\Load Fact Duration\Get Guest key.Outputs[Lookup Match Output].Columns[S_Guest_key]" />
+                    <inputColumn
+                      refId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].Columns[S_Room_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Room_key"
+                      externalMetadataColumnId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input].ExternalColumns[Room_ID]"
+                      lineageId="Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Match Output].Columns[S_Room_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -571,13 +471,15 @@ where [refTable].[guest_id] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[rooms]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT* FROM DWH.rooms 
+Where is_active = 1</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[rooms]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT* FROM DWH.rooms 
+Where is_active = 1) [refTable]
 where [refTable].[room_id] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -708,6 +610,195 @@ where [refTable].[room_id] = ?</property>
                       refId="Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Duration\Lookup On DWH"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup On DWH"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[Duration]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[Duration]) [refTable]
+where [refTable].[Date_From_Key] = ? and [refTable].[Date_To_Key] = ? and [refTable].[Guest_ID] = ? and [refTable].[Room_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Duration_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Guest_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Room_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_From_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_To_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Duration_Days" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_From]};#{Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_To]};#{Package\Load Fact Duration\Get Guest key.Outputs[Lookup Match Output].Columns[S_Guest_key]};#{Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Match Output].Columns[S_Room_key]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Duration\Lookup On DWH.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input].Columns[Date_Key_From]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key_From"
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_From]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date_From_Key</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input].Columns[Date_Key_To]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key_To"
+                      lineageId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output].Columns[Date_Key_To]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date_To_Key</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input].Columns[S_Room_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Room_key"
+                      lineageId="Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Match Output].Columns[S_Room_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Room_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input].Columns[S_Guest_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Guest_key"
+                      lineageId="Package\Load Fact Duration\Get Guest key.Outputs[Lookup Match Output].Columns[S_Guest_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Guest_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -902,13 +993,8 @@ where [refTable].[room_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Load Fact Duration.Paths[Data Conversion Output]"
-              endId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Fact Duration\Date converstion to INT.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Load Fact Duration.Paths[Derived Column Output]"
-              endId="Package\Load Fact Duration\Date converstion to INT.Inputs[Data Conversion Input]"
+              endId="Package\Load Fact Duration\Get Guest key.Inputs[Lookup Input]"
               name="Derived Column Output"
               startId="Package\Load Fact Duration\Date Dim.Outputs[Derived Column Output]" />
             <path
@@ -918,12 +1004,17 @@ where [refTable].[room_id] = ?</property>
               startId="Package\Load Fact Duration\Get Guest key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Fact Duration.Paths[Lookup Match Output1]"
-              endId="Package\Load Fact Duration\Date Dim.Inputs[Derived Column Input]"
+              endId="Package\Load Fact Duration\Lookup On DWH.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact Duration\Get Rooms key.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Load Fact Duration.Paths[Lookup No Match Output]"
+              endId="Package\Load Fact Duration\DST DWH Duration.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load Fact Duration\Lookup On DWH.Outputs[Lookup No Match Output]" />
+            <path
               refId="Package\Load Fact Duration.Paths[OLE DB Source Output]"
-              endId="Package\Load Fact Duration\Get Guest key.Inputs[Lookup Input]"
+              endId="Package\Load Fact Duration\Date Dim.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load Fact Duration\SRC STG Duration.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1017,35 +1108,35 @@ where [refTable].[room_id] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[room_id]"
-                      cachedDataType="i4"
-                      cachedName="room_id"
-                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Room_ID]"
-                      lineageId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Match Output].Columns[room_id]" />
-                    <inputColumn
-                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[guest_id]"
-                      cachedDataType="i4"
-                      cachedName="guest_id"
-                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Guest_ID]"
-                      lineageId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Match Output].Columns[guest_id]" />
-                    <inputColumn
-                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_check_in_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_check_in_date"
-                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_From_Key]"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]" />
-                    <inputColumn
-                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_check_out_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_check_out_date"
-                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_To_Key]"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]" />
-                    <inputColumn
                       refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_Duration]"
                       cachedDataType="i4"
                       cachedName="O_Duration"
                       externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Duration_Days]"
                       lineageId="Package\Load STG Duration\Duration Calc.Outputs[Derived Column Output].Columns[O_Duration]" />
+                    <inputColumn
+                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_guest_id]"
+                      cachedDataType="i4"
+                      cachedName="O_guest_id"
+                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Guest_ID]"
+                      lineageId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Match Output].Columns[O_guest_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_check_in_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_check_in_date"
+                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_From_Key]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_check_out_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_check_out_date"
+                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Date_To_Key]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].Columns[O_room_id]"
+                      cachedDataType="i4"
+                      cachedName="O_room_id"
+                      externalMetadataColumnId="Package\Load STG Duration\DST STG Duration.Inputs[OLE DB Destination Input].ExternalColumns[Room_ID]"
+                      lineageId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Match Output].Columns[O_room_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1113,15 +1204,15 @@ where [refTable].[room_id] = ?</property>
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Duration\Duration Calc.Inputs[Derived Column Input].Columns[O_check_in_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_check_in_date"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]" />
-                    <inputColumn
                       refId="Package\Load STG Duration\Duration Calc.Inputs[Derived Column Input].Columns[O_check_out_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="O_check_out_date"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]" />
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Duration\Duration Calc.Inputs[Derived Column Input].Columns[O_check_in_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="O_check_in_date"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1147,13 +1238,13 @@ where [refTable].[room_id] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("day",#{Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]},#{Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]})</property>
+                          name="Expression">[DATEDIFF]("day",#{Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]},#{Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("day",O_check_out_date,O_check_in_date)</property>
+                          name="FriendlyExpression">DATEDIFF("day",O_check_in_date,O_check_out_date)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1185,11 +1276,11 @@ where [refTable].[room_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Duration\Lookup On Bookings"
+              refId="Package\Load STG Duration\Lookup on Bookings"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup On Bookings"
+              name="Lookup on Bookings"
               usesDispositions="true"
               version="6">
               <properties>
@@ -1205,7 +1296,7 @@ where [refTable].[room_id] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[bookings]) [refTable]
-where [refTable].[hotel_hotel_id] = ?</property>
+where [refTable].[booking_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1241,7 +1332,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]};</property>
+                  name="ParameterMap">#{Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[bookings_booking_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1253,7 +1344,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load STG Duration\Lookup On Bookings.Connections[OleDbConnection]"
+                  refId="Package\Load STG Duration\Lookup on Bookings.Connections[OleDbConnection]"
                   connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
                   description="Connection manager used to access lookup data."
@@ -1261,19 +1352,19 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input]"
+                  refId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input].Columns[hotel_id]"
+                      refId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input].Columns[bookings_booking_id]"
                       cachedDataType="i4"
-                      cachedName="hotel_id"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]">
+                      cachedName="bookings_booking_id"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[bookings_booking_id]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">hotel_hotel_id</property>
+                          name="JoinToReferenceColumn">booking_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1286,32 +1377,18 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output]"
+                  refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]"
+                      refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]"
-                      name="O_check_in_date"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">check_in_date</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_out_date]"
                       name="O_check_out_date"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1322,10 +1399,24 @@ where [refTable].[hotel_hotel_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]"
+                      refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[O_check_in_date]"
+                      name="O_check_in_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">check_in_date</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]"
                       name="guests_guest_id"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1339,30 +1430,30 @@ where [refTable].[hotel_hotel_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup No Match Output]"
+                  refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Error Output]"
+                  refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1371,11 +1462,11 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Duration\Lookup On Guests"
+              refId="Package\Load STG Duration\Lookup On Guest"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup On Guests"
+              name="Lookup On Guest"
               usesDispositions="true"
               version="6">
               <properties>
@@ -1427,7 +1518,7 @@ where [refTable].[guest_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]};</property>
+                  name="ParameterMap">#{Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1439,7 +1530,7 @@ where [refTable].[guest_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load STG Duration\Lookup On Guests.Connections[OleDbConnection]"
+                  refId="Package\Load STG Duration\Lookup On Guest.Connections[OleDbConnection]"
                   connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
                   description="Connection manager used to access lookup data."
@@ -1447,14 +1538,14 @@ where [refTable].[guest_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input]"
+                  refId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input].Columns[guests_guest_id]"
+                      refId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input].Columns[guests_guest_id]"
                       cachedDataType="i4"
                       cachedName="guests_guest_id"
-                      lineageId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]">
+                      lineageId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output].Columns[guests_guest_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1472,19 +1563,19 @@ where [refTable].[guest_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Match Output]"
+                  refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Match Output].Columns[guest_id]"
+                      refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Match Output].Columns[O_guest_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Match Output].Columns[guest_id]"
-                      name="guest_id"
+                      lineageId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Match Output].Columns[O_guest_id]"
+                      name="O_guest_id"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1497,30 +1588,30 @@ where [refTable].[guest_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup No Match Output]"
+                  refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Error Output]"
+                  refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1529,11 +1620,11 @@ where [refTable].[guest_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Duration\Lookup On Rooms"
+              refId="Package\Load STG Duration\Lookup on Rooms"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup On Rooms"
+              name="Lookup on Rooms"
               usesDispositions="true"
               version="6">
               <properties>
@@ -1549,7 +1640,7 @@ where [refTable].[guest_id] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[rooms]) [refTable]
-where [refTable].[hotel_hotel_id] = ?</property>
+where [refTable].[room_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1585,7 +1676,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]};</property>
+                  name="ParameterMap">#{Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_room_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1597,7 +1688,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load STG Duration\Lookup On Rooms.Connections[OleDbConnection]"
+                  refId="Package\Load STG Duration\Lookup on Rooms.Connections[OleDbConnection]"
                   connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
                   description="Connection manager used to access lookup data."
@@ -1605,19 +1696,19 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input]"
+                  refId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input].Columns[hotel_id]"
+                      refId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input].Columns[rooms_room_id]"
                       cachedDataType="i4"
-                      cachedName="hotel_id"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]">
+                      cachedName="rooms_room_id"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_room_id]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">hotel_hotel_id</property>
+                          name="JoinToReferenceColumn">room_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1630,19 +1721,19 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Match Output]"
+                  refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Match Output].Columns[room_id]"
+                      refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Match Output].Columns[O_room_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Match Output].Columns[room_id]"
-                      name="room_id"
+                      lineageId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Match Output].Columns[O_room_id]"
+                      name="O_room_id"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1655,30 +1746,30 @@ where [refTable].[hotel_hotel_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup No Match Output]"
+                  refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Error Output]"
+                  refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1687,11 +1778,11 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Duration\SRC Hotel"
+              refId="Package\Load STG Duration\SRC BookedRooms"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="SRC Hotel"
+              name="SRC BookedRooms"
               usesDispositions="true"
               version="7">
               <properties>
@@ -1702,7 +1793,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[hotel]</property>
+                  name="OpenRowset">[dbo].[rooms_booked]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1736,7 +1827,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load STG Duration\SRC Hotel.Connections[OleDbConnection]"
+                  refId="Package\Load STG Duration\SRC BookedRooms.Connections[OleDbConnection]"
                   connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1744,299 +1835,83 @@ where [refTable].[hotel_hotel_id] = ?</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output]"
+                  refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_booked_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_id]"
-                      name="hotel_id"
+                      externalMetadataColumnId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_booked_id]"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_booked_id]"
+                      name="rooms_booked_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_name]"
-                      name="hotel_name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
-                      length="12"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_contact_number]"
-                      name="hotel_contact_number"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_email_address]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_email_address]"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_email_address]"
-                      name="hotel_email_address"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_website]"
-                      name="hotel_website"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
-                      length="100"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_description]"
-                      name="hotel_description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[bookings_booking_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_floor_count]"
-                      name="hotel_floor_count"
+                      externalMetadataColumnId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[bookings_booking_id]"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[bookings_booking_id]"
+                      name="bookings_booking_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_room_capacity]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_room_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_room_capacity]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_room_capacity]"
-                      name="hotel_room_capacity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_chain_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_chain_id]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[hotel_chain_id]"
-                      name="hotel_chain_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[addresses_address_id]"
-                      name="addresses_address_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[star_ratings_star_rating]"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[star_ratings_star_rating]"
-                      name="star_ratings_star_rating"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_in_time]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_in_time]"
-                      length="16"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_in_time]"
-                      name="check_in_time"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_out_time]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_out_time]"
-                      length="16"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].Columns[check_out_time]"
-                      name="check_out_time"
+                      externalMetadataColumnId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_room_id]"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].Columns[rooms_room_id]"
+                      name="rooms_room_id"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_id]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_booked_id]"
                       dataType="i4"
-                      name="hotel_id" />
+                      name="rooms_booked_id" />
                     <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      name="hotel_name" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_contact_number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="12"
-                      name="hotel_contact_number" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_email_address]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      name="hotel_email_address" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_website]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      name="hotel_website" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="hotel_description" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_floor_count]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[bookings_booking_id]"
                       dataType="i4"
-                      name="hotel_floor_count" />
+                      name="bookings_booking_id" />
                     <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_room_capacity]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output].ExternalColumns[rooms_room_id]"
                       dataType="i4"
-                      name="hotel_room_capacity" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[hotel_chain_id]"
-                      dataType="i4"
-                      name="hotel_chain_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[addresses_address_id]"
-                      dataType="i4"
-                      name="addresses_address_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[star_ratings_star_rating]"
-                      dataType="i4"
-                      name="star_ratings_star_rating" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_in_time]"
-                      dataType="wstr"
-                      length="16"
-                      name="check_in_time" />
-                    <externalMetadataColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output].ExternalColumns[check_out_time]"
-                      dataType="wstr"
-                      length="16"
-                      name="check_out_time" />
+                      name="rooms_room_id" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[rooms_booked_id]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_id]"
-                      name="hotel_id" />
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[rooms_booked_id]"
+                      name="rooms_booked_id" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_name]"
-                      name="hotel_name" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="12"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_contact_number]"
-                      name="hotel_contact_number" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_email_address]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_email_address]"
-                      name="hotel_email_address" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
-                      codePage="1252"
-                      dataType="str"
-                      length="45"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_website]"
-                      name="hotel_website" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_description]"
-                      name="hotel_description" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[bookings_booking_id]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_floor_count]"
-                      name="hotel_floor_count" />
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[bookings_booking_id]"
+                      name="bookings_booking_id" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_room_capacity]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[rooms_room_id]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_room_capacity]"
-                      name="hotel_room_capacity" />
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[rooms_room_id]"
+                      name="rooms_room_id" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_chain_id]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[hotel_chain_id]"
-                      name="hotel_chain_id" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
-                      dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[addresses_address_id]"
-                      name="addresses_address_id" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[star_ratings_star_rating]"
-                      dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[star_ratings_star_rating]"
-                      name="star_ratings_star_rating" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_in_time]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_in_time]"
-                      name="check_in_time" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_out_time]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[check_out_time]"
-                      name="check_out_time" />
-                    <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2053,26 +1928,43 @@ where [refTable].[hotel_hotel_id] = ?</property>
               startId="Package\Load STG Duration\Duration Calc.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load STG Duration.Paths[Lookup Match Output]"
-              endId="Package\Load STG Duration\Lookup On Bookings.Inputs[Lookup Input]"
+              endId="Package\Load STG Duration\Lookup on Bookings.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Load STG Duration\Lookup On Rooms.Outputs[Lookup Match Output]" />
+              startId="Package\Load STG Duration\Lookup on Rooms.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load STG Duration.Paths[Lookup Match Output1]"
-              endId="Package\Load STG Duration\Lookup On Guests.Inputs[Lookup Input]"
+              endId="Package\Load STG Duration\Lookup On Guest.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Load STG Duration\Lookup On Bookings.Outputs[Lookup Match Output]" />
+              startId="Package\Load STG Duration\Lookup on Bookings.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load STG Duration.Paths[Lookup Match Output2]"
               endId="Package\Load STG Duration\Duration Calc.Inputs[Derived Column Input]"
               name="Lookup Match Output"
-              startId="Package\Load STG Duration\Lookup On Guests.Outputs[Lookup Match Output]" />
+              startId="Package\Load STG Duration\Lookup On Guest.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load STG Duration.Paths[OLE DB Source Output]"
-              endId="Package\Load STG Duration\Lookup On Rooms.Inputs[Lookup Input]"
+              endId="Package\Load STG Duration\Lookup on Rooms.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\Load STG Duration\SRC Hotel.Outputs[OLE DB Source Output]" />
+              startId="Package\Load STG Duration\SRC BookedRooms.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{bac4e905-b048-42c4-905b-3ce426c756c7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Duration;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2085,6 +1977,14 @@ where [refTable].[hotel_hotel_id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Load Fact Duration" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F806A8AE-1064-4F32-903B-6A9D0EB590F6}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Duration" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2097,18 +1997,22 @@ where [refTable].[hotel_hotel_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.666666666667,42.6666666666667"
           Id="Package\Load Fact Duration"
-          TopLeft="169.999995082617,137.999999143576" />
+          TopLeft="173.124994942919,211.894735174332" />
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load STG Duration"
-          TopLeft="167.499995194376,69.5789472632461" />
+          TopLeft="170.624995054678,143.473683294002" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="165.624995278195,75.7719307786491" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="254.416661805163,112.245613929913">
+          TopLeft="257.541661665465,186.140349960669">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2128,6 +2032,28 @@ where [refTable].[hotel_hotel_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="256.791661833103,119.105264111982">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.3684191820193"
+              Start="0,0"
+              End="0,16.8684191820193">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8684191820193" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2137,153 +2063,168 @@ where [refTable].[hotel_hotel_id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Load Fact Duration\DST DWH Duration"
+          TopLeft="222.46590263278,482.529494518759" />
+        <NodeLayout
           Size="148,42.6666666666667"
           Id="Package\Load Fact Duration\Get Guest key"
-          TopLeft="247.333325962226,81.3333309094112" />
-        <NodeLayout
-          Size="153.333333333334,42.6666666666667"
-          Id="Package\Load Fact Duration\Get Rooms key"
-          TopLeft="239.999992847443,164.999998142322" />
+          TopLeft="233.696962935456,159.870810457577" />
         <NodeLayout
           Size="170.666666666667,42.6666666666667"
           Id="Package\Load Fact Duration\SRC STG Duration"
-          TopLeft="236.666659613451,9.99999970197682" />
+          TopLeft="228.143932721719,0.0478467012016495" />
         <NodeLayout
           Size="124,42.6666666666667"
           Id="Package\Load Fact Duration\Date Dim"
-          TopLeft="253.99999243021,239.333326200644" />
+          TopLeft="252.249992091209,67.4019070062414" />
         <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\Load Fact Duration\DST DWH Duration"
-          TopLeft="229.499993160368,400.277766497599" />
-        <NodeLayout
-          Size="192,42.6666666666667"
-          Id="Package\Load Fact Duration\Date converstion to INT"
-          TopLeft="225.999993264675,311.999990701676" />
-        <EdgeLayout
-          Id="Package\Load Fact Duration.Paths[Data Conversion Output]"
-          TopLeft="318.749993212521,354.666657368343">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.6111091292565"
-              Start="0,0"
-              End="0,38.1111091292565">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.1111091292565" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\Load Fact Duration\Get Rooms key"
+          TopLeft="238.863629261879,271.403506092658" />
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[OLE DB Source Output]"
-          TopLeft="321.666659454505,52.6666663686435">
+          TopLeft="313.86362907313,42.7145133678683">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.6666645407677"
+              EndConnector="0,24.6873936383731"
               Start="0,0"
-              End="0,21.1666645407677">
+              End="0,17.1873936383731">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.1666645407677" />
+                    End="0,17.1873936383731" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Duration.Paths[Lookup Match Output1]"
-          TopLeft="316.33332597216,207.666664808988">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.6666613916556"
-              Start="0,0"
-              End="0,24.1666613916556">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.1666613916556" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.27864319582781,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[Lookup Match Output]"
-          TopLeft="318.999992738168,123.999997576078">
+          TopLeft="311.613629432001,202.537477124243">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.0000005662438"
+              EndConnector="0,68.8660289684146"
               Start="0,0"
-              End="0,33.5000005662438">
+              End="0,61.3660289684146">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5000005662438" />
+                    End="0,61.3660289684146" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.9453127831219,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,24.8783269842073,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[Derived Column Output]"
-          TopLeft="318.999992847443,281.999992867311">
+          TopLeft="310.973477513332,110.068573672908">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.9999978343646"
+              EndConnector="0,49.8022367846685"
               Start="0,0"
-              End="0,22.4999978343646">
+              End="0,42.3022367846685">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.4999978343646" />
+                    End="0,42.3022367846685" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Fact Duration\Lookup On DWH"
+          TopLeft="235.227262211794,350.047843106386" />
+        <EdgeLayout
+          Id="Package\Load Fact Duration.Paths[Lookup No Match Output]"
+          TopLeft="311.846582422287,392.714509773052">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.8149847457061"
+              Start="0,0"
+              End="0,82.3149847457061">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.3149847457061" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,35.3528048728531,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Duration.Paths[Lookup Match Output1]"
+          TopLeft="315.37877907017,314.070172759324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.9776703470613"
+              Start="0,0"
+              End="0,28.4776703470613">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4776703470613" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.43414767353067,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Duration\DST DWH Duration">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Fact Duration\Get Guest key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2293,30 +2234,7 @@ where [refTable].[hotel_hotel_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Duration\Get Rooms key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[rooms]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2337,15 +2255,25 @@ where [refTable].[hotel_hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Duration\DST DWH Duration">
+    design-time-name="Package\Load Fact Duration\Get Rooms key">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2355,31 +2283,43 @@ where [refTable].[hotel_hotel_id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Load STG Duration\Duration Calc"
+          TopLeft="395.451908870815,355.650468773182" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load STG Duration\Lookup on Rooms"
+          TopLeft="381.24998645857,112.94736648448" />
+        <NodeLayout
+          Size="176,43.3333333333334"
+          Id="Package\Load STG Duration\Lookup on Bookings"
+          TopLeft="375.499986685813,190.315786725267" />
+        <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load STG Duration\DST STG Duration"
-          TopLeft="145.913455015622,402.337377577573" />
+          TopLeft="376.749986629933,431.842099862829" />
         <NodeLayout
-          Size="129.333333333334,42.6666666666667"
-          Id="Package\Load STG Duration\SRC Hotel"
-          TopLeft="166.826915619179,17.2199728823121" />
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Load STG Duration\Lookup On Guest"
+          TopLeft="386.749986182899,258.052628086793" />
         <NodeLayout
-          Size="168,42.6666666666667"
-          Id="Package\Load STG Duration\Lookup On Rooms"
-          TopLeft="147.115378038815,86.834007213003" />
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Load STG Duration\SRC BookedRooms"
+          TopLeft="369.24998696521,43.2105251825583" />
         <EdgeLayout
           Id="Package\Load STG Duration.Paths[OLE DB Source Output]"
-          TopLeft="231.30448016233,59.8866395489788">
+          TopLeft="460.24998671189,85.8771918492249">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26.9473676640242"
+              EndConnector="0,27.0701746352546"
               Start="0,0"
-              End="0,19.4473676640242">
+              End="0,19.5701746352546">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.4473676640242" />
+                    End="0,19.5701746352546" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2388,104 +2328,92 @@ where [refTable].[hotel_hotel_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="178.666666666667,42.6666666666667"
-          Id="Package\Load STG Duration\Lookup On Bookings"
-          TopLeft="144.711531992429,169.325234370121" />
-        <EdgeLayout
-          Id="Package\Load STG Duration.Paths[Lookup Match Output]"
-          TopLeft="232.580121682288,129.50067387967">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.8245604904515"
-              Start="0,0"
-              End="0,32.3245604904515">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.3245604904515" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.3575927452257,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,42.6666666666667"
-          Id="Package\Load STG Duration\Lookup On Guests"
-          TopLeft="149.038454875923,241.214572621921" />
-        <EdgeLayout
-          Id="Package\Load STG Duration.Paths[Lookup Match Output1]"
-          TopLeft="233.541660100843,211.991901036788">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.2226715851333"
-              Start="0,0"
-              End="0,21.7226715851333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.7226715851333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,5.05664829256665,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="144,42.6666666666667"
-          Id="Package\Load STG Duration\Duration Calc"
-          TopLeft="154.326916177972,316.545206703443" />
         <EdgeLayout
           Id="Package\Load STG Duration.Paths[Lookup Match Output2]"
-          TopLeft="229.682685526948,283.881239288588">
+          TopLeft="467.767614193524,300.719294753459">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.6639674148555"
+              EndConnector="0,54.9311740197226"
               Start="0,0"
-              End="0,25.1639674148555">
+              End="0,47.4311740197226">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.1639674148555" />
+                    End="0,47.4311740197226" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.77729620742775,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,17.9108995098613,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Duration.Paths[Lookup Match Output1]"
+          TopLeft="465.791653101022,233.6491200586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.4035080281926"
+              Start="0,0"
+              End="0,16.9035080281926">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9035080281926" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,2.64706651409628,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Duration.Paths[Lookup Match Output]"
+          TopLeft="463.708319905525,155.614033151146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7017535741205"
+              Start="0,0"
+              End="0,27.2017535741205">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2017535741205" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.79618928706023,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Duration.Paths[Derived Column Output]"
-          TopLeft="228.453518930131,359.21187337011">
+          TopLeft="464.434281083708,398.317135439848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.1255042074633"
+              EndConnector="0,33.5249644229805"
               Start="0,0"
-              End="0,35.6255042074633">
+              End="0,26.0249644229805">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.6255042074633" />
+                    End="0,26.0249644229805" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2497,6 +2425,52 @@ where [refTable].[hotel_hotel_id] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Duration\Lookup on Rooms">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[rooms]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Duration\Lookup on Bookings">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[bookings]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load STG Duration\DST STG Duration">
     <Properties>
@@ -2511,7 +2485,30 @@ where [refTable].[hotel_hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Duration\SRC Hotel">
+    design-time-name="Package\Load STG Duration\Lookup On Guest">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[guests]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Duration\SRC BookedRooms">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2524,71 +2521,12 @@ where [refTable].[hotel_hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Duration\Lookup On Rooms">
+    design-time-name="Package\Load Fact Duration\Lookup On DWH">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
           type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[rooms]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Duration\Lookup On Bookings">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[bookings]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Duration\Lookup On Guests">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[guests]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Employees"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{C96856F0-1333-4E92-8ADE-5D8C4809B602}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{7C00A1EB-B958-4C38-B42F-BE194869CABA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,161 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Load Fact Employees\Date converstion to INT"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Date converstion to INT"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input].Columns[Date_Key]"
-                      cachedDataType="i4"
-                      cachedName="Date_Key"
-                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
-                      name="Copy of Date_Key"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Fact Employees\Date Dim"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Date Dim"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input].Columns[Date_id]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Date_id"
-                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
-                      name="Date_Key"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)([REPLACE]([LEFT]((DT_WSTR,50)(DT_DBTIMESTAMP)#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]},10),"-",""))</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)(REPLACE(LEFT((DT_WSTR,50)(DT_DBTIMESTAMP)Date_id,10),"-",""))</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Load Fact Employees\DST DWH Employees"
               componentClassID="Microsoft.OLEDBDestination"
@@ -277,11 +122,11 @@
                       externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
                       lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Number_of_employees]" />
                     <inputColumn
-                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key]"
+                      refId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].Columns[Date_Key]"
                       cachedDataType="i4"
-                      cachedName="Copy of Date_Key"
+                      cachedName="Date_Key"
                       externalMetadataColumnId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
-                      lineageId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]" />
+                      lineageId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output].Columns[Date_Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -326,6 +171,86 @@
                       refId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Fact Employees\DST DWH Employees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Employees\Get Date Dim"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Get Date Dim"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Get Date Dim.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Get Date Dim.Inputs[Derived Column Input].Columns[Date_id]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Date Dim.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([REPLACE]([LEFT]((DT_WSTR,50)(DT_DBTIMESTAMP)#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[Date_id]},10),"-",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(REPLACE(LEFT((DT_WSTR,50)(DT_DBTIMESTAMP)Date_id,10),"-",""))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Get Date Dim.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -650,6 +575,179 @@ where [refTable].[hotel_id] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Load Fact Employees\Lookup On DWH"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup On DWH"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[Employees]) [refTable]
+where [refTable].[hotel_id] = ? and [refTable].[department_id] = ? and [refTable].[Date_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Employees_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="department_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Number_of_employees" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]};#{Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]};#{Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output].Columns[Date_Key]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Employees\Lookup On DWH.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input].Columns[hotel_id]"
+                      cachedDataType="i4"
+                      cachedName="hotel_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[hotel_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input].Columns[department_id]"
+                      cachedDataType="i4"
+                      cachedName="department_id"
+                      lineageId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output].Columns[department_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">department_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Fact Employees\SRC STG Employees"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -812,15 +910,10 @@ where [refTable].[hotel_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Load Fact Employees.Paths[Data Conversion Output]"
-              endId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Fact Employees\Date converstion to INT.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Load Fact Employees.Paths[Derived Column Output]"
-              endId="Package\Load Fact Employees\Date converstion to INT.Inputs[Data Conversion Input]"
+              endId="Package\Load Fact Employees\Lookup On DWH.Inputs[Lookup Input]"
               name="Derived Column Output"
-              startId="Package\Load Fact Employees\Date Dim.Outputs[Derived Column Output]" />
+              startId="Package\Load Fact Employees\Get Date Dim.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Fact Employees.Paths[Lookup Match Output]"
               endId="Package\Load Fact Employees\Get Department key.Inputs[Lookup Input]"
@@ -828,12 +921,17 @@ where [refTable].[hotel_id] = ?</property>
               startId="Package\Load Fact Employees\Get Hotel key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Fact Employees.Paths[Lookup Match Output1]"
-              endId="Package\Load Fact Employees\Date Dim.Inputs[Derived Column Input]"
+              endId="Package\Load Fact Employees\DST DWH Employees.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact Employees\Get Department key.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+              refId="Package\Load Fact Employees.Paths[Lookup No Match Output]"
               endId="Package\Load Fact Employees\Get Hotel key.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load Fact Employees\Lookup On DWH.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+              endId="Package\Load Fact Employees\Get Date Dim.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load Fact Employees\SRC STG Employees.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1004,25 +1102,25 @@ where [refTable].[hotel_id] = ?</property>
                       cachedDataType="i4"
                       cachedName="hotel_id"
                       externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[hotel_id]"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]" />
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[hotel_id]" />
                     <inputColumn
                       refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[department_id]"
                       cachedDataType="i4"
                       cachedName="department_id"
                       externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]" />
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[department_id]" />
                     <inputColumn
                       refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[Number_of_Employees]"
                       cachedDataType="ui8"
                       cachedName="Number_of_Employees"
                       externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Number_of_employees]"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]" />
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[Number_of_Employees]" />
                     <inputColumn
                       refId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].Columns[O_Date_Id]"
                       cachedDataType="dbTimeStamp"
                       cachedName="O_Date_Id"
                       externalMetadataColumnId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]" />
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[O_Date_Id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1071,11 +1169,11 @@ where [refTable].[hotel_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Employees\GroupBy on DepartmentName"
+              refId="Package\Load STG Employees\GroupBy on Department"
               componentClassID="Microsoft.Aggregate"
               contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
               description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
-              name="GroupBy on DepartmentName"
+              name="GroupBy on Department"
               version="3">
               <properties>
                 <property
@@ -1103,26 +1201,26 @@ where [refTable].[hotel_id] = ?</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1]"
+                  refId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1]"
                   name="Aggregate Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[O_Date_Id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1].Columns[O_Date_Id]"
                       cachedDataType="dbTimeStamp"
                       cachedName="O_Date_Id"
                       lineageId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output].Columns[O_Date_Id]" />
                     <inputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[hotel_id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1].Columns[hotel_id]"
                       cachedDataType="i4"
                       cachedName="hotel_id"
                       lineageId="Package\Load STG Employees\Lookup On Hotel.Outputs[Lookup Match Output].Columns[hotel_id]" />
                     <inputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[department_id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1].Columns[department_id]"
                       cachedDataType="i4"
                       cachedName="department_id"
                       lineageId="Package\Load STG Employees\Lookup On Department.Outputs[Lookup Match Output].Columns[department_id]" />
                     <inputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1].Columns[emp_id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1].Columns[emp_id]"
                       cachedDataType="i4"
                       cachedName="emp_id"
                       lineageId="Package\Load STG Employees\SRC Employee.Outputs[OLE DB Source Output].Columns[emp_id]" />
@@ -1132,7 +1230,7 @@ where [refTable].[hotel_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1]"
+                  refId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1]"
                   name="Aggregate Output 1">
                   <properties>
                     <property
@@ -1147,9 +1245,9 @@ where [refTable].[hotel_id] = ?</property>
                   </properties>
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[O_Date_Id]"
                       name="O_Date_Id">
                       <properties>
                         <property
@@ -1173,9 +1271,9 @@ where [refTable].[hotel_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[hotel_id]"
                       dataType="i4"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[hotel_id]"
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[hotel_id]"
                       name="hotel_id">
                       <properties>
                         <property
@@ -1199,9 +1297,9 @@ where [refTable].[hotel_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[department_id]"
                       dataType="i4"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[department_id]"
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[department_id]"
                       name="department_id">
                       <properties>
                         <property
@@ -1225,9 +1323,9 @@ where [refTable].[hotel_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
+                      refId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
                       dataType="ui8"
-                      lineageId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
+                      lineageId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1].Columns[Number_of_Employees]"
                       name="Number_of_Employees">
                       <properties>
                         <property
@@ -1857,10 +1955,10 @@ where [refTable].[hotel_id] = ?</property>
               refId="Package\Load STG Employees.Paths[Aggregate Output 1]"
               endId="Package\Load STG Employees\DST STG Employees.Inputs[OLE DB Destination Input]"
               name="Aggregate Output 1"
-              startId="Package\Load STG Employees\GroupBy on DepartmentName.Outputs[Aggregate Output 1]" />
+              startId="Package\Load STG Employees\GroupBy on Department.Outputs[Aggregate Output 1]" />
             <path
               refId="Package\Load STG Employees.Paths[Derived Column Output]"
-              endId="Package\Load STG Employees\GroupBy on DepartmentName.Inputs[Aggregate Input 1]"
+              endId="Package\Load STG Employees\GroupBy on Department.Inputs[Aggregate Input 1]"
               name="Derived Column Output"
               startId="Package\Load STG Employees\Derived Column.Outputs[Derived Column Output]" />
             <path
@@ -1882,6 +1980,23 @@ where [refTable].[hotel_id] = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ca7a3b30-3d2e-455a-8c33-2361880520c7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Employees;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1892,6 +2007,14 @@ where [refTable].[hotel_id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Load Fact Employees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{64C1ABCF-4FFD-4C9A-828E-49840E7814C6}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Employees" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1904,18 +2027,18 @@ where [refTable].[hotel_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="182.666666666667,42.6666666666667"
           Id="Package\Load Fact Employees"
-          TopLeft="173.295449480753,142.727271818944" />
+          TopLeft="176.420449341055,182.411481909535" />
         <NodeLayout
           Size="184,42.6666666666667"
           Id="Package\Load STG Employees"
-          TopLeft="169.090904214166,73.0622008135174" />
+          TopLeft="172.215904074468,112.746410904108" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="262.859843514126,115.728867480184">
+          TopLeft="265.984843374428,155.413077570775">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1935,6 +2058,32 @@ where [refTable].[hotel_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="176.59090387889,43.5518354386392" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="266.070070643345,86.8851687719726">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.8612421321359"
+              Start="0,0"
+              End="0,18.3612421321359">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.3612421321359" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1946,37 +2095,111 @@ where [refTable].[hotel_id] = ?</property>
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load Fact Employees\Get Hotel key"
-          TopLeft="256.666659017404,81.3333309094112" />
+          TopLeft="255.416659073283,284.807013632463" />
         <NodeLayout
-          Size="174.666666666667,42.6666666666667"
+          Size="174.666666666667,42"
           Id="Package\Load Fact Employees\Get Department key"
-          TopLeft="237.999992907048,163.999998172124" />
+          TopLeft="237.999992907048,382.508768456712" />
         <NodeLayout
           Size="182.666666666667,42.6666666666667"
           Id="Package\Load Fact Employees\SRC STG Employees"
-          TopLeft="236.666659613451,9.99999970197682" />
+          TopLeft="235.41665966933,16.1578943712064" />
         <NodeLayout
-          Size="124,42.6666666666667"
-          Id="Package\Load Fact Employees\Date Dim"
-          TopLeft="261.999992191791,243.333326081435" />
-        <NodeLayout
-          Size="192,42.6666666666667"
-          Id="Package\Load Fact Employees\Date converstion to INT"
-          TopLeft="225.999993264675,311.999990701676" />
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load Fact Employees\DST DWH Employees"
+          TopLeft="230.041659820205,500.748528242258" />
         <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[OLE DB Source Output]"
-          TopLeft="328.333325982094,52.6666663686435">
+          Id="Package\Load Fact Employees.Paths[Lookup Match Output]"
+          TopLeft="326.374992656832,327.47368029913">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.6666645407677"
+              EndConnector="0,55.0350881575821"
               Start="0,0"
-              End="0,21.1666645407677">
+              End="0,47.5350881575821">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.1666645407677" />
+                    End="0,47.5350881575821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,17.962856578791,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Fact Employees\Lookup On DWH"
+          TopLeft="246.874988963828,168.85964789827" />
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Lookup No Match Output]"
+          TopLeft="327.145824018556,211.526314564937">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73.2806990675264"
+              Start="0,0"
+              End="0,65.7806990675264">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.7806990675264" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,27.0856620337632,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Load Fact Employees\Get Date Dim"
+          TopLeft="260.74999224767,90.2573058064549" />
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+          TopLeft="329.749992625167,58.8245610378731">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4327447685818"
+              Start="0,0"
+              End="0,23.9327447685818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9327447685818" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Derived Column Output]"
+          TopLeft="329.812490605749,132.923972473122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.9356754251487"
+              Start="0,0"
+              End="0,28.4356754251487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4356754251487" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1987,100 +2210,35 @@ where [refTable].[hotel_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact Employees.Paths[Lookup Match Output1]"
-          TopLeft="324.666659216086,206.666664838791">
+          TopLeft="324.020826363626,424.508768456712">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.6666612426441"
+              EndConnector="0,76.2397597855462"
               Start="0,0"
-              End="0,29.1666612426441">
+              End="0,68.7397597855462">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.1666612426441" />
+                    End="0,68.7397597855462" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.77864312132203,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,28.5651923927731,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Lookup Match Output]"
-          TopLeft="326.999992628893,123.999997576078">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.0000005960461"
-              Start="0,0"
-              End="0,32.5000005960461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5000005960461" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453127980231,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Derived Column Output]"
-          TopLeft="322.999992728233,285.999992748101">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.9999979535746"
-              Start="0,0"
-              End="0,18.4999979535746">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.4999979535746" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="185.333333333334,42.6666666666667"
-          Id="Package\Load Fact Employees\DST DWH Employees"
-          TopLeft="230.666659792265,386.222212963634" />
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Data Conversion Output]"
-          TopLeft="322.666659861803,354.666657368343">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.5555555952918"
-              Start="0,0"
-              End="0,24.0555555952918">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.0555555952918" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <AnnotationLayout
+          Text="To not insert if already inserted!"
+          ParentId="Package\Load Fact Employees"
+          FontInfo="{assembly:Null}"
+          Size="196,60"
+          Id="065d28e2-a662-474a-938c-2cf72ccc419d"
+          TopLeft="379.374983040616,166.2631560692" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -2090,7 +2248,7 @@ where [refTable].[hotel_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2100,7 +2258,7 @@ where [refTable].[hotel_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2110,7 +2268,7 @@ where [refTable].[hotel_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2130,15 +2288,40 @@ where [refTable].[hotel_id] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\DST DWH Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load STG Employees">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="224,42.6666666666667"
-          Id="Package\Load STG Employees\GroupBy on DepartmentName"
-          TopLeft="118.749994691462,318.017540426439" />
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Employees\Derived Column"
+          TopLeft="159.999992847443,248.631576678594" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Load STG Employees\DST STG Employees"
+          TopLeft="143.124993601814,386.017540426438" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load STG Employees\Lookup On Hotel"
+          TopLeft="163.636356321249,87.0813387567827" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Load STG Employees\GroupBy on Department"
+          TopLeft="138.749993797392,320.070171982849" />
         <NodeLayout
           Size="190.666666666667,42.6666666666667"
           Id="Package\Load STG Employees\Lookup On Department"
@@ -2147,10 +2330,54 @@ where [refTable].[hotel_id] = ?</property>
           Size="152,42.6666666666667"
           Id="Package\Load STG Employees\SRC Employee"
           TopLeft="172.78408318504,6.2200956254845" />
-        <NodeLayout
-          Size="160,42.6666666666667"
-          Id="Package\Load STG Employees\Lookup On Hotel"
-          TopLeft="163.636356321249,87.0813387567827" />
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[OLE DB Source Output]"
+          TopLeft="246.210219753144,48.8867622921512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1945764646315"
+              Start="0,0"
+              End="0,30.6945764646315">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6945764646315" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Employees.Paths[Lookup Match Output1]"
+          TopLeft="240.104159807476,207.374798829496">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.2567778490986"
+              Start="0,0"
+              End="0,33.7567778490986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.7567778490986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.0737014245493,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Employees.Paths[Lookup Match Output]"
           TopLeft="242.922341544379,129.748005423449">
@@ -2176,120 +2403,86 @@ where [refTable].[hotel_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load STG Employees.Paths[OLE DB Source Output]"
-          TopLeft="246.210219753144,48.8867622921512">
+          Id="Package\Load STG Employees.Paths[Derived Column Output]"
+          TopLeft="237.041659989084,291.298243345261">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.1945764646315"
+              EndConnector="0,28.7719286375883"
               Start="0,0"
-              End="0,30.6945764646315">
+              End="0,21.2719286375883">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.6945764646315" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="156,42.6666666666667"
-          Id="Package\Load STG Employees\Derived Column"
-          TopLeft="159.999992847443,248.631576678594" />
-        <EdgeLayout
-          Id="Package\Load STG Employees.Paths[Lookup Match Output1]"
-          TopLeft="240.104159807476,207.374798829496">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.2567778490986"
-              Start="0,0"
-              End="0,33.7567778490986">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.7567778490986" />
+                    End="0,21.2719286375883" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.0737014245493,96.3827734375,11.609375"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="&lt;-----Not sure of Dateid from source !&#xD;&#xA;"
-          ParentId="Package\Load STG Employees"
-          FontInfo="{assembly:Null}"
-          Size="232,60"
-          Id="9d825cf4-eccd-442b-81c2-b43231c93dc0"
-          TopLeft="344.374984605238,239.982455005964" />
-        <EdgeLayout
-          Id="Package\Load STG Employees.Paths[Derived Column Output]"
-          TopLeft="234.374993769452,291.298243345261">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26.7192970811774"
-              Start="0,0"
-              End="0,19.2192970811774">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.2192970811774" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="181.333333333334,42.6666666666667"
-          Id="Package\Load STG Employees\DST STG Employees"
-          TopLeft="143.124993601814,386.017540426438" />
         <EdgeLayout
           Id="Package\Load STG Employees.Paths[Aggregate Output 1]"
-          TopLeft="232.270827479971,360.684207093105">
+          TopLeft="234.937493699603,362.736838649516">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.333333333333"
+              EndConnector="0,23.2807017769224"
               Start="0,0"
-              End="0,17.833333333333">
+              End="0,15.7807017769224">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.833333333333" />
+                    End="0,15.7807017769224" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\DST STG Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Employees\Lookup On Hotel">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load STG Employees\Lookup On Department">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2299,7 +2492,7 @@ where [refTable].[hotel_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2320,38 +2513,25 @@ where [refTable].[hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Employees\Lookup On Hotel">
+    design-time-name="Package\Load Fact Employees\Lookup On DWH">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
           type="q2:boolean">false</Value>
       </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Employees\DST STG Employees">
-    <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[Employees]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
       </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Employees\DST DWH Employees">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

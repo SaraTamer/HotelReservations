@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to D_Room"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{F97FAD7A-D12F-4C92-85BF-B56194AB33DE}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{B124BEAD-7D2B-4DBB-9681-C0B4E16AB1BA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1681,6 +1681,22 @@ WHERE room_id  = ?</property>
                       cachedScale="2"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
                       lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="O_room_type_description"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_description]"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
+                    <inputColumn
+                      refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_type_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="O_room_type_name"
+                      externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_name]"
+                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2193,18 +2209,18 @@ where [refTable].[room_type_id] = ?</property>
         <NodeLayout
           Size="168,42.6666666666667"
           Id="Package\Load DWH Rooms"
-          TopLeft="115.62499483116,173.789471776036" />
+          TopLeft="214.374990416691,207.315787197397" />
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Load STG Rooms"
-          TopLeft="117.499994747341,95.789472632461" />
+          TopLeft="216.249990332872,129.315788053822" />
         <NodeLayout
           Size="182.666666666667,43.3333333333334"
           Id="Package\Truncate STG Table"
-          TopLeft="104.374995334074,28.0877201171077" />
+          TopLeft="203.124990919605,61.614035538469" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="199.895828122584,138.456139299128">
+          TopLeft="298.645823708115,171.982454720489">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2226,7 +2242,7 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="197.937495040708,71.421053450441">
+          TopLeft="296.687490626239,104.947368871802">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2255,33 +2271,59 @@ where [refTable].[room_type_id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\SRC STG_Rooms"
-          TopLeft="278.160707532562,55.71428584201" />
-        <NodeLayout
           Size="192,42.6666666666667"
           Id="Package\Load DWH Rooms\Update Type2 Columns"
           TopLeft="357.142846499171,351.238089107332" />
-        <NodeLayout
-          Size="170.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\OLE DB Command"
-          TopLeft="366.428560508149,282.380944930372" />
         <NodeLayout
           Size="114.666666666667,42.6666666666667"
           Id="Package\Load DWH Rooms\Lookup"
           TopLeft="298.160706862009,133.082706327489" />
         <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Union All"
+          TopLeft="177.142851863589,347.380944525912" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\OLE DB Command"
+          TopLeft="366.428560508149,282.380944930372" />
+        <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load DWH Rooms\DST DWH_Rooms"
           TopLeft="148.571424143655,423.571417225259" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Type2 Columns"
+          TopLeft="155.714281073639,214.809521744649" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Load DWH Rooms\Conditional Split"
           TopLeft="369.285703280143,216.190470230012" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\Type2 Columns"
-          TopLeft="155.714281073639,214.809521744649" />
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\SRC STG_Rooms"
+          TopLeft="278.160707532562,55.71428584201" />
+        <EdgeLayout
+          Id="Package\Load DWH Rooms.Paths[Union All Output 1]"
+          TopLeft="235.857138003622,390.047611192579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.5238060326805"
+              Start="0,0"
+              End="0,26.0238060326805">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0238060326805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[OLE DB Source Output]"
           TopLeft="358.494040530619,98.3809525086767">
@@ -2399,33 +2441,27 @@ where [refTable].[room_type_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load DWH Rooms.Paths[Changed]"
-          TopLeft="449.857131894146,258.857136896679">
+          Id="Package\Load DWH Rooms.Paths[Derived Column Output1]"
+          TopLeft="357.142846499171,370.642850149955">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,23.5238080336936"
+              EndConnector="-57.3333279689156,0"
               Start="0,0"
-              End="0,16.0238080336936">
+              End="-49.8333279689156,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.0238080336936" />
+                    End="-49.8333279689156,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-19.8755078125,2.18036104809678,39.751015625,11.6630859375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="122.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\Union All"
-          TopLeft="177.142851863589,347.380944525912" />
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Derived Column Output]"
           TopLeft="235.761899801947,257.476188411316">
@@ -2449,47 +2485,27 @@ where [refTable].[room_type_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load DWH Rooms.Paths[Derived Column Output1]"
-          TopLeft="357.142846499171,370.642850149955">
+          Id="Package\Load DWH Rooms.Paths[Changed]"
+          TopLeft="449.857131894146,258.857136896679">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-57.3333279689156,0"
+              EndConnector="0,23.5238080336936"
               Start="0,0"
-              End="-49.8333279689156,0">
+              End="0,16.0238080336936">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-49.8333279689156,0" />
+                    End="0,16.0238080336936" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load DWH Rooms.Paths[Union All Output 1]"
-          TopLeft="235.857138003622,390.047611192579">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.5238060326805"
-              Start="0,0"
-              End="0,26.0238060326805">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.0238060326805" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8755078125,2.1803610480968,39.751015625,11.6630859375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2634,7 +2650,7 @@ where [refTable].[room_type_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Rooms\DST STG_Rooms">
+    design-time-name="Package\Load STG Rooms\SRC Rooms">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2647,7 +2663,7 @@ where [refTable].[room_type_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Rooms\SRC Rooms">
+    design-time-name="Package\Load STG Rooms\DST STG_Rooms">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

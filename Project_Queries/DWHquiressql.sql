@@ -83,7 +83,6 @@ CREATE TABLE DWH.Duration(
 	Date_To_Key		INT REFERENCES DWH.date(S_Date_Key) ,
 	Duration_Days decimal(5,2),
 	PRIMARY KEY (S_Duration_Key)
-
 )
 
 CREATE TABLE DWH.Occupency (
@@ -102,10 +101,11 @@ CREATE TABLE DWH.Reveneue(
 	hotel_id   INT REFERENCES DWH.hotel(S_Hotel_key) , 
 	address_id INT REFERENCES DWH.addresses(S_Addresses_key) , 
 	Date_id    INT REFERENCES DWH.date(S_Date_Key) , 
-	hotel_revenue decimal(5,2),
+	hotel_revenue decimal(10,2),
 	PRIMARY KEY (S_Reveneue_Key)
-
 )
+
+
 
 CREATE TABLE DWH.Employees(
 	S_Employees_Key INT identity(1,1) NOT NULL, 
@@ -151,3 +151,14 @@ BEGIN
 END
 
 SELECT * FROM DWH.date
+SELECT * FROM DWH.hotel
+SELECT * FROM DWH.addresses
+SELECT * FROM DWH.department
+SELECT * FROM DWH.guests
+SELECT * FROM DWH.rooms
+SELECT * FROM DWH.Duration
+
+SELECT * FROM DWH.Employees
+SELECT * FROM DWH.Reveneue
+SELECT * FROM DWH.Duration
+SELECT * FROM DWH.Occupency

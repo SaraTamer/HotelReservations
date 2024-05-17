@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Reveneue"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{0D22F20E-E409-4BA2-90BD-9CB8815EE72B}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{886CABA0-F33D-4A97-8BD0-7A66D9CE9835}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,81 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Load Fact Revenue\Date converstion to INT"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Date converstion to INT"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact Revenue\Date converstion to INT.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact Revenue\Date converstion to INT.Inputs[Data Conversion Input].Columns[Date_Key]"
-                      cachedDataType="i4"
-                      cachedName="Date_Key"
-                      lineageId="Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Load Fact Revenue\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
-                      name="Copy of Date_Key"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Fact Revenue\Date converstion to INT.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Load Fact Revenue\Date Dim"
               componentClassID="Microsoft.DerivedColumn"
@@ -274,16 +199,16 @@
                       refId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].Columns[hotel_revenue]"
                       cachedDataType="numeric"
                       cachedName="hotel_revenue"
-                      cachedPrecision="5"
+                      cachedPrecision="10"
                       cachedScale="2"
                       externalMetadataColumnId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].ExternalColumns[hotel_revenue]"
                       lineageId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[hotel_revenue]" />
                     <inputColumn
-                      refId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key]"
+                      refId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].Columns[Date_Key]"
                       cachedDataType="i4"
-                      cachedName="Copy of Date_Key"
+                      cachedName="Date_Key"
                       externalMetadataColumnId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].ExternalColumns[Date_id]"
-                      lineageId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Output].Columns[Copy of Date_Key]" />
+                      lineageId="Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -307,7 +232,7 @@
                       refId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input].ExternalColumns[hotel_revenue]"
                       dataType="numeric"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </input>
@@ -394,7 +319,7 @@ where [refTable].[address_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[address_id]};</property>
+                  name="ParameterMap">#{Package\Load Fact Revenue\281:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -552,7 +477,7 @@ where [refTable].[hotel_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[hotel_id]};</property>
+                  name="ParameterMap">#{Package\Load Fact Revenue\282:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -646,6 +571,179 @@ where [refTable].[hotel_id] = ?</property>
                       refId="Package\Load Fact Revenue\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Fact Revenue\Get Hotel key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Revenue\Lookup On DWH"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup On DWH"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[Reveneue]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[Reveneue]) [refTable]
+where [refTable].[Date_id] = ? and [refTable].[hotel_id] = ? and [refTable].[address_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="S_Reveneue_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="address_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_revenue" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]};#{Package\Load Fact Revenue\Get Hotel key.Outputs[Lookup Match Output].Columns[S_Hotel_key]};#{Package\Load Fact Revenue\Get Addresses key.Outputs[Lookup Match Output].Columns[S_Addresses_key]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Revenue\Lookup On DWH.Connections[OleDbConnection]"
+                  connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input].Columns[S_Addresses_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Addresses_key"
+                      lineageId="Package\Load Fact Revenue\Get Addresses key.Outputs[Lookup Match Output].Columns[S_Addresses_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">address_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input].Columns[S_Hotel_key]"
+                      cachedDataType="i4"
+                      cachedName="S_Hotel_key"
+                      lineageId="Package\Load Fact Revenue\Get Hotel key.Outputs[Lookup Match Output].Columns[S_Hotel_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -749,7 +847,7 @@ where [refTable].[hotel_id] = ?</property>
                       externalMetadataColumnId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].ExternalColumns[hotel_revenue]"
                       lineageId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].Columns[hotel_revenue]"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
@@ -771,7 +869,7 @@ where [refTable].[hotel_id] = ?</property>
                       refId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output].ExternalColumns[hotel_revenue]"
                       dataType="numeric"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </output>
@@ -800,7 +898,7 @@ where [refTable].[hotel_id] = ?</property>
                       dataType="numeric"
                       lineageId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Error Output].Columns[hotel_revenue]"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                     <outputColumn
                       refId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -822,13 +920,8 @@ where [refTable].[hotel_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Load Fact Revenue.Paths[Data Conversion Output]"
-              endId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Fact Revenue\Date converstion to INT.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Load Fact Revenue.Paths[Derived Column Output]"
-              endId="Package\Load Fact Revenue\Date converstion to INT.Inputs[Data Conversion Input]"
+              endId="Package\Load Fact Revenue\Get Hotel key.Inputs[Lookup Input]"
               name="Derived Column Output"
               startId="Package\Load Fact Revenue\Date Dim.Outputs[Derived Column Output]" />
             <path
@@ -838,12 +931,17 @@ where [refTable].[hotel_id] = ?</property>
               startId="Package\Load Fact Revenue\Get Hotel key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Fact Revenue.Paths[Lookup Match Output1]"
-              endId="Package\Load Fact Revenue\Date Dim.Inputs[Derived Column Input]"
+              endId="Package\Load Fact Revenue\Lookup On DWH.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load Fact Revenue\Get Addresses key.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Load Fact Revenue.Paths[Lookup No Match Output]"
+              endId="Package\Load Fact Revenue\DST DWH Revenue.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load Fact Revenue\Lookup On DWH.Outputs[Lookup No Match Output]" />
+            <path
               refId="Package\Load Fact Revenue.Paths[OLE DB Source Output]"
-              endId="Package\Load Fact Revenue\Get Hotel key.Inputs[Lookup Input]"
+              endId="Package\Load Fact Revenue\Date Dim.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load Fact Revenue\SRC STG Revenue.Outputs[OLE DB Source Output]" />
           </paths>
@@ -981,7 +1079,7 @@ where [refTable].[hotel_id] = ?</property>
                       refId="Package\Load STG Revenue\DST STG Reveneue.Inputs[OLE DB Destination Input].ExternalColumns[hotel_revenue]"
                       dataType="numeric"
                       name="hotel_revenue"
-                      precision="5"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </input>
@@ -1846,6 +1944,23 @@ where [refTable].[hotel_id] = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{91309698-f07a-48b9-bfc3-b7e1fc4a9088}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Reveneue;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1856,6 +1971,14 @@ where [refTable].[hotel_id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Load Fact Revenue" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{32DF70C5-2406-4FF3-BA28-424595C3608B}"
+      DTS:From="Package\Truncate STG Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load STG Revenue" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1868,29 +1991,55 @@ where [refTable].[hotel_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load Fact Revenue"
-          TopLeft="149.374993322417,197.052629415349" />
+          TopLeft="149.374993322417,213.473681866628" />
         <NodeLayout
           Size="173.333333333334,42.6666666666667"
           Id="Package\Load STG Revenue"
-          TopLeft="146.874993434176,128.631577535019" />
+          TopLeft="146.249993462116,143.684208948691" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="144.374993545935,68.4561407265025" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="234.45832671163,171.298244201686">
+          TopLeft="234.1458267256,186.350875615358">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.7543852136628"
+              EndConnector="0,27.1228062512699"
               Start="0,0"
-              End="0,18.2543852136628">
+              End="0,19.6228062512699">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.2543852136628" />
+                    End="0,19.6228062512699" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="234.312493504025,111.789474059836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.8947348888556"
+              Start="0,0"
+              End="0,24.3947348888556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3947348888556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1910,183 +2059,250 @@ where [refTable].[hotel_id] = ?</property>
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load Fact Revenue\SRC STG Revenue"
-          TopLeft="236.666659613451,9.99999970197682" />
+          TopLeft="233.874993039296,11.2631576267636" />
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load Fact Revenue\Get Hotel key"
-          TopLeft="247.333325962226,81.3333309094112" />
-        <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[OLE DB Source Output]"
-          TopLeft="320.999992787838,52.6666663686435">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.6666645407677"
-              Start="0,0"
-              End="0,21.1666645407677">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.1666645407677" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="169.333333333334,42.6666666666667"
-          Id="Package\Load Fact Revenue\Get Addresses key"
-          TopLeft="227.999993205071,163.999998172124" />
-        <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Lookup Match Output]"
-          TopLeft="315.999992916982,123.999997576078">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.0000005960464"
-              Start="0,0"
-              End="0,32.5000005960464">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5000005960464" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453127980232,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="124,42.6666666666667"
-          Id="Package\Load Fact Revenue\Date Dim"
-          TopLeft="253.99999243021,239.333326200644" />
-        <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Lookup Match Output1]"
-          TopLeft="314.333326150974,206.666664838791">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.6666613618534"
-              Start="0,0"
-              End="0,25.1666613618534">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.1666613618534" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.77864318092669,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="192,42.6666666666667"
-          Id="Package\Load Fact Revenue\Date converstion to INT"
-          TopLeft="225.999993264675,311.999990701676" />
-        <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Derived Column Output]"
-          TopLeft="318.999992847443,281.999992867311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.9999978343646"
-              Start="0,0"
-              End="0,22.4999978343646">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.4999978343646" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="241.083326241623,151.999997005128" />
         <NodeLayout
           Size="174.666666666667,42.6666666666667"
           Id="Package\Load Fact Revenue\DST DWH Revenue"
-          TopLeft="233.999993026257,397.777766572105" />
+          TopLeft="222.749993529171,377.865486689213" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Load Fact Revenue\Get Addresses key"
+          TopLeft="226.74999326095,218.929822335365" />
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Load Fact Revenue\Date Dim"
+          TopLeft="254.12499200739,81.2163678713311" />
         <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Data Conversion Output]"
-          TopLeft="321.666659812133,354.666657368342">
+          Id="Package\Load Fact Revenue.Paths[OLE DB Source Output]"
+          TopLeft="317.999992523343,53.9298242934303">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.1111092037627"
+              EndConnector="0,27.2865435779008"
               Start="0,0"
-              End="0,35.6111092037627">
+              End="0,19.7865435779008">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.6111092037627" />
+                    End="0,19.7865435779008" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Revenue.Paths[Lookup Match Output]"
+          TopLeft="312.24999308462,194.666663671795">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.2631586635701"
+              Start="0,0"
+              End="0,16.7631586635701">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7631586635701" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,2.57689183178503,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="To not insert if already inserted!"
+          ParentId="Package\Load Fact Revenue"
+          FontInfo="{assembly:Null}"
+          Size="196,40"
+          Id="0612edbb-a39d-4935-abe7-ec6dfa07559d"
+          TopLeft="385.999986112118,296.742681294368" />
+        <EdgeLayout
+          Id="Package\Load Fact Revenue.Paths[Derived Column Output]"
+          TopLeft="314.604159124507,123.883034537998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.1169624671306"
+              Start="0,0"
+              End="0,20.6169624671306">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6169624671306" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Fact Revenue\Lookup On DWH"
+          TopLeft="228.999993249774,295.111102760187" />
+        <EdgeLayout
+          Id="Package\Load Fact Revenue.Paths[Lookup Match Output1]"
+          TopLeft="310.208326588696,261.596489002032">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.5146137581555"
+              Start="0,0"
+              End="0,26.0146137581555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0146137581555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.20261937907776,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Revenue.Paths[Lookup No Match Output]"
+          TopLeft="309.541660056139,337.777769426854">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.0877172623591"
+              Start="0,0"
+              End="0,32.5877172623591">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5877172623591" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,10.4891711311795,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Revenue\SRC STG Revenue">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Revenue\Get Hotel key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[hotel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Revenue\DST DWH Revenue">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Revenue\Get Addresses key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[addresses]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load STG Revenue">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load STG Revenue\Lookup On Addresses"
+          TopLeft="148.124993378297,173.602868907272" />
+        <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load STG Revenue\SRC Booking"
           TopLeft="172.78408318504,6.2200956254845" />
         <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\Load STG Revenue\DST STG Reveneue"
+          TopLeft="159.374992875383,325.684206950367" />
+        <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Load STG Revenue\Lookup On Hotel"
           TopLeft="163.636356321249,87.0813387567827" />
-        <EdgeLayout
-          Id="Package\Load STG Revenue.Paths[OLE DB Source Output]"
-          TopLeft="244.210219753144,48.8867622921512">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.1945764646316"
-              Start="0,0"
-              End="0,30.6945764646316">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.6945764646316" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="185.333333333334,42.6666666666667"
-          Id="Package\Load STG Revenue\Lookup On Addresses"
-          TopLeft="148.124993378297,173.602868907272" />
+          Size="240,42.6666666666667"
+          Id="Package\Load STG Revenue\GroupBy on Hotel&amp;Address&amp;Date"
+          TopLeft="126.874994328246,253.842102476022" />
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[Lookup Match Output]"
           TopLeft="242.214008183106,129.748005423449">
@@ -2111,38 +2327,6 @@ where [refTable].[hotel_id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="240,42.6666666666667"
-          Id="Package\Load STG Revenue\GroupBy on Hotel&amp;Address&amp;Date"
-          TopLeft="126.874994328246,253.842102476022" />
-        <EdgeLayout
-          Id="Package\Load STG Revenue.Paths[Lookup Match Output1]"
-          TopLeft="243.833327186604,216.269535573939">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.5725669020831"
-              Start="0,0"
-              End="0,30.0725669020831">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.0725669020831" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.23159595104154,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177.333333333334,42.6666666666667"
-          Id="Package\Load STG Revenue\DST STG Reveneue"
-          TopLeft="159.374992875383,325.684206950367" />
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[Aggregate Output 1]"
           TopLeft="247.458326935147,296.508769142688">
@@ -2165,9 +2349,78 @@ where [refTable].[hotel_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Revenue.Paths[OLE DB Source Output]"
+          TopLeft="244.210219753144,48.8867622921512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1945764646316"
+              Start="0,0"
+              End="0,30.6945764646316">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6945764646316" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Revenue.Paths[Lookup Match Output1]"
+          TopLeft="243.833327186604,216.269535573939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5725669020831"
+              Start="0,0"
+              End="0,30.0725669020831">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0725669020831" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.23159595104155,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Revenue\Lookup On Addresses">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[addresses]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load STG Revenue\SRC Booking">
     <Properties>
@@ -2178,52 +2431,6 @@ where [refTable].[hotel_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Revenue\Lookup On Hotel">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[hotel]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load STG Revenue\Lookup On Addresses">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[addresses]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2241,74 +2448,35 @@ where [refTable].[hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Revenue\SRC STG Revenue">
+    design-time-name="Package\Load STG Revenue\Lookup On Hotel">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[hotel]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Revenue\Get Hotel key">
+    design-time-name="Package\Load Fact Revenue\Lookup On DWH">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
           type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[hotel]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Revenue\Get Addresses key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[addresses]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Revenue\DST DWH Revenue">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to D_Department"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{E32913C3-7FC4-4C01-8F37-63E97902C9B9}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{639D629F-17AE-48AC-9EE4-6F80B2862738}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -57,7 +57,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="O_department_description"
-                      lineageId="Package\Load DWH Department\Lookup.Outputs[Lookup Match Output].Columns[O_department_description]" />
+                      lineageId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output].Columns[O_department_description]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -77,7 +77,7 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Load DWH Department\SRC STG_Department.Outputs[OLE DB Source Output].Columns[department_description]} != #{Package\Load DWH Department\Lookup.Outputs[Lookup Match Output].Columns[O_department_description]}</property>
+                      name="Expression">#{Package\Load DWH Department\SRC STG_Department.Outputs[OLE DB Source Output].Columns[department_description]} != #{Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output].Columns[O_department_description]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -275,11 +275,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load DWH Department\Lookup"
+              refId="Package\Load DWH Department\Lookup On DWH_Department"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup On DWH_Department"
               usesDispositions="true"
               version="6">
               <properties>
@@ -343,7 +343,7 @@ where [refTable].[department_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load DWH Department\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Load DWH Department\Lookup On DWH_Department.Connections[OleDbConnection]"
                   connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
                   description="Connection manager used to access lookup data."
@@ -351,11 +351,11 @@ where [refTable].[department_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load DWH Department\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load DWH Department\Lookup.Inputs[Lookup Input].Columns[department_id]"
+                      refId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input].Columns[department_id]"
                       cachedDataType="i4"
                       cachedName="department_id"
                       lineageId="Package\Load DWH Department\SRC STG_Department.Outputs[OLE DB Source Output].Columns[department_id]">
@@ -376,19 +376,19 @@ where [refTable].[department_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load DWH Department\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load DWH Department\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Department\Lookup.Outputs[Lookup Match Output].Columns[O_department_description]"
+                      refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output].Columns[O_department_description]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="100"
-                      lineageId="Package\Load DWH Department\Lookup.Outputs[Lookup Match Output].Columns[O_department_description]"
+                      lineageId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output].Columns[O_department_description]"
                       name="O_department_description"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -402,30 +402,30 @@ where [refTable].[department_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Department\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load DWH Department\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Department\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load DWH Department\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Department\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Department\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load DWH Department\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Department\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -676,15 +676,15 @@ inner join STG.department  b on a.department_id= b.department_id
               refId="Package\Load DWH Department.Paths[Lookup Match Output]"
               endId="Package\Load DWH Department\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\Load DWH Department\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load DWH Department.Paths[Lookup No Match Output]"
               endId="Package\Load DWH Department\DST DWH_Department.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\Load DWH Department\Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\Load DWH Department\Lookup On DWH_Department.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load DWH Department.Paths[OLE DB Source Output]"
-              endId="Package\Load DWH Department\Lookup.Inputs[Lookup Input]"
+              endId="Package\Load DWH Department\Lookup On DWH_Department.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Load DWH Department\SRC STG_Department.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1062,18 +1062,18 @@ inner join STG.department  b on a.department_id= b.department_id
         <NodeLayout
           Size="190.666666666667,42.6666666666667"
           Id="Package\Load DWH Department"
-          TopLeft="93.1249958369877,181.999998001676" />
+          TopLeft="196.874991199001,212.789471347824" />
         <NodeLayout
           Size="186.666666666667,42.6666666666667"
           Id="Package\Load STG Department"
-          TopLeft="96.2499956972895,103.999998858101" />
+          TopLeft="199.999991059303,134.789472204249" />
         <NodeLayout
           Size="181.333333333334,42.6666666666667"
           Id="Package\Truncate STG Table"
-          TopLeft="99.374995557591,34.2456147863372" />
+          TopLeft="203.124990919605,65.0350881324854" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="189.020829100472,146.666665524767">
+          TopLeft="292.770824462486,177.456138870915">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1095,7 +1095,7 @@ inner join STG.department  b on a.department_id= b.department_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="189.81249562744,76.9122814530039">
+          TopLeft="293.562490989454,107.701754799152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1130,33 +1130,33 @@ inner join STG.department  b on a.department_id= b.department_id
         <NodeLayout
           Size="188,42.6666666666667"
           Id="Package\Load DWH Department\SRC STG_Department"
-          TopLeft="266.660707875289,55.2142858569112" />
+          TopLeft="314.353014146255,57.5219780958289" />
+        <NodeLayout
+          Size="221.333333333334,42.6666666666667"
+          Id="Package\Load DWH Department\Lookup On DWH_Department"
+          TopLeft="298.160706862009,133.082706327489" />
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load DWH Department\Update Department"
-          TopLeft="387.16665514807,303.071419922369" />
-        <NodeLayout
-          Size="114.666666666667,42.6666666666667"
-          Id="Package\Load DWH Department\Lookup"
-          TopLeft="298.160706862009,133.082706327489" />
+          TopLeft="427.166653955977,308.45603514651" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Load DWH Department\Conditional Split"
-          TopLeft="394.285702535085,219.285708474262" />
+          TopLeft="435.824162835604,215.439554742732" />
         <EdgeLayout
           Id="Package\Load DWH Department.Paths[OLE DB Source Output]"
-          TopLeft="358.077374035316,97.8809525235778">
+          TopLeft="408.590193837465,100.188644762496">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.2017538039112"
+              EndConnector="0,32.8940615649934"
               Start="0,0"
-              End="0,27.7017538039112">
+              End="0,25.3940615649934">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.7017538039112" />
+                    End="0,25.3940615649934" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1167,97 +1167,97 @@ inner join STG.department  b on a.department_id= b.department_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Department.Paths[Lookup No Match Output]"
-          TopLeft="337.716262417565,175.749372994156">
+          TopLeft="373.27181797312,175.749372994156">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.9543623771987,43.822050310777"
+              EndConnector="-119.509917932754,43.8220503107773"
               Start="0,0"
-              End="-83.9543623771987,36.322050310777">
+              End="-119.509917932754,36.3220503107773">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.8906535672438" />
+                    End="0,13.7175275179937" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.8906535672438"
-                    Point2="0,17.8906535672438"
-                    Point3="-4,17.8906535672438" />
+                    Point1="0,13.7175275179937"
+                    Point2="0,17.7175275179937"
+                    Point3="-4,17.7175275179937" />
                   <mssgle:LineSegment
-                    End="-79.9543623771987,17.8906535672438" />
+                    End="-115.509917932754,17.7175275179937" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79.9543623771987,17.8906535672438"
-                    Point2="-83.9543623771987,17.8906535672438"
-                    Point3="-83.9543623771987,21.8906535672438" />
+                    Point1="-115.509917932754,17.7175275179937"
+                    Point2="-119.509917932754,17.7175275179937"
+                    Point3="-119.509917932754,21.7175275179937" />
                   <mssgle:LineSegment
-                    End="-83.9543623771987,36.322050310777" />
+                    End="-119.509917932754,36.3220503107773" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-97.7835679073493,22.8906535672438,111.6127734375,11.609375"
+              BoundingBox="-115.561345685127,22.7175275179937,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Department.Paths[Lookup Match Output]"
-          TopLeft="355.494040195342,175.749372994156">
+          TopLeft="444.382929084231,175.749372994156">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="117.458329006409,43.5363354801056"
+              EndConnector="70.1079004180394,39.6901817485768"
               Start="0,0"
-              End="117.458329006409,36.0363354801056">
+              End="70.1079004180394,32.1901817485768">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.7681677400528" />
+                    End="0,12.0469873576782" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.7681677400528"
-                    Point2="0,21.7681677400528"
-                    Point3="4,21.7681677400528" />
+                    Point1="0,12.0469873576782"
+                    Point2="0,16.0469873576782"
+                    Point3="4,16.0469873576782" />
                   <mssgle:LineSegment
-                    End="113.458329006409,21.7681677400528" />
+                    End="66.1079004180394,16.0469873576782" />
                   <mssgle:CubicBezierSegment
-                    Point1="113.458329006409,21.7681677400528"
-                    Point2="117.458329006409,21.7681677400528"
-                    Point3="117.458329006409,25.7681677400528" />
+                    Point1="66.1079004180394,16.0469873576782"
+                    Point2="70.1079004180394,16.0469873576782"
+                    Point3="70.1079004180394,20.0469873576782" />
                   <mssgle:LineSegment
-                    End="117.458329006409,36.0363354801056" />
+                    End="70.1079004180394,32.1901817485768" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="10.5377777844545,26.7681677400528,96.3827734375,11.609375"
+              BoundingBox="-13.1374365097303,21.0469873576782,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Department.Paths[Changed]"
-          TopLeft="473.059512174911,261.952375140929">
+          TopLeft="513.828741729124,258.106221409399">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.1190447814406"
+              EndConnector="0,50.3498137371112"
               Start="0,0"
-              End="0,33.6190447814406">
+              End="0,42.8498137371112">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.6190447814406" />
+                    End="0,42.8498137371112" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-19.8755078125,10.9779794219703,39.751015625,11.6630859375"
+              BoundingBox="-19.8755078125,15.5933638998056,39.751015625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1265,12 +1265,12 @@ inner join STG.department  b on a.department_id= b.department_id
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load DWH Department\Lookup">
+    design-time-name="Package\Load DWH Department\Lookup On DWH_Department">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1280,7 +1280,7 @@ inner join STG.department  b on a.department_id= b.department_id
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

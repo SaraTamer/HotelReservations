@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to D_Room"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{B124BEAD-7D2B-4DBB-9681-C0B4E16AB1BA}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{9E9B6A06-C78B-4CAF-A3A1-E6BD4C45B1EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -72,26 +72,26 @@
                       refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_pet_friendly]"
                       cachedDataType="i4"
                       cachedName="O_pet_friendly"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
                     <inputColumn
                       refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_smoke_friendly]"
                       cachedDataType="i4"
                       cachedName="O_smoke_friendly"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
                     <inputColumn
                       refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_room_type_description]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="O_room_type_description"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
                     <inputColumn
                       refId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input].Columns[O_room_cost]"
                       cachedDataType="numeric"
                       cachedName="O_room_cost"
                       cachedPrecision="10"
                       cachedScale="2"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]" />
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_cost]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -111,7 +111,7 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">(#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]} != #{Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]})</property>
+                      name="Expression">(#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_cost]} != #{Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_cost]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_type_description]} != #{Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_type_description]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[smoke_friendly]} != #{Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_smoke_friendly]}) || (#{Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[pet_friendly]} != #{Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_pet_friendly]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -288,19 +288,19 @@
                       cachedDataType="i4"
                       cachedName="O_is_active"
                       externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]" />
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]" />
                     <inputColumn
                       refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[O_valid_To]"
                       cachedDataType="dbTimeStamp"
                       cachedName="O_valid_To"
                       externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_To]"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]" />
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]" />
                     <inputColumn
                       refId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].Columns[O_Valid_From]"
                       cachedDataType="dbTimeStamp"
                       cachedName="O_Valid_From"
                       externalMetadataColumnId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[Valid_From]"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]" />
+                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -383,11 +383,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load DWH Rooms\Lookup"
+              refId="Package\Load DWH Rooms\Lookup On DWH_Rooms"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup On DWH_Rooms"
               usesDispositions="true"
               version="6">
               <properties>
@@ -396,13 +396,15 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[rooms]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM DWH.rooms 
+WHERE is_active = 1</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[rooms]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT * FROM DWH.rooms 
+WHERE is_active = 1) [refTable]
 where [refTable].[room_id] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -451,7 +453,7 @@ where [refTable].[room_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load DWH Rooms\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Connections[OleDbConnection]"
                   connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
                   description="Connection manager used to access lookup data."
@@ -459,11 +461,11 @@ where [refTable].[room_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input].Columns[room_id]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input].Columns[room_id]"
                       cachedDataType="i4"
                       cachedName="room_id"
                       lineageId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
@@ -484,17 +486,17 @@ where [refTable].[room_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
                       name="O_pet_friendly"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -505,10 +507,10 @@ where [refTable].[room_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
                       name="O_smoke_friendly"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -519,12 +521,12 @@ where [refTable].[room_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_type_description]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="100"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_type_description]"
                       name="O_room_type_description"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -535,10 +537,10 @@ where [refTable].[room_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_cost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_cost]"
                       name="O_room_cost"
                       precision="10"
                       scale="2"
@@ -554,30 +556,30 @@ where [refTable].[room_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -915,123 +917,6 @@ WHERE room_id  = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load DWH Rooms\Type2 Columns"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Type2 Columns"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]"
-                      name="O_Valid_From"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[GETDATE]()</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">GETDATE()</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]"
-                      name="O_is_active"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">1</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">1</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]"
-                      name="O_valid_To"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_DBTIMESTAMP)"9999-12-31"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_DBTIMESTAMP)"9999-12-31"</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Load DWH Rooms\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -1141,42 +1026,59 @@ WHERE room_id  = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_Valid_From]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_Valid_From"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_is_active]"
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_pet_friendly]"
                       cachedDataType="i4"
-                      cachedName="O_is_active"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]">
+                      cachedName="O_pet_friendly"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_pet_friendly]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]}</property>
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_pet_friendly]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_valid_To]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_valid_To"
-                      lineageId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]">
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_smoke_friendly]"
+                      cachedDataType="i4"
+                      cachedName="O_smoke_friendly"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_smoke_friendly]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]}</property>
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_smoke_friendly]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_room_type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="O_room_type_description"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_type_description]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_type_description]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1].Columns[O_room_cost]"
+                      cachedDataType="numeric"
+                      cachedName="O_room_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output].Columns[O_room_cost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_cost]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1284,45 +1186,6 @@ WHERE room_id  = ?</property>
                           name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]}</property>
                       </properties>
                     </inputColumn>
-                    <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_Valid_From]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_Valid_From"
-                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_Valid_From]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_is_active]"
-                      cachedDataType="i4"
-                      cachedName="O_is_active"
-                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_is_active]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2].Columns[O_valid_To]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="O_valid_To"
-                      lineageId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output].Columns[O_valid_To]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]}</property>
-                      </properties>
-                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1381,20 +1244,29 @@ WHERE room_id  = ?</property>
                       lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[pet_friendly]"
                       name="pet_friendly" />
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_Valid_From]"
-                      name="O_Valid_From" />
-                    <outputColumn
-                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]"
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_pet_friendly]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_is_active]"
-                      name="O_is_active" />
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_pet_friendly]"
+                      name="O_pet_friendly" />
                     <outputColumn
-                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_valid_To]"
-                      name="O_valid_To" />
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_smoke_friendly]"
+                      dataType="i4"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_smoke_friendly]"
+                      name="O_smoke_friendly" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_type_description]"
+                      name="O_room_type_description" />
+                    <outputColumn
+                      refId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_cost]"
+                      dataType="numeric"
+                      lineageId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1].Columns[O_room_cost]"
+                      name="O_room_cost"
+                      precision="10"
+                      scale="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1526,37 +1398,32 @@ WHERE room_id  = ?</property>
               startId="Package\Load DWH Rooms\Conditional Split.Outputs[Changed]" />
             <path
               refId="Package\Load DWH Rooms.Paths[Derived Column Output]"
-              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1]"
-              name="Derived Column Output"
-              startId="Package\Load DWH Rooms\Type2 Columns.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Load DWH Rooms.Paths[Derived Column Output1]"
-              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2]"
+              endId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Load DWH Rooms\Update Type2 Columns.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load DWH Rooms.Paths[Lookup Match Output]"
               endId="Package\Load DWH Rooms\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\Load DWH Rooms\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load DWH Rooms.Paths[Lookup No Match Output]"
-              endId="Package\Load DWH Rooms\Type2 Columns.Inputs[Derived Column Input]"
+              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 2]"
               name="Lookup No Match Output"
-              startId="Package\Load DWH Rooms\Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load DWH Rooms.Paths[OLE DB Command Output]"
-              endId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]"
+              endId="Package\Load DWH Rooms\Union All.Inputs[Union All Input 1]"
               name="OLE DB Command Output"
               startId="Package\Load DWH Rooms\OLE DB Command.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Load DWH Rooms.Paths[OLE DB Source Output]"
-              endId="Package\Load DWH Rooms\Lookup.Inputs[Lookup Input]"
+              endId="Package\Load DWH Rooms\Lookup On DWH_Rooms.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Load DWH Rooms\SRC STG_Rooms.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Load DWH Rooms.Paths[Union All Output 1]"
-              endId="Package\Load DWH Rooms\DST DWH_Rooms.Inputs[OLE DB Destination Input]"
+              endId="Package\Load DWH Rooms\Update Type2 Columns.Inputs[Derived Column Input]"
               name="Union All Output 1"
               startId="Package\Load DWH Rooms\Union All.Outputs[Union All Output 1]" />
           </paths>
@@ -1666,13 +1533,13 @@ WHERE room_id  = ?</property>
                       cachedDataType="i4"
                       cachedName="O_pet_friendly"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[pet_friendly]"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_pet_friendly]" />
                     <inputColumn
                       refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_smoke_friendly]"
                       cachedDataType="i4"
                       cachedName="O_smoke_friendly"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[smoke_friendly]"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_smoke_friendly]" />
                     <inputColumn
                       refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_cost]"
                       cachedDataType="numeric"
@@ -1680,7 +1547,7 @@ WHERE room_id  = ?</property>
                       cachedPrecision="10"
                       cachedScale="2"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_cost]"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]" />
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_cost]" />
                     <inputColumn
                       refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_type_description]"
                       cachedCodepage="1252"
@@ -1688,7 +1555,7 @@ WHERE room_id  = ?</property>
                       cachedLength="100"
                       cachedName="O_room_type_description"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_description]"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_description]" />
                     <inputColumn
                       refId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].Columns[O_room_type_name]"
                       cachedCodepage="1252"
@@ -1696,7 +1563,7 @@ WHERE room_id  = ?</property>
                       cachedLength="45"
                       cachedName="O_room_type_name"
                       externalMetadataColumnId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input].ExternalColumns[room_type_name]"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]" />
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1763,11 +1630,11 @@ WHERE room_id  = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load STG Rooms\Lookup"
+              refId="Package\Load STG Rooms\Lookup On room_type"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup On room_type"
               usesDispositions="true"
               version="6">
               <properties>
@@ -1831,7 +1698,7 @@ where [refTable].[room_type_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load STG Rooms\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Load STG Rooms\Lookup On room_type.Connections[OleDbConnection]"
                   connectionManagerID="{79B64F94-3FA9-4EF3-9594-9D04CE817945}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.HotelDB]"
                   description="Connection manager used to access lookup data."
@@ -1839,11 +1706,11 @@ where [refTable].[room_type_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input].Columns[rooms_type_rooms_type_id]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input].Columns[rooms_type_rooms_type_id]"
                       cachedDataType="i4"
                       cachedName="rooms_type_rooms_type_id"
                       lineageId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output].Columns[rooms_type_rooms_type_id]">
@@ -1864,18 +1731,18 @@ where [refTable].[room_type_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_cost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_cost]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_cost]"
                       name="O_room_cost"
                       precision="10"
                       scale="2"
@@ -1888,10 +1755,10 @@ where [refTable].[room_type_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_smoke_friendly]"
                       name="O_smoke_friendly"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1902,10 +1769,10 @@ where [refTable].[room_type_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_pet_friendly]"
                       name="O_pet_friendly"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1916,12 +1783,12 @@ where [refTable].[room_type_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="45"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_name]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_name]"
                       name="O_room_type_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1932,12 +1799,12 @@ where [refTable].[room_type_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_description]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="100"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output].Columns[O_room_type_description]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output].Columns[O_room_type_description]"
                       name="O_room_type_description"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1951,30 +1818,30 @@ where [refTable].[room_type_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load STG Rooms\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2148,10 +2015,10 @@ where [refTable].[room_type_id] = ?</property>
               refId="Package\Load STG Rooms.Paths[Lookup Match Output]"
               endId="Package\Load STG Rooms\DST STG_Rooms.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
-              startId="Package\Load STG Rooms\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Load STG Rooms\Lookup On room_type.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load STG Rooms.Paths[OLE DB Source Output]"
-              endId="Package\Load STG Rooms\Lookup.Inputs[Lookup Input]"
+              endId="Package\Load STG Rooms\Lookup On room_type.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Load STG Rooms\SRC Rooms.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2273,49 +2140,45 @@ where [refTable].[room_type_id] = ?</property>
         <NodeLayout
           Size="192,42.6666666666667"
           Id="Package\Load DWH Rooms\Update Type2 Columns"
-          TopLeft="357.142846499171,351.238089107332" />
+          TopLeft="144.571424262864,322.39193612086" />
         <NodeLayout
-          Size="114.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\Lookup"
-          TopLeft="298.160706862009,133.082706327489" />
-        <NodeLayout
-          Size="122.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\Union All"
-          TopLeft="177.142851863589,347.380944525912" />
+          Size="200,42.6666666666667"
+          Id="Package\Load DWH Rooms\Lookup On DWH_Rooms"
+          TopLeft="305.853014325068,124.621168118124" />
         <NodeLayout
           Size="170.666666666667,42.6666666666667"
           Id="Package\Load DWH Rooms\OLE DB Command"
-          TopLeft="366.428560508149,282.380944930372" />
+          TopLeft="391.043944389938,289.304021647125" />
         <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load DWH Rooms\DST DWH_Rooms"
-          TopLeft="148.571424143655,423.571417225259" />
+          TopLeft="162.956039099575,395.648341134355" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
-          Id="Package\Load DWH Rooms\Type2 Columns"
-          TopLeft="155.714281073639,214.809521744649" />
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\Load DWH Rooms\Union All"
+          TopLeft="185.179481645426,231.820512437667" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Load DWH Rooms\Conditional Split"
-          TopLeft="369.285703280143,216.190470230012" />
+          TopLeft="390.054933430403,217.728931722624" />
         <NodeLayout
           Size="166.666666666667,42.6666666666667"
           Id="Package\Load DWH Rooms\SRC STG_Rooms"
-          TopLeft="278.160707532562,55.71428584201" />
+          TopLeft="324.853013833331,45.8681322892944" />
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Union All Output 1]"
-          TopLeft="235.857138003622,390.047611192579">
+          TopLeft="243.542119620812,274.487179104334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.5238060326805"
+              EndConnector="0,47.9047570165263"
               Start="0,0"
-              End="0,26.0238060326805">
+              End="0,40.4047570165263">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0238060326805" />
+                    End="0,40.4047570165263" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2326,18 +2189,18 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[OLE DB Source Output]"
-          TopLeft="358.494040530619,98.3809525086767">
+          TopLeft="407.019680745866,88.5347989559611">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.7017538188123"
+              EndConnector="0,36.086369162163"
               Start="0,0"
-              End="0,27.2017538188123">
+              End="0,28.586369162163">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.2017538188123" />
+                    End="0,28.586369162163" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2348,18 +2211,30 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[OLE DB Command Output]"
-          TopLeft="452.452370170327,325.047611597039">
+          TopLeft="391.043944389938,310.637354980458">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26.1904775102931"
+              EndConnector="-83.1977960778457,-57.4835092094576"
               Start="0,0"
-              End="0,18.6904775102931">
+              End="-75.6977960778457,-57.4835092094576">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.6904775102931" />
+                    End="-37.5988980389228,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-37.5988980389228,0"
+                    Point2="-41.5988980389228,0"
+                    Point3="-41.5988980389228,-4" />
+                  <mssgle:LineSegment
+                    End="-41.5988980389228,-53.4835092094576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.5988980389228,-53.4835092094576"
+                    Point2="-41.5988980389228,-57.4835092094576"
+                    Point3="-45.5988980389228,-57.4835092094576" />
+                  <mssgle:LineSegment
+                    End="-75.6977960778457,-57.4835092094576" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2370,112 +2245,90 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Lookup No Match Output]"
-          TopLeft="355.494040195342,175.749372994156">
+          TopLeft="373.853014325068,167.287834784791">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-122.44642578837,39.0601487504931"
+              EndConnector="-127.340199346309,64.5326776528767"
               Start="0,0"
-              End="-122.44642578837,31.5601487504931">
+              End="-127.340199346309,57.0326776528767">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5300743752465" />
+                    End="0,22.1203695261644" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.5300743752465"
-                    Point2="0,19.5300743752465"
-                    Point3="-4,19.5300743752465" />
+                    Point1="0,22.1203695261644"
+                    Point2="0,26.1203695261644"
+                    Point3="-4,26.1203695261644" />
                   <mssgle:LineSegment
-                    End="-118.44642578837,19.5300743752465" />
+                    End="-123.340199346309,26.1203695261644" />
                   <mssgle:CubicBezierSegment
-                    Point1="-118.44642578837,19.5300743752465"
-                    Point2="-122.44642578837,19.5300743752465"
-                    Point3="-122.44642578837,23.5300743752465" />
+                    Point1="-123.340199346309,26.1203695261644"
+                    Point2="-127.340199346309,26.1203695261644"
+                    Point3="-127.340199346309,30.1203695261644" />
                   <mssgle:LineSegment
-                    End="-122.44642578837,31.5601487504931" />
+                    End="-127.340199346309,57.0326776528767" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-117.029599612935,24.5300743752465,111.6127734375,11.609375"
+              BoundingBox="-119.476486391905,31.1203695261644,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Lookup Match Output]"
-          TopLeft="373.27181797312,175.749372994156">
+          TopLeft="437.853014325068,167.287834784791">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74.6805519736891,40.4410972358563"
+              EndConnector="30.8685857720012,50.4410969378331"
               Start="0,0"
-              End="74.6805519736891,32.9410972358563">
+              End="30.8685857720012,42.9410969378331">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.5103562109688" />
+                    End="0,16.4166344748372" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.5103562109688"
-                    Point2="0,16.5103562109688"
-                    Point3="4,16.5103562109688" />
+                    Point1="0,16.4166344748372"
+                    Point2="0,20.4166344748372"
+                    Point3="4,20.4166344748372" />
                   <mssgle:LineSegment
-                    End="70.6805519736891,16.5103562109688" />
+                    End="26.8685857720012,20.4166344748372" />
                   <mssgle:CubicBezierSegment
-                    Point1="70.6805519736891,16.5103562109688"
-                    Point2="74.6805519736891,16.5103562109688"
-                    Point3="74.6805519736891,20.5103562109688" />
+                    Point1="26.8685857720012,20.4166344748372"
+                    Point2="30.8685857720012,20.4166344748372"
+                    Point3="30.8685857720012,24.4166344748372" />
                   <mssgle:LineSegment
-                    End="74.6805519736891,32.9410972358563" />
+                    End="30.8685857720012,42.9410969378331" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-10.8511107319055,21.5103562109688,96.3827734375,11.609375"
+              BoundingBox="-32.7570938327494,25.4166344748372,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load DWH Rooms.Paths[Derived Column Output1]"
-          TopLeft="357.142846499171,370.642850149955">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-57.3333279689156,0"
-              Start="0,0"
-              End="-49.8333279689156,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-49.8333279689156,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Derived Column Output]"
-          TopLeft="235.761899801947,257.476188411316">
+          TopLeft="244.097065014553,365.058602787527">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,89.9047561145962"
+              EndConnector="0,30.5897383468276"
               Start="0,0"
-              End="0,82.4047561145962">
+              End="0,23.0897383468276">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82.4047561145962" />
+                    End="0,23.0897383468276" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2486,25 +2339,25 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Rooms.Paths[Changed]"
-          TopLeft="449.857131894146,258.857136896679">
+          TopLeft="472.54943891017,260.39559838929">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,23.5238080336936"
+              EndConnector="0,28.9084232578347"
               Start="0,0"
-              End="0,16.0238080336936">
+              End="0,21.4084232578347">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.0238080336936" />
+                    End="0,21.4084232578347" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-19.8755078125,2.1803610480968,39.751015625,11.6630859375"
+              BoundingBox="-19.8755078125,4.87266866016734,39.751015625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2512,7 +2365,7 @@ where [refTable].[room_type_id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load DWH Rooms\Lookup">
+    design-time-name="Package\Load DWH Rooms\Lookup On DWH_Rooms">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2522,7 +2375,7 @@ where [refTable].[room_type_id] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[DWH].[rooms]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2566,31 +2419,31 @@ where [refTable].[room_type_id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="114.666666666667,42.6666666666667"
-          Id="Package\Load STG Rooms\Lookup"
-          TopLeft="195.624991254881,100.578946264084" />
-        <NodeLayout
-          Size="165.333333333334,42.6666666666667"
-          Id="Package\Load STG Rooms\DST STG_Rooms"
-          TopLeft="175.624992148951,201.842103046972" />
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load STG Rooms\Lookup On room_type"
+          TopLeft="166.249992568046,97.8421041888708" />
         <NodeLayout
           Size="139.333333333334,42.6666666666667"
           Id="Package\Load STG Rooms\SRC Rooms"
           TopLeft="184.374991757796,15.7368419324758" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load STG Rooms\DST STG_Rooms"
+          TopLeft="175.624992148951,201.842103046972" />
         <EdgeLayout
           Id="Package\Load STG Rooms.Paths[OLE DB Source Output]"
-          TopLeft="253.499991506338,58.4035085991424">
+          TopLeft="256.479158829588,58.4035085991425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.1754376649418"
+              EndConnector="0,39.4385955897283"
               Start="0,0"
-              End="0,34.6754376649418">
+              End="0,31.9385955897283">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.6754376649418" />
+                    End="0,31.9385955897283" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2601,25 +2454,25 @@ where [refTable].[room_type_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Rooms.Paths[Lookup Match Output]"
-          TopLeft="255.624991701916,143.245612930751">
+          TopLeft="258.604159025165,140.508770855537">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.5964901162211"
+              EndConnector="0,61.3333321914345"
               Start="0,0"
-              End="0,51.0964901162211">
+              End="0,53.8333321914345">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.0964901162211" />
+                    End="0,53.8333321914345" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.7435575581105,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,21.1119785957173,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2627,7 +2480,7 @@ where [refTable].[room_type_id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load STG Rooms\Lookup">
+    design-time-name="Package\Load STG Rooms\Lookup On room_type">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{A1DD3AE7-139D-4A7B-923D-293868B8A3E7}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{2DCA56BD-44EA-4DCA-818C-E197BDA75DF0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1884,27 +1884,31 @@ where [refTable].[star_rating] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="129.333333333334,42.6666666666667"
-          Id="Package\Load STG Hotel\SRC Hotel"
-          TopLeft="192.49999139458,23.9473681581153" />
-        <NodeLayout
           Size="114.666666666667,42.6666666666667"
           Id="Package\Load STG Hotel\Lookup"
           TopLeft="197.499991171062,116.31578819656" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load STG Hotel\DST STG_Hotel"
+          TopLeft="179.374991981313,192.947366302529" />
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\Load STG Hotel\SRC Hotel"
+          TopLeft="191.249991450459,43.7894732034108" />
         <EdgeLayout
           Id="Package\Load STG Hotel.Paths[OLE DB Source Output]"
-          TopLeft="255.999991282821,66.6140348247819">
+          TopLeft="255.374991310761,86.4561398700775">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49.7017533717778"
+              EndConnector="0,29.8596483264825"
               Start="0,0"
-              End="0,42.2017533717778">
+              End="0,22.3596483264825">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.2017533717778" />
+                    End="0,22.3596483264825" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1913,31 +1917,27 @@ where [refTable].[star_rating] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,42.6666666666667"
-          Id="Package\Load STG Hotel\DST STG_Hotel"
-          TopLeft="175.624992148951,201.842103046972" />
         <EdgeLayout
           Id="Package\Load STG Hotel.Paths[Lookup Match Output]"
-          TopLeft="254.229158326673,158.982454863226">
+          TopLeft="256.104158242854,158.982454863227">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.8596481837452"
+              EndConnector="0,33.9649114393025"
               Start="0,0"
-              End="0,35.3596481837452">
+              End="0,26.4649114393025">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.3596481837452" />
+                    End="0,26.4649114393025" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.8751365918726,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,7.42776821965126,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

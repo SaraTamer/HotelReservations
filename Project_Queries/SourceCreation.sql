@@ -271,7 +271,7 @@ select * from addresses
 select * from bookings
 select * from rooms
 select * from rooms_booked
-
+select booking_id , hotel_hotel_id from bookings 
 select * from department
 select * from employees
 select * from guests
@@ -294,7 +294,3 @@ UPDATE addresses  SET address_line2 = 'W East street' WHERE address_id = 1
 UPDATE room_type  SET room_cost = 230.00 , smoke_friendly = 0, pet_friendly = 1 WHERE room_type_id = 1 
 UPDATE guests  SET guest_contact_number = '233-567-8734' WHERE guest_id = 1 
 UPDATE department  SET department_description = 'cooking Food ' WHERE department_id = 1 
-
-SELECT SUM(total_amount) from bookings , hotel , addresses
-where bookings.hotel_hotel_id = hotel.hotel_id and hotel.addresses_address_id = addresses.address_id 
-Group By hotel_id , address_id , booking_date

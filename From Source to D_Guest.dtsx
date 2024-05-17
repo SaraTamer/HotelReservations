@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to D_Guest"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{9831E284-6583-4BA9-A034-2F18EBEF0E98}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{3609A534-B7EA-4BCA-80FE-B4D051941FB7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -57,7 +57,7 @@
                       cachedDataType="str"
                       cachedLength="12"
                       cachedName="O_guest_contact_number"
-                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]" />
+                      lineageId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output].Columns[O_guest_contact_number]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -77,7 +77,7 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]} != #{Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]}</property>
+                      name="Expression">#{Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_contact_number]} != #{Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output].Columns[O_guest_contact_number]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -289,11 +289,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load DWH Guest\Lookup"
+              refId="Package\Load DWH Guest\Lookup On DWH_Guests"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup On DWH_Guests"
               usesDispositions="true"
               version="6">
               <properties>
@@ -357,7 +357,7 @@ where [refTable].[guest_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load DWH Guest\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Load DWH Guest\Lookup On DWH_Guests.Connections[OleDbConnection]"
                   connectionManagerID="{3D511C47-60B1-4F79-83C0-CD84AE5BE6DE}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-U9U46A4.Hotel_Reservation]"
                   description="Connection manager used to access lookup data."
@@ -365,11 +365,11 @@ where [refTable].[guest_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input].Columns[guest_id]"
+                      refId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input].Columns[guest_id]"
                       cachedDataType="i4"
                       cachedName="guest_id"
                       lineageId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output].Columns[guest_id]">
@@ -390,19 +390,19 @@ where [refTable].[guest_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
+                      refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="12"
-                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
+                      lineageId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output].Columns[O_guest_contact_number]"
                       name="O_guest_contact_number"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -416,30 +416,30 @@ where [refTable].[guest_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load DWH Guest\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -712,15 +712,15 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
               refId="Package\Load DWH Guest.Paths[Lookup Match Output]"
               endId="Package\Load DWH Guest\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\Load DWH Guest\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load DWH Guest.Paths[Lookup No Match Output]"
               endId="Package\Load DWH Guest\DST DWH_Guests.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\Load DWH Guest\Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\Load DWH Guest\Lookup On DWH_Guests.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load DWH Guest.Paths[OLE DB Source Output]"
-              endId="Package\Load DWH Guest\Lookup.Inputs[Lookup Input]"
+              endId="Package\Load DWH Guest\Lookup On DWH_Guests.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Load DWH Guest\SRC STG_Guests.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1294,14 +1294,14 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
         <NodeLayout
           Size="166.666666666667,42.6666666666667"
           Id="Package\Load DWH Guest\SRC STG_Guests"
-          TopLeft="278.160707532562,55.71428584201" />
+          TopLeft="322.006860071999,58.7912088272336" />
         <NodeLayout
           Size="145.333333333334,42.6666666666667"
           Id="Package\Load DWH Guest\Update Guest"
           TopLeft="406.249988097698,314.518788208321" />
         <NodeLayout
-          Size="114.666666666667,42.6666666666667"
-          Id="Package\Load DWH Guest\Lookup"
+          Size="200,42.6666666666667"
+          Id="Package\Load DWH Guest\Lookup On DWH_Guests"
           TopLeft="298.160706862009,133.082706327489" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
@@ -1309,37 +1309,37 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
           TopLeft="394.285702535085,220.654129511869" />
         <EdgeLayout
           Id="Package\Load DWH Guest.Paths[Lookup Match Output]"
-          TopLeft="373.27181797312,175.749372994156">
+          TopLeft="430.160706862009,175.749372994156">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="99.6805512286315,44.9047565177129"
+              EndConnector="42.7916623397427,44.9047565177133"
               Start="0,0"
-              End="99.6805512286315,37.4047565177129">
+              End="42.7916623397427,37.4047565177133">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.3326758260388" />
+                    End="0,14.1757347809792" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.3326758260388"
-                    Point2="0,18.3326758260388"
-                    Point3="4,18.3326758260388" />
+                    Point1="0,14.1757347809792"
+                    Point2="0,18.1757347809792"
+                    Point3="4,18.1757347809792" />
                   <mssgle:LineSegment
-                    End="95.6805512286315,18.3326758260388" />
+                    End="38.7916623397427,18.1757347809792" />
                   <mssgle:CubicBezierSegment
-                    Point1="95.6805512286315,18.3326758260388"
-                    Point2="99.6805512286315,18.3326758260388"
-                    Point3="99.6805512286315,22.3326758260388" />
+                    Point1="38.7916623397427,18.1757347809792"
+                    Point2="42.7916623397427,18.1757347809792"
+                    Point3="42.7916623397427,22.1757347809792" />
                   <mssgle:LineSegment
-                    End="99.6805512286315,37.4047565177129" />
+                    End="42.7916623397427,37.4047565177133" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="1.64888889556575,23.3326758260388,96.3827734375,11.609375"
+              BoundingBox="-26.7955555488787,23.1757347809792,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1369,18 +1369,18 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Guest.Paths[OLE DB Source Output]"
-          TopLeft="358.494040530619,98.3809525086767">
+          TopLeft="401.75045013367,101.4578754939">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.7017538188123"
+              EndConnector="0,31.6248308335887"
               Start="0,0"
-              End="0,27.2017538188123">
+              End="0,24.1248308335887">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.2017538188123" />
+                    End="0,24.1248308335887" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1391,37 +1391,37 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load DWH Guest.Paths[Lookup No Match Output]"
-          TopLeft="337.716262417565,175.749372994156">
+          TopLeft="366.160706862009,175.749372994156">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-102.871028183323,46.2431029345958"
+              EndConnector="-131.315472627767,46.2431029345953"
               Start="0,0"
-              End="-102.871028183323,38.7431029345958">
+              End="-131.315472627767,38.7431029345953">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.8790649595368" />
+                    End="0,14.7174464259076" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.8790649595368"
-                    Point2="0,18.8790649595368"
-                    Point3="-4,18.8790649595368" />
+                    Point1="0,14.7174464259076"
+                    Point2="0,18.7174464259076"
+                    Point3="-4,18.7174464259076" />
                   <mssgle:LineSegment
-                    End="-98.8710281833233,18.8790649595368" />
+                    End="-127.315472627767,18.7174464259076" />
                   <mssgle:CubicBezierSegment
-                    Point1="-98.8710281833233,18.8790649595368"
-                    Point2="-102.871028183323,18.8790649595368"
-                    Point3="-102.871028183323,22.8790649595368" />
+                    Point1="-127.315472627767,18.7174464259076"
+                    Point2="-131.315472627767,18.7174464259076"
+                    Point3="-131.315472627767,22.7174464259076" />
                   <mssgle:LineSegment
-                    End="-102.871028183323,38.7431029345958" />
+                    End="-131.315472627767,38.7431029345953" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-107.241900810412,23.8790649595368,111.6127734375,11.609375"
+              BoundingBox="-121.464123032634,23.7174464259076,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1429,12 +1429,12 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load DWH Guest\Lookup">
+    design-time-name="Package\Load DWH Guest\Lookup On DWH_Guests">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1444,7 +1444,7 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1481,7 +1481,7 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
     design-time-name="Package\Load STG Guest">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139.333333333334,42.6666666666667"
           Id="Package\Load STG Guest\SRC Guests"
@@ -1509,9 +1509,7 @@ inner join STG.guests  b on a.guest_id= b.guest_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SARA</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGGGkglWVZE6zzbJVqONafQAAAAACAAAAAAAQZgAAAAEAACAAAADVzm0xJ8FKM9E8uOy/rk2t3UGhiexaI4dlJtrlekDQ9QAAAAAOgAAAAAIAACAAAABqql1KtT6yeE6U1pq04zZEUgXM2NtS2F+FaYivgNz9vZAAAABPd3mOSeIa880Vm0ePcrRX8LoKEbh0Eipaj2J8EUzTL14HMqDQd8zXfKZoXYEEHoLssZe5LFvmC5fKDWaUf3uruiw9mrTzA1GEQITAv8q0JHUrNmIeZHs46xsXw3I6jc/ZsnqO43BkX9/4eICR8rkuWimipgMm4xpioKjzD4t8hm3hW7BhVV/p/gGylu6AHqVAAAAACFYpNVfHWXJSeP9fVPKBAFNRQZnvqVe9hqQehYKOWgC+ZE7r/DkPZUHNSEFua5W6Wp71GJLtn8i5xWlzrlHttw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGGGkglWVZE6zzbJVqONafQAAAAACAAAAAAAQZgAAAAEAACAAAAChmiS8onHhaoDgj4KeO7tZAerh//R+n6lQ+q/MebgIFAAAAAAOgAAAAAIAACAAAAD+7BP8cuoQS+3LJL6vp84dvBFkr7OlPb9Eo5xqUGWk1JAAAACMaItTHyYcW22P6GK+fFRTtPHsbXaighywmsyaVZXxbZnyHUhW8MZKe5gHWNuTXY7lGhitts03ak7EF1ayx0jU2YcXX8BKBrL2jiURXRjExr3jixZICZlcQ83LajVLRzpRZHgwlU2IjEStrCMEO7FtkFXuElvPj8n8X3ufKbxSsD/RtpXqam/IFJJF/Zc9G6JAAAAAaGPWrYtTzGAgi3DxWpP6DBhQ4rF273d+QnPeEtw4NcvkpnvyMEVtBxctohKx7DrdbP35D5LzHB6c1MNNSNhT5A==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -37,8 +37,10 @@
           <SSIS:Package SSIS:Name="From Source to D_Department.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="From Source to F_Employees.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="From Source to F_Duration.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="From Source to F_Occupency.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="From Source to F_Reveneue.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Batch F_Revenue.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Batch F_Duration.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Batch F_Employees.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DESKTOP-U9U46A4.HotelDB.conmgr" />
@@ -367,10 +369,10 @@
                 <SSIS:Property SSIS:Name="Name">From Source to D_Addresses</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7703D03A-A893-4C67-9560-8AB6839AA641}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3DC6C981-5CB3-4948-9E53-FEADC1323100}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -384,10 +386,10 @@
                 <SSIS:Property SSIS:Name="Name">From Source to D_Guest</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{16D7D5A5-6E05-4A8F-9936-952CF271D856}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9831E284-6583-4BA9-A034-2F18EBEF0E98}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -401,10 +403,10 @@
                 <SSIS:Property SSIS:Name="Name">From Source to D_Room</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">24</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3C531081-D20C-441E-AFB4-C8E331D19E4B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B124BEAD-7D2B-4DBB-9681-C0B4E16AB1BA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -435,10 +437,10 @@
                 <SSIS:Property SSIS:Name="Name">From Source to F_Employees</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0071C3DC-2CEF-4D00-B352-049F6BB0BFA2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7C00A1EB-B958-4C38-B42F-BE194869CABA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -452,27 +454,10 @@
                 <SSIS:Property SSIS:Name="Name">From Source to F_Duration</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">61</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE393AC7-B804-4574-A156-78C3EC60379B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="From Source to F_Occupency.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B20360A5-AEAB-4434-9E3C-B96DFA1A8764}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">From Source to F_Occupency</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A9DA241A-3D5B-48AD-B787-13653252258E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CE2645E3-90EA-44D4-BBAE-80C62CDCEDFA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -486,10 +471,61 @@
                 <SSIS:Property SSIS:Name="Name">From Source to F_Reveneue</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">31</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FF52CEE5-154C-437E-8457-AEFAB583891D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{886CABA0-F33D-4A97-8BD0-7A66D9CE9835}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Batch F_Revenue.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4A193E66-52BC-4E83-9D5E-43599CB29E77}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Batch F_Revenue</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{938FDECA-DB6B-42C1-B2B2-6734213ACC2E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Batch F_Duration.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{CB08F212-55F9-4407-80FD-0F17BD8D553A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Batch F_Duration</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B125CEDE-2D39-4B7D-9FF9-A0E874DB9953}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Batch F_Employees.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{FE2C54DD-49ED-477D-833A-47109B6F6D98}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Batch F_Employees</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F10FF7CB-B614-4C36-A15F-83370CDD8DDA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

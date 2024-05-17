@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Duration"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{CE2645E3-90EA-44D4-BBAE-80C62CDCEDFA}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{B365C110-25E1-49C7-A883-AC81ED47042D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2065,37 +2065,41 @@ where [refTable].[room_id] = ?</property>
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load Fact Duration\DST DWH Duration"
-          TopLeft="222.46590263278,482.529494518759" />
+          TopLeft="221.465902662582,393.529497171166" />
         <NodeLayout
           Size="148,42.6666666666667"
           Id="Package\Load Fact Duration\Get Guest key"
           TopLeft="233.696962935456,159.870810457577" />
         <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Fact Duration\Lookup On DWH"
+          TopLeft="233.227262271399,319.047844030258" />
+        <NodeLayout
           Size="170.666666666667,42.6666666666667"
           Id="Package\Load Fact Duration\SRC STG Duration"
-          TopLeft="228.143932721719,0.0478467012016495" />
+          TopLeft="230.143932662114,21.0478460753529" />
         <NodeLayout
           Size="124,42.6666666666667"
           Id="Package\Load Fact Duration\Date Dim"
-          TopLeft="252.249992091209,67.4019070062414" />
+          TopLeft="248.249992210418,90.401906320788" />
         <NodeLayout
           Size="153.333333333334,42.6666666666667"
           Id="Package\Load Fact Duration\Get Rooms key"
-          TopLeft="238.863629261879,271.403506092658" />
+          TopLeft="234.863629381088,241.403506986728" />
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[OLE DB Source Output]"
-          TopLeft="313.86362907313,42.7145133678683">
+          TopLeft="312.863629102933,63.7145127420196">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.6873936383731"
+              EndConnector="0,26.6873935787685"
               Start="0,0"
-              End="0,17.1873936383731">
+              End="0,19.1873935787685">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.1873936383731" />
+                    End="0,19.1873935787685" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2104,102 +2108,98 @@ where [refTable].[room_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Duration.Paths[Lookup Match Output]"
-          TopLeft="311.613629432001,202.537477124243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68.8660289684146"
-              Start="0,0"
-              End="0,61.3660289684146">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.3660289684146" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,24.8783269842073,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Duration.Paths[Derived Column Output]"
-          TopLeft="310.973477513332,110.068573672908">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49.8022367846685"
-              Start="0,0"
-              End="0,42.3022367846685">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.3022367846685" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="160,42.6666666666667"
-          Id="Package\Load Fact Duration\Lookup On DWH"
-          TopLeft="235.227262211794,350.047843106386" />
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[Lookup No Match Output]"
-          TopLeft="311.846582422287,392.714509773052">
+          TopLeft="310.346582466991,361.714510696925">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,89.8149847457061"
+              EndConnector="0,31.814986474241"
               Start="0,0"
-              End="0,82.3149847457061">
+              End="0,24.314986474241">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82.3149847457061" />
+                    End="0,24.314986474241" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,35.3528048728531,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,6.35280573712049,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact Duration.Paths[Lookup Match Output1]"
-          TopLeft="315.37877907017,314.070172759324">
+          TopLeft="312.378779159577,284.070173653394">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.9776703470613"
+              EndConnector="0,34.9776703768637"
               Start="0,0"
-              End="0,28.4776703470613">
+              End="0,27.4776703768637">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.4776703470613" />
+                    End="0,27.4776703768637" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.43414767353067,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,7.93414768843184,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Duration.Paths[Lookup Match Output]"
+          TopLeft="309.613629491605,202.537477124244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.8660298624839"
+              Start="0,0"
+              End="0,31.3660298624839">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.3660298624839" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.87832743124197,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Duration.Paths[Derived Column Output]"
+          TopLeft="308.973477572937,133.068572987455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.8022374701223"
+              Start="0,0"
+              End="0,19.3022374701223">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3022374701223" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2242,6 +2242,16 @@ where [refTable].[room_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Duration\Lookup On DWH">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Fact Duration\SRC STG Duration">
     <Properties>
       <Property>
@@ -2260,7 +2270,7 @@ where [refTable].[room_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2270,7 +2280,7 @@ where [refTable].[room_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2285,7 +2295,7 @@ where [refTable].[room_id] = ?</property>
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load STG Duration\Duration Calc"
-          TopLeft="395.451908870815,355.650468773182" />
+          TopLeft="396.493575490916,329.422398885722" />
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Load STG Duration\Lookup on Rooms"
@@ -2297,7 +2307,7 @@ where [refTable].[room_id] = ?</property>
         <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load STG Duration\DST STG Duration"
-          TopLeft="376.749986629933,431.842099862829" />
+          TopLeft="379.874986490235,402.192977381353" />
         <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\Load STG Duration\Lookup On Guest"
@@ -2330,25 +2340,25 @@ where [refTable].[room_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Duration.Paths[Lookup Match Output2]"
-          TopLeft="467.767614193524,300.719294753459">
+          TopLeft="468.288447503574,300.71929475346">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54.9311740197226"
+              EndConnector="0,28.7031041322628"
               Start="0,0"
-              End="0,47.4311740197226">
+              End="0,21.2031041322628">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.4311740197226" />
+                    End="0,21.2031041322628" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.9108995098613,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,4.79686456613138,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2402,18 +2412,18 @@ where [refTable].[room_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Duration.Paths[Derived Column Output]"
-          TopLeft="464.434281083708,398.317135439848">
+          TopLeft="466.517614323908,372.089065552389">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.5249644229805"
+              EndConnector="0,30.1039118289638"
               Start="0,0"
-              End="0,26.0249644229805">
+              End="0,22.6039118289638">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0249644229805" />
+                    End="0,22.6039118289638" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2517,16 +2527,6 @@ where [refTable].[room_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Duration\Lookup On DWH">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

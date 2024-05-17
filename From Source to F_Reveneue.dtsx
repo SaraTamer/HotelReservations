@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Reveneue"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{886CABA0-F33D-4A97-8BD0-7A66D9CE9835}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{DBD4FC44-48B1-4007-8BAB-2A73BB300E3F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -319,7 +319,7 @@ where [refTable].[address_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact Revenue\281:invalid};</property>
+                  name="ParameterMap">#{Package\Load Fact Revenue\297:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -477,7 +477,7 @@ where [refTable].[hotel_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact Revenue\282:invalid};</property>
+                  name="ParameterMap">#{Package\Load Fact Revenue\298:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2073,6 +2073,10 @@ where [refTable].[hotel_id] = ?</property>
           Id="Package\Load Fact Revenue\Get Addresses key"
           TopLeft="226.74999326095,218.929822335365" />
         <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Fact Revenue\Lookup On DWH"
+          TopLeft="228.999993249774,295.111102760187" />
+        <NodeLayout
           Size="124,42.6666666666667"
           Id="Package\Load Fact Revenue\Date Dim"
           TopLeft="254.12499200739,81.2163678713311" />
@@ -2099,62 +2103,29 @@ where [refTable].[hotel_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Lookup Match Output]"
-          TopLeft="312.24999308462,194.666663671795">
+          Id="Package\Load Fact Revenue.Paths[Lookup No Match Output]"
+          TopLeft="309.541660056139,337.777769426854">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.2631586635701"
+              EndConnector="0,40.0877172623591"
               Start="0,0"
-              End="0,16.7631586635701">
+              End="0,32.5877172623591">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.7631586635701" />
+                    End="0,32.5877172623591" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,2.57689183178503,96.3827734375,11.609375"
+              BoundingBox="-55.80638671875,10.4891711311795,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="To not insert if already inserted!"
-          ParentId="Package\Load Fact Revenue"
-          FontInfo="{assembly:Null}"
-          Size="196,40"
-          Id="0612edbb-a39d-4935-abe7-ec6dfa07559d"
-          TopLeft="385.999986112118,296.742681294368" />
-        <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Derived Column Output]"
-          TopLeft="314.604159124507,123.883034537998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.1169624671306"
-              Start="0,0"
-              End="0,20.6169624671306">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.6169624671306" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="160,42.6666666666667"
-          Id="Package\Load Fact Revenue\Lookup On DWH"
-          TopLeft="228.999993249774,295.111102760187" />
         <EdgeLayout
           Id="Package\Load Fact Revenue.Paths[Lookup Match Output1]"
           TopLeft="310.208326588696,261.596489002032">
@@ -2180,29 +2151,58 @@ where [refTable].[hotel_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact Revenue.Paths[Lookup No Match Output]"
-          TopLeft="309.541660056139,337.777769426854">
+          Id="Package\Load Fact Revenue.Paths[Lookup Match Output]"
+          TopLeft="312.24999308462,194.666663671795">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.0877172623591"
+              EndConnector="0,24.2631586635701"
               Start="0,0"
-              End="0,32.5877172623591">
+              End="0,16.7631586635701">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5877172623591" />
+                    End="0,16.7631586635701" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,10.4891711311795,111.6127734375,11.609375"
+              BoundingBox="-48.19138671875,2.57689183178503,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Revenue.Paths[Derived Column Output]"
+          TopLeft="314.604159124507,123.883034537998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.1169624671306"
+              Start="0,0"
+              End="0,20.6169624671306">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6169624671306" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="To not insert if already inserted!"
+          ParentId="Package\Load Fact Revenue"
+          FontInfo="{assembly:Null}"
+          Size="196,40"
+          Id="0612edbb-a39d-4935-abe7-ec6dfa07559d"
+          TopLeft="385.999986112118,296.742681294368" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -2278,6 +2278,16 @@ where [refTable].[hotel_id] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Revenue\Lookup On DWH">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load STG Revenue">
     <LayoutInfo>
@@ -2286,61 +2296,61 @@ where [refTable].[hotel_id] = ?</property>
         <NodeLayout
           Size="185.333333333334,42.6666666666667"
           Id="Package\Load STG Revenue\Lookup On Addresses"
-          TopLeft="148.124993378297,173.602868907272" />
+          TopLeft="146.249993462116,153.760763861977" />
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load STG Revenue\SRC Booking"
-          TopLeft="172.78408318504,6.2200956254845" />
+          TopLeft="171.534083240919,0.746411475058157" />
         <NodeLayout
           Size="177.333333333334,42.6666666666667"
           Id="Package\Load STG Revenue\DST STG Reveneue"
-          TopLeft="159.374992875383,325.684206950367" />
+          TopLeft="155.624993043021,296.947365160629" />
         <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Load STG Revenue\Lookup On Hotel"
-          TopLeft="163.636356321249,87.0813387567827" />
+          TopLeft="163.011356349189,71.344496824307" />
         <NodeLayout
           Size="240,42.6666666666667"
           Id="Package\Load STG Revenue\GroupBy on Hotel&amp;Address&amp;Date"
-          TopLeft="126.874994328246,253.842102476022" />
+          TopLeft="122.499994523824,229.894734317907" />
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[Lookup Match Output]"
-          TopLeft="242.214008183106,129.748005423449">
+          TopLeft="240.964008238986,114.011163490974">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.8548634838226"
+              EndConnector="0,39.7496003710029"
               Start="0,0"
-              End="0,36.3548634838226">
+              End="0,32.2496003710029">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.3548634838226" />
+                    End="0,32.2496003710029" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.3727442419113,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,10.3201126855015,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[Aggregate Output 1]"
-          TopLeft="247.458326935147,296.508769142688">
+          TopLeft="243.395827116756,272.561400984573">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.175437807679"
+              EndConnector="0,24.3859641760552"
               Start="0,0"
-              End="0,21.675437807679">
+              End="0,16.8859641760552">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.675437807679" />
+                    End="0,16.8859641760552" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2351,18 +2361,18 @@ where [refTable].[hotel_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[OLE DB Source Output]"
-          TopLeft="244.210219753144,48.8867622921512">
+          TopLeft="243.272719795054,43.4130781417248">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.1945764646316"
+              EndConnector="0,27.9314186825821"
               Start="0,0"
-              End="0,30.6945764646316">
+              End="0,20.4314186825821">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.6945764646316" />
+                    End="0,20.4314186825821" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2373,25 +2383,25 @@ where [refTable].[hotel_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load STG Revenue.Paths[Lookup Match Output1]"
-          TopLeft="243.833327186604,216.269535573939">
+          TopLeft="240.708327326303,196.427430528643">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.5725669020831"
+              EndConnector="0,33.4673037892636"
               Start="0,0"
-              End="0,30.0725669020831">
+              End="0,25.9673037892636">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.0725669020831" />
+                    End="0,25.9673037892636" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.23159595104155,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,7.17896439463181,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2467,16 +2477,6 @@ where [refTable].[hotel_id] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Revenue\Lookup On DWH">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

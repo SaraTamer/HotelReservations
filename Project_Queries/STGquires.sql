@@ -34,6 +34,7 @@ CREATE TABLE STG.hotel (
   hotel_star_rating INT NOT NULL
   PRIMARY KEY (hotel_id),
 )
+
 CREATE TABLE STG.addresses (
   address_id INT NOT NULL,
   city VARCHAR(45) NULL,
@@ -60,14 +61,6 @@ CREATE TABLE STG.Duration(
 	Duration_Days decimal(5,2),
 )
 
-CREATE TABLE STG.Occupency (
-	hotel_id  INT ,
-	Date_id   DATETIME,
-	Hotel_capacity INT ,
-	Occupied_rooms INT ,
-	Occupancy_rate decimal(5,2),
-)
-
 CREATE TABLE STG.Reveneue(
 	hotel_id  INT , 
 	address_id INT , 
@@ -84,7 +77,9 @@ CREATE TABLE STG.Employees(
 	Date_id  DATETIME , 
 	Number_of_employees INT ,
 )
+------------------------------------------
 
+USE HotelDB
 SELECT * FROM STG.hotel
 SELECT * FROM STG.addresses
 SELECT * FROM STG.department
@@ -94,4 +89,3 @@ SELECT * FROM STG.rooms
 SELECT * FROM STG.Employees
 SELECT * FROM STG.Reveneue
 SELECT * FROM STG.Duration
-SELECT * FROM STG.Occupency

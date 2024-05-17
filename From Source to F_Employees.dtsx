@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="From Source to F_Employees"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{7C00A1EB-B958-4C38-B42F-BE194869CABA}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{0552B77D-76E8-4EEC-BA14-4C28D8B6478C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2036,6 +2036,10 @@ where [refTable].[hotel_id] = ?</property>
           Size="184,42.6666666666667"
           Id="Package\Load STG Employees"
           TopLeft="172.215904074468,112.746410904108" />
+        <NodeLayout
+          Size="182.666666666667,43.3333333333334"
+          Id="Package\Truncate STG Table"
+          TopLeft="176.59090387889,43.5518354386392" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="265.984843374428,155.413077570775">
@@ -2058,10 +2062,6 @@ where [refTable].[hotel_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="182.666666666667,43.3333333333334"
-          Id="Package\Truncate STG Table"
-          TopLeft="176.59090387889,43.5518354386392" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="266.070070643345,86.8851687719726">
@@ -2093,155 +2093,168 @@ where [refTable].[hotel_id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="182.666666666667,42.6666666666667"
+          Id="Package\Load Fact Employees\SRC STG Employees"
+          TopLeft="246.934516297299,78.6165403019642" />
+        <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Load Fact Employees\Get Hotel key"
           TopLeft="255.416659073283,284.807013632463" />
         <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Load Fact Employees\Get Date Dim"
+          TopLeft="261.999992191791,147.046778867128" />
+        <NodeLayout
           Size="174.666666666667,42"
           Id="Package\Load Fact Employees\Get Department key"
-          TopLeft="237.999992907048,382.508768456712" />
-        <NodeLayout
-          Size="182.666666666667,42.6666666666667"
-          Id="Package\Load Fact Employees\SRC STG Employees"
-          TopLeft="235.41665966933,16.1578943712064" />
-        <NodeLayout
-          Size="185.333333333334,42.6666666666667"
-          Id="Package\Load Fact Employees\DST DWH Employees"
-          TopLeft="230.041659820205,500.748528242258" />
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Lookup Match Output]"
-          TopLeft="326.374992656832,327.47368029913">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.0350881575821"
-              Start="0,0"
-              End="0,47.5350881575821">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5350881575821" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.962856578791,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="236.124992990867,366.087716005433" />
         <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Load Fact Employees\Lookup On DWH"
-          TopLeft="246.874988963828,168.85964789827" />
+          TopLeft="248.124988907949,218.122805252107" />
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load Fact Employees\DST DWH Employees"
+          TopLeft="235.041659596688,444.643265700388" />
         <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Lookup No Match Output]"
-          TopLeft="327.145824018556,211.526314564937">
+          Id="Package\Load Fact Employees.Paths[OLE DB Source Output]"
+          TopLeft="336.133920911211,121.283206968631">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.2806990675264"
+              EndConnector="0,25.7635718984974"
               Start="0,0"
-              End="0,65.7806990675264">
+              End="0,18.2635718984974">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.7806990675264" />
+                    End="0,18.2635718984974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Lookup No Match Output]"
+          TopLeft="327.770823990616,260.789471918774">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.0175417136892"
+              Start="0,0"
+              End="0,16.5175417136892">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5175417136892" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,27.0856620337632,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,2.45408335684462,111.6127734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="144,42.6666666666667"
-          Id="Package\Load Fact Employees\Get Date Dim"
-          TopLeft="260.74999224767,90.2573058064549" />
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[OLE DB Source Output]"
-          TopLeft="329.749992625167,58.8245610378731">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.4327447685818"
-              Start="0,0"
-              End="0,23.9327447685818">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.9327447685818" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Fact Employees.Paths[Derived Column Output]"
-          TopLeft="329.812490605749,132.923972473122">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.9356754251487"
-              Start="0,0"
-              End="0,28.4356754251487">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.4356754251487" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact Employees.Paths[Lookup Match Output1]"
-          TopLeft="324.020826363626,424.508768456712">
+          TopLeft="325.583326293777,408.087716005433">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76.2397597855462"
+              EndConnector="0,36.5555496949551"
               Start="0,0"
-              End="0,68.7397597855462">
+              End="0,29.0555496949551">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.7397597855462" />
+                    End="0,29.0555496949551" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,28.5651923927731,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,8.72308734747753,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Lookup Match Output]"
+          TopLeft="325.437492698742,327.47368029913">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.6140357063033"
+              Start="0,0"
+              End="0,31.1140357063033">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.1140357063033" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.75233035315165,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Employees.Paths[Derived Column Output]"
+          TopLeft="331.06249054987,189.713445533795">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.4093597183122"
+              Start="0,0"
+              End="0,20.9093597183122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9093597183122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="To not insert if already inserted!"
           ParentId="Package\Load Fact Employees"
           FontInfo="{assembly:Null}"
-          Size="196,60"
+          Size="196,40"
           Id="065d28e2-a662-474a-938c-2cf72ccc419d"
-          TopLeft="379.374983040616,166.2631560692" />
+          TopLeft="384.843732796144,221.855260721968" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Employees\SRC STG Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Fact Employees\Get Hotel key">
     <Properties>
@@ -2276,15 +2289,25 @@ where [refTable].[hotel_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Employees\SRC STG Employees">
+    design-time-name="Package\Load Fact Employees\Lookup On DWH">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[Employees]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2329,29 +2352,27 @@ where [refTable].[hotel_id] = ?</property>
         <NodeLayout
           Size="152,42.6666666666667"
           Id="Package\Load STG Employees\SRC Employee"
-          TopLeft="172.78408318504,6.2200956254845" />
+          TopLeft="172.78408318504,20.220095208252" />
         <EdgeLayout
           Id="Package\Load STG Employees.Paths[OLE DB Source Output]"
-          TopLeft="246.210219753144,48.8867622921512">
+          TopLeft="246.210219753144,62.8867618749187">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.1945764646315"
+              EndConnector="0,24.194576881864"
               Start="0,0"
-              End="0,30.6945764646315">
+              End="0,16.694576881864">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.6945764646315" />
+                    End="0,16.694576881864" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2421,9 +2442,7 @@ where [refTable].[hotel_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2445,9 +2464,7 @@ where [refTable].[hotel_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2509,29 +2526,6 @@ where [refTable].[hotel_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Employees\Lookup On DWH">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[Employees]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
